@@ -1,2 +1,24 @@
+# Ignore all files with the specified name.
+# Scope is all repo folders.
+config.json
+
+# Ignore all files with the specified extension.
+# Scope is all repo folders.
+*.json
+
+# Add an exception so as to not ignore a file with the specified name.
+# Scope is all repo folders.
+!package.json
+
+# Ignore a file with the specified name.
+# Scoped to the 'logs' subfolder.
+/logs/test.logfile
+
+# Ignore all files with the specified name.
+# Scoped to the 'logs' subfolder and all folders beneath it.
+/logs/**/test.logfile
+
+# Ignore all files in the 'logs' subfolder.
+/logs/
 push_swap
 a.out
