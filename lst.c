@@ -1,4 +1,5 @@
 #include "push_swap.h"
+#include "libft.h"
 
 t_lst	*ft_lstnew(int	nbr, t_lst *next, t_lst *prev)
 {
