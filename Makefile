@@ -34,13 +34,12 @@ LIBFT = libft/ft_atoi.o\
 		libft/ft_putnbr_fd.o
 
 PUSH_SWAP = push_swap.o\
-			lst.o\
 			listing.o\
 			ft_split_count.o\
 			swap_functions.o\
 			push_functions.o\
-			rotate_functions.o
-
+			rotate_functions.o\
+			sort_functions.o
 
 CC = cc
 

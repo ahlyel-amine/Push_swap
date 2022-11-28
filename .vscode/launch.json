@@ -9,8 +9,8 @@
 			"request": "launch",
 			"name": "Debug",
 			"program": "/Users/aahlyel/Desktop/Push_swap/a.out",
-			"args": ["45", "66", "6962", "6"],
-			"cwd": "${workspaceFolder}"
+			"args": ["18", "4", "9", "33", "7", "-1", "37"],
+			"cwd": "/Users/aahlyel/Desktop/Push_swap/"
 		}
 	]
 }

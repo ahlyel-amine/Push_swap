@@ -4,6 +4,8 @@
 		"*.excalidrawlib": "json",
 		"libft.h": "c",
 		"push_swap.h": "c",
-		"string.h": "c"
+		"string.h": "c",
+		"stdarg.h": "c",
+		"unistd.h": "c"
 	}
 }

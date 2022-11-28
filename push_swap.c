@@ -93,6 +93,29 @@ long long	*ft_table(char **str, int ac)
 	return (table);
 }
 
+void	ft_pushswap(t_lst *list, int ac)
+{
+	// t_lst		*tmp;
+	// t_lst		*head;
+	// int			count;
+
+	// head = list;
+	// count = ac;
+	// while (count-- && list)
+	// {
+	// 	if (count)
+	// 		tmp = list->next;
+	// 	else
+	// 		tmp = NULL;
+	// 	if (tmp && list->content > tmp->content)
+	// 		ft_sort(head, ac);
+	// 	list = list->next;
+	// }
+	ft_sort(list, ac);
+
+}
+
+
 int main(int ac, char *av[])
 {
 	long long	*table;
