@@ -79,22 +79,45 @@ int	ft_check_duplicate(int ac, long long *table)
 	return (1);
 }
 #include <limits.h>
+
+
+long long	*test(char **str, int ac)
+{
+	long long	*table;
+
+	table = ft_convert(ac, str);
+	if (!table)
+		return (free(table), NULL);
+	if (!ft_check_digits(ac, str) || !ft_check_duplicate(ac, table))
+		return (free(table), write(1, "Error", ft_strlen("Error")), NULL);
+	return (table);
+}
+
 int main(int ac, char *av[])
 {
 	long long	*table;
 	t_lst		*head;
+	char		**tmp;
 
-	head = NULL;table = NULL;
-	table = ft_convert(ac, av);
-	if (!table)
-		return (free(table), -1);
-	// if (!ft_check_duplicate(ac, table))
-	// 	return (free(table), write(1, "ft_check_duplicate_Error", ft_strlen("ft_check_duplicate_Error")), -1);
-	// else if (!ft_check_digits(ac, av))
-	// 	return (free(table), write(1, "check_digits_Error", ft_strlen("check_digits_Error")), -1);
-	if (!ft_check_digits(ac, av) || !ft_check_duplicate(ac, table))
-		return (free(table), write(1, "Error", ft_strlen("Error")), -1);
+	head = NULL;
+	table = NULL;
+	if (ac == 2)
+	{
+		tmp = ft_split_count(av[1], ' ', &ac);
+		if (!tmp)
+			return (-1);
+		table = test(tmp, ac + 1);
+		if (!table)
+			return (free(tmp), -1);
+		free(tmp);
+	}
+	else
+	{
+		table = test(av + 1, ac);
+			if (!table)
+				return (-1);
+	}
 	ft_listing(&head, table, ac);
-
+	
 	return 0;
 }

@@ -35,10 +35,12 @@ LIBFT = libft/ft_atoi.o\
 
 PUSH_SWAP = push_swap.o\
 			lst.o\
+			listing.o\
+			ft_split_count.o
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS =
 
 RM = rm -f
 
@@ -46,7 +48,7 @@ AR = ar -rcs
 
 NAME = push_swap.a
 
-all : ${NAME} compile
+all : ${NAME} compile clean
 
 ${NAME} : ${LIBFT} ${PUSH_SWAP}
 	${AR} ${NAME} $^
@@ -63,6 +65,6 @@ clean :
 fclean : clean
 	${RM} push_swap
 
-re : fclean all bonus
+re : fclean all
 
-.PHONY : bonus fclean clean re
+.PHONY : fclean clean re

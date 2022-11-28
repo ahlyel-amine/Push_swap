@@ -22,7 +22,6 @@ void	new_node(t_lst **head, long long nbr)
 		((*head)->prev)->next = new;
 		(*head)->prev = new;
 	}
-
 }
 
 void	ft_listing(t_lst **head, long long *table, int ac)

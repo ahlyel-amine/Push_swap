@@ -11,4 +11,5 @@ typedef struct s_lst
 	struct s_lst	*prev;
 }	t_lst;
 void	ft_listing(t_lst **head, long long *table, int ac);
+char	**ft_split_count(char const *s, char c, int *count);
 #endif
