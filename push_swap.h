@@ -6,9 +6,9 @@
 
 typedef struct s_lst
 {
-	int				content;
+	long long		content;
 	struct s_lst	*next;
 	struct s_lst	*prev;
 }	t_lst;
-
+void	ft_listing(t_lst **head, long long *table, int ac);
 #endif

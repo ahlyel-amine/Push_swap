@@ -2,6 +2,8 @@
 	"files.associations": {
 		"*.excalidraw": "json",
 		"*.excalidrawlib": "json",
-		"libft.h": "c"
+		"libft.h": "c",
+		"push_swap.h": "c",
+		"string.h": "c"
 	}
 }
