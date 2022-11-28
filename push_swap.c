@@ -29,7 +29,7 @@ long long	*ft_convert(int ac, char **av)
 		return (NULL);
 	while (--ac)
 	{
-		table[i] = ft_latoi(av[i + 1]);
+		table[i] = ft_latoi(av[i]);
 		i++;
 	}
 	return (table);
@@ -81,7 +81,7 @@ int	ft_check_duplicate(int ac, long long *table)
 #include <limits.h>
 
 
-long long	*test(char **str, int ac)
+long long	*ft_table(char **str, int ac)
 {
 	long long	*table;
 
@@ -106,18 +106,18 @@ int main(int ac, char *av[])
 		tmp = ft_split_count(av[1], ' ', &ac);
 		if (!tmp)
 			return (-1);
-		table = test(tmp, ac + 1);
-		if (!table)
-			return (free(tmp), -1);
+		table = ft_table(tmp, ++ac);
 		free(tmp);
+		if (!table)
+			return (-1);
 	}
-	else
+	else if (ac > 2)
 	{
-		table = test(av + 1, ac);
-			if (!table)
-				return (-1);
+		table = ft_table(++av, ac);
+		if (!table)
+			return (-1);
 	}
 	ft_listing(&head, table, ac);
-	
-	return 0;
+	ft_pushswap(head, ac);
+	return (0);
 }

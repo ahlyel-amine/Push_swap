@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_functions.c                                   :+:      :+:    :+:   */
+/*   reverse_functions.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/28 16:55:33 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/11/28 16:55:34 by aahlyel          ###   ########.fr       */
+/*   Created: 2022/11/28 16:53:03 by aahlyel           #+#    #+#             */
+/*   Updated: 2022/11/28 16:53:44 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_lst **head)
+void	reverse(t_lst **stack)
 {
-	long long	nbr;
-
-	nbr = (*head)->content;
-	(*head)->content = ((*head)->next)->content;
-	((*head)->next)->content = nbr;
+	*stack = (*stack)->prev;
 }
 
-void	ss(t_lst **head_a, t_lst **head_b)
+void	rrr(t_lst **stack_a, t_lst **stack_b)
 {
-	swap(head_a);
-	swap(head_b);
+	reverse(stack_a);
+	reverse(stack_b);
 }

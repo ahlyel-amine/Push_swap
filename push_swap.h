@@ -12,4 +12,6 @@ typedef struct s_lst
 }	t_lst;
 void	ft_listing(t_lst **head, long long *table, int ac);
 char	**ft_split_count(char const *s, char c, int *count);
+void	new_node(t_lst **head, long long nbr);
+void	del_node(t_lst **head);
 #endif

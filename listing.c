@@ -24,12 +24,28 @@ void	new_node(t_lst **head, long long nbr)
 	}
 }
 
+void	del_node(t_lst **head)
+{
+	t_lst	*tmp;
+
+	if ((*head)->next == *head)
+	{
+		free (*head);
+		return ;
+	}
+	tmp = *head;
+	((*head)->next)->prev = (*head)->prev;
+	((*head)->prev)->next = (*head)->next;
+	(*head) = (*head)->next;
+	free(tmp);
+}
+
 void	ft_listing(t_lst **head, long long *table, int ac)
 {
 	int	i;
 
 	i = 0;
-	while (--ac)
+	while(--ac)
 		new_node(head, table[i++]);
 	free(table);
 }
