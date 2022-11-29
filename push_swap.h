@@ -8,6 +8,7 @@ typedef struct s_lst
 {
 	long long		content;
 	long long		LIS;
+	long long		parse_it;
 	struct s_lst	*next;
 	struct s_lst	*prev;
 }	t_lst;

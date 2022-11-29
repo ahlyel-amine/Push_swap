@@ -10,6 +10,7 @@ void	new_node(t_lst **head, long long nbr)
 		return ;
 	new->content = nbr;
 	new->LIS = 1;
+	new->parse_it = 1;
 	if (!(*head))
 	{
 		*head = new;
