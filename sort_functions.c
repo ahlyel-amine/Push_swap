@@ -1,28 +1,83 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_functions.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/29 16:47:46 by aahlyel           #+#    #+#             */
+/*   Updated: 2022/11/29 17:55:07 by aahlyel          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-#include <stdio.h>
 
 void	get_lis(t_lst *list, int ac);
 void	get_parsed(t_lst *list, int ac, int max_lis);
 int	get_mac_lis(t_lst *list, int ac);
+void	ft_sort_stacks(t_lst **stack_a, t_lst **stack_b, int ac);
 
 // LIS <=> Longest Increasing Subsequence
 
-void	ft_sort(t_lst *list, int ac)
+void	ft_sort(t_lst *stack_a, int ac)
 {
-	t_lst
+	t_lst	*stack_b;
 	int	max_lis;
 
-	get_lis(list, ac - 1);
-	max_lis = get_mac_lis(list, ac);
-	get_parsed(list, ac - 1, max_lis);
-
-	while (--ac)
+	stack_b = NULL;
+	int i = 0;
+	get_lis(stack_a, ac - 1);
+	max_lis = get_mac_lis(stack_a, ac);
+	get_parsed(stack_a, ac - 1, max_lis);
+	// ft_get_stack_parsed(&stack_a, &stack_b, ac);
+	while (++i < ac)
 	{
-		printf("%lld : [%lld] (%lld)\n", list->LIS, list->content, list->parse_it);
-		list = list->next;
+		printf("%lld : [%lld] (%lld) \n",
+		 stack_a->LIS, stack_a->content, stack_a->parse_it);
+		stack_a = stack_a->next;
 	}
+	// ft_sort_stacks(&stack_a, &stack_b, ac);
+	// i = 0;
+	// while (i++ < ac)
+	// {
+	// 	printf("%lld : [%lld] (%lld) \n",
+	// 	 stack_b->LIS, stack_b->content, stack_b->parse_it);
+	// 	stack_b = stack_b->next;
+	// }
 }
 
+// void	ft_sort_stacks(t_lst **stack_a, t_lst **stack_b, int ac)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while (i++ < ac)
+// 	{
+// 		if ()
+// 	}
+// }
+
+void	ft_get_stack_parsed(t_lst **stack_a, t_lst **stack_b, int ac)
+{
+	t_lst	*tmp;
+	int		i;
+
+	i = 0;
+	tmp = NULL;
+	while (i++ < ac)
+	{
+		if ((*stack_a)->parse_it)
+		{
+			push_b(stack_b, stack_a);
+			write(1, "pb\n", 3);
+		}
+		else
+		{
+			rotate(stack_a);
+			write(1, "ra\n", 3);
+		}
+	}
+}
 
 int	max(int nbr1, int nbr2)
 {
@@ -44,13 +99,6 @@ int	get_mac_lis(t_lst *list, int ac)
 		list = list->next;
 	}
 	return (max_lis);
-}
-
-int	min(int nbr1, int nbr2)
-{
-	if (nbr1 > nbr2)
-		return (nbr2);
-	return (nbr1);
 }
 
 void	get_lis(t_lst *list, int ac)
