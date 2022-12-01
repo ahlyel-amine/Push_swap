@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:47:46 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/01 19:04:14 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/01 20:04:57 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,23 @@ void	ft_sort(t_lst *stack_a, int ac)
 
 	stack_b = NULL;
 	int i = 0;
+	i = 0;
 	get_lis(stack_a, ac);
 	lenght.max = get_max_lis(stack_a, ac);
 	lenght.stack_a = get_parsed(stack_a, ac, lenght.max); // need rework
 	lenght.stack_b = ac - lenght.stack_a;
 	ft_get_stack_parsed(&stack_a, &stack_b, ac);
 	ft_calcul_comb(&stack_a, &stack_b, lenght);
-	// while (i++ < ac)
+	// while (i++ < 2)
 	// {
 	// 	printf("%lld|%lld|%lld\n", stack_a->LIS, stack_a->content, stack_a->parse_it);
 	// 	stack_a = stack_a->next;
 	// }
 	// printf("<----->\n");
-	// i = 0;
-	// while (i++ < ac - len_stack_a)
+	// while (i++ < ac)
 	// {
-	// 	printf("%lld|%lld\n", dup_b->content, dup_b->parse_it);
-	// 	dup_b = dup_b->next;
+	// 	printf("%lld|%lld\n", stack_b->content, stack_b->parse_it);
+	// 	stack_b = stack_b->next;
 	// }
 }
 
@@ -85,6 +85,11 @@ void	ft_get_stack_parsed(t_lst **stack_a, t_lst **stack_b, int ac)
 			rotate(stack_a);
 			write(1, "ra\n", 3);
 		}
+	}
+	if ((*stack_a)->content > (*stack_a)->prev->content)
+	{
+		rotate(stack_a);
+		write(1, "ra\n", 3);
 	}
 }
 
