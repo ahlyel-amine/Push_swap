@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_functions.c                                   :+:      :+:    :+:   */
+/*   rotate_functions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/28 16:55:33 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/11/30 18:15:58 by aahlyel          ###   ########.fr       */
+/*   Created: 2022/11/28 16:47:23 by aahlyel           #+#    #+#             */
+/*   Updated: 2022/12/01 23:44:20 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void	swap(t_lst **head)
+void	rotate(t_lst **stack)
 {
-	long long	tmp;
-
-	tmp = (*head)->content;
-	(*head)->content = ((*head)->next)->content;
-	((*head)->next)->content = tmp;
+	*stack = (*stack)->next;
 }
 
-void	ss(t_lst **head_a, t_lst **head_b)
+void	rr(t_lst **stack_a, t_lst **stack_b)
 {
-	swap(head_a);
-	swap(head_b);
+	rotate(stack_a);
+	rotate(stack_b);
 }

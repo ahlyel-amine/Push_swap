@@ -35,14 +35,19 @@ LIBFT = \
 		# libft/ft_putnbr_fd.o
 
 PUSH_SWAP = push_swap.o\
-			listing.o\
-			ft_split_count.o\
-			swap_functions.o\
-			push_functions.o\
-			rotate_functions.o\
 			sort_functions.o\
-			reverse_functions.o\
-			calcul_comb.o
+			calcul_comb.o\
+			\
+			sort_functions/reverse_functions.o\
+			sort_functions/swap_functions.o\
+			sort_functions/push_functions.o\
+			sort_functions/rotate_functions.o\
+			\
+			controllers/input_controller.o\
+			controllers/lists_controllers_functions.o\
+			\
+			utils/utils.o\
+			utils/ft_split_count.o
 
 CC = cc
 

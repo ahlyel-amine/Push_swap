@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   swap_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/01 23:41:55 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/01 23:56:07 by aahlyel          ###   ########.fr       */
+/*   Created: 2022/11/28 16:55:33 by aahlyel           #+#    #+#             */
+/*   Updated: 2022/12/01 23:38:03 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-int main(int ac, char *av[])
+void	swap(t_lst **head)
 {
-	t_lst		*head;
-	char		**tmp;
+	long long	tmp;
 
-	head = NULL;
-	if (ac <= 1)
-		return (0);
-	ac = ft_table(&head, ++av, ac - 1);
-	if (ac == -1)
-		return (ac);
-	ft_sort(head, ac);
-	return (0);
+	tmp = (*head)->content;
+	(*head)->content = ((*head)->next)->content;
+	((*head)->next)->content = tmp;
+}
+
+void	ss(t_lst **head_a, t_lst **head_b)
+{
+	swap(head_a);
+	swap(head_b);
 }

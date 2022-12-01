@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:47:46 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/01 20:04:57 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/01 23:47:27 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,6 @@ void	ft_sort(t_lst *stack_a, int ac)
 	// 	printf("%lld|%lld\n", stack_b->content, stack_b->parse_it);
 	// 	stack_b = stack_b->next;
 	// }
-}
-
-void	ft_lstdup(t_lst **new_stack, t_lst *stack, int ac)
-{
-	int i = 0;
-	while (i++ < ac)
-	{
-		new_node(new_stack, stack->content);
-		stack = stack->next;
-	}
 }
 
 void	ft_get_stack_parsed(t_lst **stack_a, t_lst **stack_b, int ac)
@@ -93,12 +83,7 @@ void	ft_get_stack_parsed(t_lst **stack_a, t_lst **stack_b, int ac)
 	}
 }
 
-int	max(int nbr1, int nbr2)
-{
-	if (nbr1 > nbr2)
-		return (nbr1);
-	return (nbr2);
-}
+
 
 int	get_max_lis(t_lst *list, int ac)
 {

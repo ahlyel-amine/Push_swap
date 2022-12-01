@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_functions.c                                 :+:      :+:    :+:   */
+/*   push_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/28 16:47:23 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/11/30 19:18:58 by aahlyel          ###   ########.fr       */
+/*   Created: 2022/11/28 16:47:26 by aahlyel           #+#    #+#             */
+/*   Updated: 2022/12/01 23:44:13 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void	rotate(t_lst **stack)
+void	push_a(t_lst **stack_a, t_lst **stack_b)
 {
-	*stack = (*stack)->next;
+	t_lst	*tmp;
+
+	new_node(stack_a, (*stack_b)->content);
+	tmp = (*stack_b)->next;
+	del_node(stack_b);
+	*stack_b = tmp;
+	rotate(stack_a);
 }
 
-void	rr(t_lst **stack_a, t_lst **stack_b)
+void	push_b(t_lst **stack_b, t_lst **stack_a)
 {
-	rotate(stack_a);
+	t_lst	*tmp;
+
+	new_node(stack_b, (*stack_a)->content);
+	tmp = (*stack_a)->next;
+	del_node(stack_a);
+	*stack_a = tmp;
 	rotate(stack_b);
 }

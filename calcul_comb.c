@@ -6,17 +6,15 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 18:48:14 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/01 21:16:15 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/01 23:56:02 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft.h"
 
 void	ft_calcul(t_lst *stack_a, t_lst *stack_b, t_len length);
 void	ft_comb_front(t_lst **stack_a, t_lst **stack_b, t_len length);
-int	min(int nbr1, int nbr2);
-int	get_min_comb(t_lst *stack, int len);
+int		get_min_comb(t_lst *stack, int len);
 void	get_sorted(t_lst **stack_a, t_lst **stack_b, t_len length);
 
 void	ft_calcul_comb(t_lst **stack_a, t_lst **stack_b, t_len length) //in work
@@ -80,12 +78,7 @@ int	get_min_comb(t_lst *stack, int len)
 	}
 	return (mn);
 }
-int	min(int nbr1, int nbr2)
-{
-	if (nbr1 < nbr2)
-		return (nbr1);
-	return (nbr2);
-}
+
 
 void	ft_comb_front(t_lst **stack_a, t_lst **stack_b, t_len length)
 {

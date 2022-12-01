@@ -1,5 +1,4 @@
-#include "push_swap.h"
-#include "libft.h"
+#include "../push_swap.h"
 
 void	new_node(t_lst **head, long long nbr)
 {
@@ -43,12 +42,12 @@ void	del_node(t_lst **head)
 	free(tmp);
 }
 
-void	ft_listing(t_lst **head, long long *table, int ac)
+void	ft_lstdup(t_lst **new_stack, t_lst *stack, int ac)
 {
-	int	i;
-
-	i = 0;
-	while(--ac)
-		new_node(head, table[i++]);
-	free(table);
+	int i = 0;
+	while (i++ < ac)
+	{
+		new_node(new_stack, stack->content);
+		stack = stack->next;
+	}
 }
