@@ -6,60 +6,40 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:47:46 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/11/30 16:43:37 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/01 19:04:14 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	get_lis(t_lst *list, int ac);
-int		get_parsed(t_lst *list, int ac, int max_lis);
-int		get_max_lis(t_lst *list, int ac);
-void	ft_sort_stacks(t_lst **stack_a, t_lst **stack_b, int ac);
-void	sort_tmp(t_lst **sorted_stack, int ac);
-void	ft_lstdup(t_lst **new_stack, t_lst *stack, int ac);
-void	ft_calcul_comb(t_lst **stack_a, t_lst **stack_b, int len_stack_a, int len_stack_b);
 
 // LIS <=> Longest Increasing Subsequence
 
 void	ft_sort(t_lst *stack_a, int ac)
 {
 	t_lst	*stack_b;
-	int	max_lis;
-	int	len_stack_b;
+	t_len	lenght;
+	int	len_stack_a;
 
 	stack_b = NULL;
 	int i = 0;
-	get_lis(stack_a, ac - 1);
-	max_lis = get_max_lis(stack_a, ac);
-	len_stack_b = get_parsed(stack_a, ac - 1, max_lis);
-	ft_get_stack_parsed(&stack_a, &stack_b, ac - 1);
-	ft_calcul_comb(&stack_a, &stack_b, ac - len_stack_b - 1, len_stack_b);
-	// while (++i < 7)
+	get_lis(stack_a, ac);
+	lenght.max = get_max_lis(stack_a, ac);
+	lenght.stack_a = get_parsed(stack_a, ac, lenght.max); // need rework
+	lenght.stack_b = ac - lenght.stack_a;
+	ft_get_stack_parsed(&stack_a, &stack_b, ac);
+	ft_calcul_comb(&stack_a, &stack_b, lenght);
+	// while (i++ < ac)
 	// {
-	// 	printf("%lld : [%lld] (%lld) \n",
-	// 	 stack_a->LIS, stack_a->content, stack_a->parse_it);
+	// 	printf("%lld|%lld|%lld\n", stack_a->LIS, stack_a->content, stack_a->parse_it);
 	// 	stack_a = stack_a->next;
 	// }
-	// printf("<--------------------------->\n");
-	// while (++i < ac)
+	// printf("<----->\n");
+	// i = 0;
+	// while (i++ < ac - len_stack_a)
 	// {
-	// 	printf("%lld : [%lld] (%lld) \n",
-	// 	 stack_b->LIS, stack_b->content, stack_b->parse_it);
-	// 	stack_b = stack_b->next;
+	// 	printf("%lld|%lld\n", dup_b->content, dup_b->parse_it);
+	// 	dup_b = dup_b->next;
 	// }
-}
-
-void	ft_calcul_comb(t_lst **stack_a, t_lst **stack_b, int len_stack_a, int len_stack_b) //in work
-{
-	t_lst	*dup_a;
-	t_lst	*dup_b;
-
-	dup_b = NULL;
-	dup_a = NULL;
-	ft_lstdup(&dup_a, *stack_a, len_stack_a);
-	ft_lstdup(&dup_b, *stack_b, len_stack_b);
-
 }
 
 void	ft_lstdup(t_lst **new_stack, t_lst *stack, int ac)
@@ -70,44 +50,6 @@ void	ft_lstdup(t_lst **new_stack, t_lst *stack, int ac)
 		new_node(new_stack, stack->content);
 		stack = stack->next;
 	}
-}
-
-void	sort_tmp(t_lst **sorted_stack, int ac)
-{
-	t_lst		*tmp;
-	long long	temp;
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (i++ < ac)
-	{
-		tmp = (*sorted_stack)->next;
-		j = i + 1;
-		while (j++ < ac)
-		{
-			if ((*sorted_stack)->content > tmp->content)
-			{
-				temp = (*sorted_stack)->content;
-				(*sorted_stack)->content = tmp->content;
-				tmp->content = temp;
-			}
-			tmp = tmp->next;
-		}
-		(*sorted_stack) = (*sorted_stack)->next;
-	}
-	(*sorted_stack) = (*sorted_stack)->prev;
-}
-
-void	ft_sort_stacks(t_lst **stack_a, t_lst **stack_b, int ac)
-{
-	t_lst	*tmp;
-	int	i;
-
-	i = 0;
-	ft_lstdup(&tmp, *stack_b, ac - 7);
-	sort_tmp(&tmp, ac - 7);
 }
 
 void	ft_get_stack_parsed(t_lst **stack_a, t_lst **stack_b, int ac)
@@ -130,7 +72,7 @@ void	ft_get_stack_parsed(t_lst **stack_a, t_lst **stack_b, int ac)
 	i = 0;
 	while (i++ < ac)
 	{
-		if ((*stack_a)->parse_it && j < count)
+		if (!((*stack_a)->parse_it) && j < count)
 		{
 			j++;
 			push_b(stack_b, stack_a);
@@ -176,9 +118,10 @@ void	get_lis(t_lst *list, int ac)
 	int	i;
 	int	j;
 
+	i = 0;
 	i = 1;
 	head = list;
-	while (i < ac)
+	while (i <= ac)
 	{
 		zero = 0;
 		j = 0;
@@ -197,7 +140,7 @@ void	get_lis(t_lst *list, int ac)
 	}
 }
 
-int	get_parsed(t_lst *list, int ac, int max_lis)
+int	get_parsed(t_lst *list, int ac, int max_lis) // need rework
 {
 	t_lst *head;
 	long long tmp;
@@ -222,7 +165,7 @@ int	get_parsed(t_lst *list, int ac, int max_lis)
 		if (list->LIS == j && tmp < list->content)
 		{
 			tmp = list->content;
-			list->parse_it = 0;
+			list->parse_it = 1;
 			count++;
 		}
 		j++;
@@ -230,41 +173,3 @@ int	get_parsed(t_lst *list, int ac, int max_lis)
 	}
 	return (count);
 }
-
-// void	get_parsed(t_lst *list, int ac, int max_lis)
-// {
-// 	t_lst *head;
-// 	long long tmp;
-// 	int	zero;
-// 	int	i;
-// 	int	j;
-
-// 	i = 0;
-// 	j = 1;
-// 	head = list;
-// 	tmp = LONG_MIN;
-// 	while (i < ac)
-// 	{
-// 		list = head;
-// 		zero = 0;
-// 		while (list->LIS != j && j < max_lis + 1)
-// 		{
-// 			list = list->next;
-// 			if (list->LIS == 1 && j == 1)
-// 			{
-// 				while (list->next->LIS == 1)
-// 					list = list->next;
-// 				break ;
-// 			}
-// 			if (list->LIS == j)
-// 				break ;
-// 		}
-// 		if (list->LIS == j && tmp < list->content)
-// 		{
-// 			tmp = list->content;
-// 			list->parse_it = 0;
-// 		}
-// 		j++;
-// 		i++;
-// 	}
-// }

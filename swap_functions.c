@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:55:33 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/11/28 16:55:34 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/11/30 18:15:58 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	swap(t_lst **head)
 {
-	long long	nbr;
+	long long	tmp;
 
-	nbr = (*head)->content;
+	tmp = (*head)->content;
 	(*head)->content = ((*head)->next)->content;
-	((*head)->next)->content = nbr;
+	((*head)->next)->content = tmp;
 }
 
 void	ss(t_lst **head_a, t_lst **head_b)

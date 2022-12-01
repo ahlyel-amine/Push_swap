@@ -1,6 +1,9 @@
 #include "push_swap.h"
 #include "libft.h"
 
+int	still_digits(char *str);
+int	ft_table_demo(t_lst **stack, char **av, int ac);
+long long	ft_atolld(char **str);
 long long	ft_latoi(const char *str)
 {
 	long long	sign;
@@ -15,6 +18,7 @@ long long	ft_latoi(const char *str)
 			sign = -1;
 	while (*str && ft_isdigit(*str))
 		res = (res * 10) + *(str++) - 0x30;
+
 	return (res * sign);
 }
 
@@ -112,35 +116,97 @@ void	ft_pushswap(t_lst *list, int ac)
 	// 	list = list->next;
 	// }
 	ft_sort(list, ac);
-
 }
 
 
 int main(int ac, char *av[])
 {
-	long long	*table;
+	// long long	*table;
 	t_lst		*head;
 	char		**tmp;
 
 	head = NULL;
-	table = NULL;
-	if (ac == 2)
-	{
-		tmp = ft_split_count(av[1], ' ', &ac);
-		if (!tmp)
-			return (-1);
-		table = ft_table(tmp, ++ac);
-		free(tmp);
-		if (!table)
-			return (-1);
-	}
-	else if (ac > 2)
-	{
-		table = ft_table(++av, ac);
-		if (!table)
-			return (-1);
-	}
-	ft_listing(&head, table, ac);
+	// if (ac == 2)
+	// {
+	// 	tmp = ft_split_count(av[1], ' ', &ac);
+	// 	if (!tmp)
+	// 		return (-1);
+	// 	table = ft_table(tmp, ++ac);
+	// 	free(tmp);
+	// 	if (!table)
+	// 		return (-1);
+	// }
+	// else if (ac > 2)
+	// {
+	// 	table = ft_table(++av, ac);
+	// 	if (!table)
+	// 		return (-1);
+	// }
+	if (ac <= 1)
+		return (0);
+	else
+		ac = ft_table_demo(&head, ++av, ac - 1);
+	// while (i++ < ac)
+	// {
+	// 	printf("%lld : [%lld] (%lld) \n",
+	// 	 head->LIS, head->content, head->parse_it);
+	// 	head = head->next;
+	// }
+	// else
+	// {
+	// 	table = ft_table(++av, ac);
+	// 	if (!table)
+	// 		return (-1);
+	// }
+	// ft_listing(&head, table, ac);
 	ft_pushswap(head, ac);
+	return (0);
+}
+
+int	ft_table_demo(t_lst **stack, char **av, int ac)
+{
+	int			i;
+	int			j;
+
+	*stack = NULL;
+	i = 0;
+	j = 0;
+	while (i < ac)
+	{
+		while (still_digits(av[i]))
+		{
+			new_node(stack, ft_atolld(&av[i]));
+			j++;
+		}
+		i++;
+	}
+	return (j);
+}
+
+long long	ft_atolld(char **str)
+{
+	long long	sign;
+	long long	res;
+
+	sign = 1;
+	res = 0;
+	while (**str == 0x20 || (**str >= 0x09 && **str <= 0x0d))
+		(*str)++;
+	if (**str == 0x2D || **str == 0x2B)
+		if (*((*str)++) == 0x2D)
+			sign = -1;
+	while (**str && ft_isdigit(**str))
+		res = (res * 10) + *((*str)++) - 0x30;
+	return (res * sign);
+}
+
+int	still_digits(char *str)
+{
+	while (*str)
+	{
+		if (ft_isdigit(*str))
+			return (1);
+		str++;
+	}
 	return (0);
 }

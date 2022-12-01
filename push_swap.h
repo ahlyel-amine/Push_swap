@@ -16,6 +16,14 @@ typedef struct s_lst
 	struct s_lst	*prev;
 }	t_lst;
 
+typedef	struct s_len
+{
+	int	stack_a;
+	int	stack_b;
+	int	min;
+	int	max;
+}	t_len;
+
 void	ft_listing(t_lst **head, long long *table, int ac);
 char	**ft_split_count(char const *s, char c, int *count);
 void	new_node(t_lst **head, long long nbr);
@@ -34,7 +42,16 @@ void	rr(t_lst **stack_a, t_lst **stack_b);
 void	swap(t_lst **head);
 void	ss(t_lst **head_a, t_lst **head_b);
 
-void	ft_sort(t_lst *stack_a, int ac);
 void	ft_get_stack_parsed(t_lst **stack_a, t_lst **stack_b, int ac);
 
+
+void	ft_calcul_comb(t_lst **stack_a, t_lst **stack_b, t_len length);
+
+
+/*		sort_functions.c		*/
+void	ft_sort(t_lst *stack_a, int ac);
+void	get_lis(t_lst *list, int ac);
+int		get_parsed(t_lst *list, int ac, int max_lis); // need rework
+int		get_max_lis(t_lst *list, int ac);
+void	ft_lstdup(t_lst **new_stack, t_lst *stack, int ac);
 #endif

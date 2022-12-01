@@ -10,7 +10,7 @@ void	new_node(t_lst **head, long long nbr)
 		return ;
 	new->content = nbr;
 	new->LIS = 1;
-	new->parse_it = 1;
+	new->parse_it = 0;
 	if (!(*head))
 	{
 		*head = new;
@@ -23,6 +23,7 @@ void	new_node(t_lst **head, long long nbr)
 		new->prev = (*head)->prev;
 		((*head)->prev)->next = new;
 		(*head)->prev = new;
+		*head = new;
 	}
 }
 

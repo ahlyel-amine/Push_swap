@@ -40,7 +40,8 @@ PUSH_SWAP = push_swap.o\
 			push_functions.o\
 			rotate_functions.o\
 			sort_functions.o\
-			reverse_functions.o
+			reverse_functions.o\
+			calcul_comb.o
 
 CC = cc
 
