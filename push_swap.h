@@ -33,6 +33,7 @@ int			get_parsed(t_lst *list, int ac, int max_lis); // need rework
 /*<<<<<<<<<<<<<<<<<< FILE : lis.c >>>>>>>>>>>>>>>>>>*/
 void		get_lis(t_lst *list, int ac);
 int			get_max_lis(t_lst *list, int ac);
+int			check_lis(t_lst *list, int ac);
 
 /*^^^^^^^^^^^^^^^^^^ DIR : sort_functions ^^^^^^^^^^^^^^^^^^*/
 

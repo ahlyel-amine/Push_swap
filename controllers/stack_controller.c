@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 11:50:24 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/02 12:05:12 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/02 12:39:56 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void    print_stack(t_lst *sa, t_lst *sb, t_len lenght)
     tmp1 = sb;
 	i = 0;
 	j = 0;
-    printf("~|stack A|~\t~|stack B|~\n");
+    printf("~|stack A|~\t\t\t~|stack B|~\n");
     printf("-~-~-~-~--~-~-~-~--~-~-~-~--~-~-~-~-~-~-~-~--~-~-~-~--~-~-~-~--~-~-~-~-\n");
     if (!tmp && !tmp1)
         printf("    |the stacks have been freed|\n");

@@ -22,7 +22,6 @@ void	new_node(t_lst **head, long long nbr)
 		new->prev = (*head)->prev;
 		((*head)->prev)->next = new;
 		(*head)->prev = new;
-		*head = new;
 	}
 }
 

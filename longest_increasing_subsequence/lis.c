@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 11:56:52 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/02 12:27:49 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/02 12:53:42 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	get_lis(t_lst *list, int ac)
 
 	i = 1;
 	head = list;
-	while (i <= ac)
+	while (i < ac)
 	{
 		zero = 0;
 		j = 0;
@@ -54,4 +54,43 @@ int	get_max_lis(t_lst *list, int ac)
 		list = list->next;
 	}
 	return (max_lis);
+}
+
+
+
+int	check_lis_rev_sorted(t_lst *list, int ac)
+{
+	int	i;
+
+	i = 0;
+	while (i++ < ac)
+	{
+		if (list->LIS != 1)
+			return (0);
+		list = list->next;
+	}
+	return (1);
+}
+
+int	check_lis_sorted(t_lst *list, int ac)
+{
+	int	i;
+
+	i = 0;
+	while (i++ < ac)
+	{
+		if (list->LIS != i)
+			return (0);
+		list = list->next;
+	}
+	return (1);
+}
+
+int	check_lis(t_lst *list, int ac)
+{
+	if (check_lis_sorted(list, ac))
+		return (0);
+	else if (check_lis_rev_sorted(list, ac))
+		return (-1);
+	return (1);
 }
