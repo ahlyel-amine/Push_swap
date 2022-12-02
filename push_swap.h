@@ -20,20 +20,21 @@ typedef	struct s_len
 	int	max;
 }	t_len;
 
-void	ft_get_stack_parsed(t_lst **stack_a, t_lst **stack_b, int ac);
-
-void	ft_calcul_comb(t_lst **stack_a, t_lst **stack_b, t_len length);
+void		ft_calcul_comb(t_lst **stack_a, t_lst **stack_b, t_len length);
 
 /*		sort_functions.c		*/
 void		ft_sort(t_lst *stack_a, int ac);
-int			get_parsed(t_lst *list, int ac, int max_lis); // need rework
 
 /*^^^^^^^^^^^^^^^^^^ DIR : longest_increasing_subsequence ^^^^^^^^^^^^^^^^^^*/
 
 /*<<<<<<<<<<<<<<<<<< FILE : lis.c >>>>>>>>>>>>>>>>>>*/
+t_len		ft_lis_controll(t_lst **stack_a, t_lst **stack_b, int ac);
 void		get_lis(t_lst *list, int ac);
 int			get_max_lis(t_lst *list, int ac);
 int			check_lis(t_lst *list, int ac);
+int			sequence_len(t_lst *stack, int len);
+void		lis_divide(t_lst **stack_a, t_lst **stack_b, int ac);
+int			define_sequence(t_lst *list, int ac, int max_lis);
 
 /*^^^^^^^^^^^^^^^^^^ DIR : sort_functions ^^^^^^^^^^^^^^^^^^*/
 
@@ -67,7 +68,7 @@ char		**ft_split_count(char const *s, char c, int *count);
 /*^^^^^^^^^^^^^^^^^^ DIR : controllers ^^^^^^^^^^^^^^^^^^*/
 
 /*<<<<<<<<<<<<<<<<<< FILE : sort_controller.c >>>>>>>>>>>>>>>>>>*/
-void	ft_sort_controller(t_lst *stack_a, int ac);
+void		ft_sort_controller(t_lst *stack_a, int ac);
 
 /*<<<<<<<<<<<<<<<<<< FILE : stack_controller.c >>>>>>>>>>>>>>>>>>*/
 void		print_stack(t_lst *sa, t_lst *sb, t_len lenght);
@@ -78,9 +79,10 @@ int			ft_check_input_dup(t_lst *stack, int ac);
 int			ft_check_input_digits(char **av, int ac);
 
 /*<<<<<<<<<<<<<<<<<< FILE : lists_controllers_functions.c >>>>>>>>>>>>>>>>>>*/
-void		ft_lstdup(t_lst **new_stack, t_lst *stack, int ac);
 void		new_node(t_lst **head, long long nbr);
+void		add_node(t_lst **head, long long nbr);
 void		del_node(t_lst **head);
+void		ft_lstdup(t_lst **new_stack, t_lst *stack, int ac);
 
 /*<<<<<<<<<<<<<<<<<< FILE : lists_controllers_functions.c >>>>>>>>>>>>>>>>>>*/
 void		print_stack(t_lst *sa, t_lst *sb, t_len lenght);

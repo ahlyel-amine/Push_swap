@@ -50,3 +50,17 @@ void	ft_lstdup(t_lst **new_stack, t_lst *stack, int ac)
 		stack = stack->next;
 	}
 }
+
+void	add_node(t_lst **head, long long nbr)
+{
+	t_lst	*new;
+
+	new = NULL;
+	new_node(&new, nbr);
+	new->next = (*head);
+	new->prev = (*head)->prev;
+	((*head)->prev)->next = new;
+	(*head)->prev = new;
+	(*head) = new;
+}
+

@@ -64,7 +64,7 @@ AR = ar -rcs
 
 NAME = push_swap.a
 
-all : ${NAME} compile clean
+all : ${NAME}
 
 ${NAME} : ${LIBFT} ${PUSH_SWAP}
 	${AR} ${NAME} $^
