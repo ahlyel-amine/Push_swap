@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 23:41:55 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/01 23:56:07 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/02 12:30:36 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int main(int ac, char *av[])
 	ac = ft_table(&head, ++av, ac - 1);
 	if (ac == -1)
 		return (ac);
-	ft_sort(head, ac);
+	printf("allo\n");
+	ft_sort_controller(head, ac);
+	// ft_sort(head, ac);
 	return (0);
 }

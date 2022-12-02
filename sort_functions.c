@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:47:46 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/01 23:47:27 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/02 11:55:22 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	ft_sort(t_lst *stack_a, int ac)
 	lenght.stack_b = ac - lenght.stack_a;
 	ft_get_stack_parsed(&stack_a, &stack_b, ac);
 	ft_calcul_comb(&stack_a, &stack_b, lenght);
+	print_stack(stack_a, stack_b, lenght);
 	// while (i++ < 2)
 	// {
 	// 	printf("%lld|%lld|%lld\n", stack_a->LIS, stack_a->content, stack_a->parse_it);
@@ -80,53 +81,6 @@ void	ft_get_stack_parsed(t_lst **stack_a, t_lst **stack_b, int ac)
 	{
 		rotate(stack_a);
 		write(1, "ra\n", 3);
-	}
-}
-
-
-
-int	get_max_lis(t_lst *list, int ac)
-{
-	int max_lis;
-	int	i;
-
-	max_lis = 1;
-	i = 0;
-	while (i++ < ac)
-	{
-		max_lis = max(max_lis, list->LIS);
-		list = list->next;
-	}
-	return (max_lis);
-}
-
-void	get_lis(t_lst *list, int ac)
-{
-	t_lst *head;
-	t_lst *tmp;
-	int	zero;
-	int	i;
-	int	j;
-
-	i = 0;
-	i = 1;
-	head = list;
-	while (i <= ac)
-	{
-		zero = 0;
-		j = 0;
-		list = head;
-		tmp = list;
-		while (zero++ < i)
-			tmp = tmp->next;
-		while (j < i)
-		{
-			if (tmp->content > list->content)
-				tmp->LIS = max(tmp->LIS, list->LIS + 1);
-			list = list->next;
-			j++;
-		}
-		i++;
 	}
 }
 
