@@ -19,12 +19,9 @@ typedef	struct s_len
 	int	min;
 	int	max;
 }	t_len;
+void	ft_calcul(t_lst *stack_a, t_lst *stack_b, t_len length);
 
 void		ft_calcul_comb(t_lst **stack_a, t_lst **stack_b, t_len length);
-
-/*		sort_functions.c		*/
-void		ft_sort(t_lst *stack_a, int ac);
-
 /*^^^^^^^^^^^^^^^^^^ DIR : longest_increasing_subsequence ^^^^^^^^^^^^^^^^^^*/
 
 /*<<<<<<<<<<<<<<<<<< FILE : lis.c >>>>>>>>>>>>>>>>>>*/
@@ -67,6 +64,12 @@ char		**ft_split_count(char const *s, char c, int *count);
 
 /*^^^^^^^^^^^^^^^^^^ DIR : controllers ^^^^^^^^^^^^^^^^^^*/
 
+/*<<<<<<<<<<<<<<<<<< FILE : comb_controller.c >>>>>>>>>>>>>>>>>>*/
+void		ft_comb_controll(t_lst **stack_a, t_lst **stack_b, t_len lenght);
+void	get_combs_front(t_lst **dup_a, t_lst **dup_b, t_len length);
+int			combs_conditions(t_lst *dup_a, t_lst *dup_b);
+int			be_second_last_comb(t_lst *dup_a, t_lst *dup_b);
+int			be_first_comb(t_lst *dup_a, t_lst *dup_b);
 /*<<<<<<<<<<<<<<<<<< FILE : sort_controller.c >>>>>>>>>>>>>>>>>>*/
 void		ft_sort_controller(t_lst *stack_a, int ac);
 

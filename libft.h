@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:24:21 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/02 00:00:05 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/02 17:21:24 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stddef.h>
 # include <unistd.h>
 # include <limits.h>
+# include <stdarg.h>
 
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);

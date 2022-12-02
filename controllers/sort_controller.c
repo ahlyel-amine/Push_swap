@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 12:06:24 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/02 17:09:13 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/02 17:43:57 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@ void	ft_sort_controller(t_lst *stack_a, int ac)
 	if(check_lis(stack_a, ac) == -1)
 		return (ft_sort_rev(stack_a, ac));
 	lenght = ft_lis_controll(&stack_a, &stack_b, ac);
-	lenght.stack_a = 16;
-	lenght.stack_b = ac - 16;
-	print_stack(stack_a, stack_b, lenght);
+	ft_comb_controll(&stack_a, &stack_b, lenght);
+	// lenght.stack_a = 16;
+	// lenght.stack_b = ac - 16;
+	// print_stack(stack_a, stack_b, lenght);
+
 }
 
 void	ft_sort_rev(t_lst *stack_a, int ac)

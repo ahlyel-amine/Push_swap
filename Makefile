@@ -35,7 +35,6 @@ LIBFT = \
 		# libft/ft_putnbr_fd.o
 
 PUSH_SWAP = push_swap.o\
-			sort_functions.o\
 			calcul_comb.o\
 			\
 			sort_functions/reverse_functions.o\
@@ -47,12 +46,12 @@ PUSH_SWAP = push_swap.o\
 			controllers/lists_controllers_functions.o\
 			controllers/stack_controller.o\
 			controllers/sort_controller.o\
+			controllers/comb_controller.o\
 			\
 			utils/utils.o\
 			utils/ft_split_count.o\
 			\
 			longest_increasing_subsequence/lis.o\
-			\
 
 CC = cc
 

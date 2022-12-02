@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 11:56:52 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/02 17:13:29 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/02 17:17:07 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_len	ft_lis_controll(t_lst **stack_a, t_lst **stack_b, int ac)
 	t_len	lenght;
 
 	lenght.max = get_max_lis(*stack_a, ac);
-	lenght.stack_a = define_sequence(*stack_a, ac, lenght.max); // need rework
+	lenght.stack_a = define_sequence(*stack_a, ac, lenght.max);
 	lenght.stack_b = ac - lenght.stack_a;
 	lis_divide(stack_a, stack_b, ac);
 	if ((*stack_a)->content > (*stack_a)->prev->content)
@@ -30,7 +30,7 @@ t_len	ft_lis_controll(t_lst **stack_a, t_lst **stack_b, int ac)
 	return (lenght);
 }
 
-int	define_sequence(t_lst *list, int ac, int max_lis) // need rework
+int	define_sequence(t_lst *list, int ac, int max_lis)
 {
 	t_lst *head;
 	int	i;
