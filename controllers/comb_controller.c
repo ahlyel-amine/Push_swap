@@ -6,23 +6,50 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 17:44:21 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/02 20:44:16 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/02 23:09:04 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_comb_controll(t_lst **stack_a, t_lst **stack_b, t_len lenght)
+int	ft_comb_controll(t_lst **stack_a, t_lst **stack_b, t_len lenght)
 {
 	t_lst	*head_a;
 	t_lst	*head_b;
+	int		min;
 
+	min = 0;
 	head_b = *stack_b;
 	head_a = *stack_a;
-	get_combs_front(stack_a, stack_b, lenght);
+	get_combs_front(stack_a, stack_b, lenght); // need 1 front
+	lenght.min = select_small_comb(*stack_b, lenght.stack_b);
 	*stack_b = head_b;
 	*stack_a = head_a;
-	print_stack(*stack_a , *stack_b, lenght);
+	return (lenght.min);
+}
+
+int	select_small_comb(t_lst *stack, int len)
+{
+	t_lst *head;
+	int	mn;
+	int	i;
+
+	i = 0;
+	mn = 0;
+	head = stack;
+	while (i++ < len)
+	{
+		mn = min(mn, stack->parse_it);
+		stack = stack->next;
+	}
+	i = 0;
+	while (i++ < len)
+	{
+		if (head->parse_it == mn)
+			return (mn);
+		head = head->next;
+	}
+	return (-1);
 }
 
 void	get_combs_front(t_lst **stack_a, t_lst **stack_b, t_len length)
@@ -98,8 +125,8 @@ int	combs_conditions(t_lst *stack_a, t_lst *stack_b, t_len length)
 {
 	if (be_first_comb(stack_a, stack_b))
 		return (1);
-	else if (be_last_comb(stack_a, stack_b, length))
-		return (2);
+	// else if (be_last_comb(stack_a, stack_b, length))
+	// 	return (2);
 	else if (be_last_comb(stack_a, stack_b, length))
 		return (2);
 	else if (be_secondlast_comb(stack_a, stack_b))

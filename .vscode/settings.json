@@ -9,7 +9,8 @@
 		"unistd.h": "c",
 		"stdlib.h": "c",
 		"stdio.h": "c",
-		"limits.h": "c"
+		"limits.h": "c",
+		"ostream": "cpp"
 	},
 	"C_Cpp.errorSquiggles": "Disabled"
 }
