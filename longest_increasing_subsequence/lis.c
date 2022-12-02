@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 11:56:52 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/02 17:17:07 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/02 19:37:26 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ t_len	ft_lis_controll(t_lst **stack_a, t_lst **stack_b, int ac)
 	lenght.stack_a = define_sequence(*stack_a, ac, lenght.max);
 	lenght.stack_b = ac - lenght.stack_a;
 	lis_divide(stack_a, stack_b, ac);
-	if ((*stack_a)->content > (*stack_a)->prev->content)
-	{
-		rotate(stack_a);
-		write(1, "ra\n", 3);
-	}
+	// if ((*stack_a)->content > (*stack_a)->prev->content) // well see
+	// {
+	// 	rotate(stack_a);
+	// 	write(1, "ra\n", 3);
+	// }
 	return (lenght);
 }
 

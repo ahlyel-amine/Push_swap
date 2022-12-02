@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 18:48:14 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/02 17:42:19 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/02 19:30:14 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	ft_calcul_comb(t_lst **stack_a, t_lst **stack_b, t_len length) //in work
 	ft_lstdup(&dup_a, *stack_a, length.stack_a);
 	ft_lstdup(&dup_b, *stack_b, length.stack_b);
 	ft_calcul(dup_a, dup_b, length);
+	print_stack(dup_a ,dup_b, length);
+
 }
 
 void	ft_calcul(t_lst *stack_a, t_lst *stack_b, t_len length)
@@ -38,7 +40,7 @@ void	ft_calcul(t_lst *stack_a, t_lst *stack_b, t_len length)
 	// while (i++ < length.stack_b)
 	// {
 		ft_comb_front(&stack_a, &stack_b, length);
-		
+
 		length.min = get_min_comb(stack_b, length.stack_b);
 		// get_sorted(&stack_a, &stack_b, length);
 	// }

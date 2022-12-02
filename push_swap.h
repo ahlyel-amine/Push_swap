@@ -66,10 +66,14 @@ char		**ft_split_count(char const *s, char c, int *count);
 
 /*<<<<<<<<<<<<<<<<<< FILE : comb_controller.c >>>>>>>>>>>>>>>>>>*/
 void		ft_comb_controll(t_lst **stack_a, t_lst **stack_b, t_len lenght);
-void	get_combs_front(t_lst **dup_a, t_lst **dup_b, t_len length);
-int			combs_conditions(t_lst *dup_a, t_lst *dup_b);
-int			be_second_last_comb(t_lst *dup_a, t_lst *dup_b);
-int			be_first_comb(t_lst *dup_a, t_lst *dup_b);
+void		get_combs_back(t_lst **stack_a, t_lst **stack_b, t_len length);
+void		get_combs_front(t_lst **stack_a, t_lst **stack_b, t_len length);
+int			combs_conditions(t_lst *stack_a, t_lst *stack_b, t_len length);
+int			be_first_comb(t_lst *stack_a, t_lst *stack_b);
+int			be_second_comb(t_lst *stack_a, t_lst *stack_b);
+int			be_last_comb(t_lst *stack_a, t_lst *stack_b, t_len length);
+int			be_secondlast_comb(t_lst *stack_a, t_lst *stack_b);
+
 /*<<<<<<<<<<<<<<<<<< FILE : sort_controller.c >>>>>>>>>>>>>>>>>>*/
 void		ft_sort_controller(t_lst *stack_a, int ac);
 
