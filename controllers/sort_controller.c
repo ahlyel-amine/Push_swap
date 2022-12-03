@@ -6,19 +6,28 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 12:06:24 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/03 17:16:58 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/03 19:31:46 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
 void	ft_sort_rev(t_lst *stack_a, int ac);
+void	sort_element(t_lst **stack_a, t_lst **stack_b, t_len lenght);
+int	sort_conditions(t_lst *stack_a, t_lst *stack_b, t_len length);
+
+int	be_secondlast(t_lst *stack_a, t_lst *stack_b);
+int	be_last(t_lst *stack_a, t_lst *stack_b, t_len length);
+int	be_first(t_lst *stack_a, t_lst *stack_b);
+void	ft_sort_rev(t_lst *stack_a, int ac);
 
 void	ft_sort_controller(t_lst *stack_a, int ac)
 {
 	t_lst	*stack_b;
+	t_lst	*tmp;
 	t_len	lenght;
 	int		min;
+	int		i = 0;
 
 	stack_b = NULL;
 	get_lis(stack_a, ac);
@@ -29,9 +38,12 @@ void	ft_sort_controller(t_lst *stack_a, int ac)
 	lenght = ft_lis_controll(&stack_a, &stack_b, ac);
 	while (stack_b)
 	{
+		while (i++ < lenght.stack_b)
+			stack_b->parse_it = 0;
+		stack_b = tmp;
 		lenght.min = ft_comb_controll(&stack_a, &stack_b, lenght);
 		sort_element(&stack_a, &stack_b, lenght);
-
+		tmp = stack_b;
 	}
 
 	print_stack(stack_a , stack_b, lenght);
@@ -41,6 +53,8 @@ void	sort_element(t_lst **stack_a, t_lst **stack_b, t_len lenght)
 {
 	int	i;
 	int	j;
+	int	zero;
+	int	tmp;
 
 	i = 0;
 	while (i++ < lenght.min)
@@ -49,13 +63,22 @@ void	sort_element(t_lst **stack_a, t_lst **stack_b, t_len lenght)
 		write (1, "rb\n", 3);
 	}
 	i = 0;
+	zero = 0;
 	while (i++ < lenght.stack_a)
 	{
-		tmp = sort_conditions(*stack_a, *stack_b, length);
-		if (tmp)
-			break ;
-		rotate(stack_a);
-		write (1, "ra\n", 3);
+		while (zero++ < i)
+		{
+			reverse(stack_a);
+			write (1, "rra\n", 4);
+		}
+		while (i < lenght.stack_a)
+		{
+			tmp = sort_conditions(*stack_a, *stack_b, lenght);
+			if (tmp)
+				break ;
+			rotate(stack_a);
+			write (1, "ra\n", 3);
+		}
 	}
 }
 
@@ -91,7 +114,17 @@ int	be_secondlast(t_lst *stack_a, t_lst *stack_b)
 {
 	if (stack_b->content > stack_a->prev->prev->content
 	&& stack_b->content < stack_a->prev->content)
+	{
+		reverse(&stack_a);
+		write (1, "rra\n", 3);
+		push_a(&stack_a, &stack_b);
+		write (1, "pa\n", 3);
+		rotate(&stack_a);
+		write (1, "ra\n", 3);
+		rotate(&stack_a);
+		write (1, "ra\n", 3);
 		return (2);
+	}
 	return (0);
 }
 
