@@ -6,13 +6,13 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 23:41:55 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/02 23:09:21 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/03 16:03:15 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(int ac, char *av[])
+int main(int ac, char **av)
 {
 	t_lst		*head;
 	char		**tmp;

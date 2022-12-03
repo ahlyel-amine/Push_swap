@@ -56,8 +56,11 @@ void		ss(t_lst **head_a, t_lst **head_b);
 
 /*<<<<<<<<<<<<<<<<<< FILE : utils.c >>>>>>>>>>>>>>>>>>*/
 int			still_digits(char *str);
+/*<<<<<<<<<<<<<<<<<< FILE : utils.c >>>>>>>>>>>>>>>>>>*/
 int			min(int nbr1, int nbr2);
+/*<<<<<<<<<<<<<<<<<< FILE : utils.c >>>>>>>>>>>>>>>>>>*/
 int			max(int nbr1, int nbr2);
+/*<<<<<<<<<<<<<<<<<< FILE : utils.c >>>>>>>>>>>>>>>>>>*/
 long long	ft_atolld(char **str);
 
 /*<<<<<<<<<<<<<<<<<< FILE : ft_split_count.c >>>>>>>>>>>>>>>>>>*/
@@ -65,15 +68,23 @@ char		**ft_split_count(char const *s, char c, int *count);
 
 /*^^^^^^^^^^^^^^^^^^ DIR : controllers ^^^^^^^^^^^^^^^^^^*/
 
-/*<<<<<<<<<<<<<<<<<< FILE : comb_controller.c >>>>>>>>>>>>>>>>>>*/
+/*<<<<<<<<<<<<<<<<<< FILE : input_controller.c >>>>>>>>>>>>>>>>>>*/
 int			ft_comb_controll(t_lst **stack_a, t_lst **stack_b, t_len lenght);
+/*<<<<<<<<<<<<<<<<<< FILE : input_controller.c >>>>>>>>>>>>>>>>>>*/
 void		get_combs_back(t_lst **stack_a, t_lst **stack_b, t_len length);
+/*<<<<<<<<<<<<<<<<<< FILE : input_controller.c >>>>>>>>>>>>>>>>>>*/
 void		get_combs_front(t_lst **stack_a, t_lst **stack_b, t_len length);
+/*<<<<<<<<<<<<<<<<<< FILE : input_controller.c >>>>>>>>>>>>>>>>>>*/
 int			combs_conditions(t_lst *stack_a, t_lst *stack_b, t_len length);
+/*<<<<<<<<<<<<<<<<<< FILE : input_controller.c >>>>>>>>>>>>>>>>>>*/
 int			be_first_comb(t_lst *stack_a, t_lst *stack_b);
+/*<<<<<<<<<<<<<<<<<< FILE : input_controller.c >>>>>>>>>>>>>>>>>>*/
 int			be_second_comb(t_lst *stack_a, t_lst *stack_b);
+/*<<<<<<<<<<<<<<<<<< FILE : input_controller.c >>>>>>>>>>>>>>>>>>*/
 int			be_last_comb(t_lst *stack_a, t_lst *stack_b, t_len length);
+/*<<<<<<<<<<<<<<<<<< FILE : input_controller.c >>>>>>>>>>>>>>>>>>*/
 int			be_secondlast_comb(t_lst *stack_a, t_lst *stack_b);
+/*<<<<<<<<<<<<<<<<<< FILE : input_controller.c >>>>>>>>>>>>>>>>>>*/
 int			select_small_comb(t_lst *stack, int len);
 
 /*<<<<<<<<<<<<<<<<<< FILE : sort_controller.c >>>>>>>>>>>>>>>>>>*/
@@ -84,13 +95,18 @@ void		print_stack(t_lst *sa, t_lst *sb, t_len lenght);
 
 /*<<<<<<<<<<<<<<<<<< FILE : input_controller.c >>>>>>>>>>>>>>>>>>*/
 int			ft_table(t_lst **stack, char **av, int ac);
+/*<<<<<<<<<<<<<<<<<< FILE : input_controller.c >>>>>>>>>>>>>>>>>>*/
 int			ft_check_input_dup(t_lst *stack, int ac);
+/*<<<<<<<<<<<<<<<<<< FILE : input_controller.c >>>>>>>>>>>>>>>>>>*/
 int			ft_check_input_digits(char **av, int ac);
 
 /*<<<<<<<<<<<<<<<<<< FILE : lists_controllers_functions.c >>>>>>>>>>>>>>>>>>*/
 void		new_node(t_lst **head, long long nbr);
+/*<<<<<<<<<<<<<<<<<< FILE : lists_controllers_functions.c >>>>>>>>>>>>>>>>>>*/
 void		add_node(t_lst **head, long long nbr);
+/*<<<<<<<<<<<<<<<<<< FILE : lists_controllers_functions.c >>>>>>>>>>>>>>>>>>*/
 void		del_node(t_lst **head);
+/*<<<<<<<<<<<<<<<<<< FILE : lists_controllers_functions.c >>>>>>>>>>>>>>>>>>*/
 void		ft_lstdup(t_lst **new_stack, t_lst *stack, int ac);
 
 /*<<<<<<<<<<<<<<<<<< FILE : lists_controllers_functions.c >>>>>>>>>>>>>>>>>>*/

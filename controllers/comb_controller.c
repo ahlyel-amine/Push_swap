@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 17:44:21 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/02 23:09:04 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/03 16:19:14 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_comb_controll(t_lst **stack_a, t_lst **stack_b, t_len lenght)
 	min = 0;
 	head_b = *stack_b;
 	head_a = *stack_a;
-	get_combs_front(stack_a, stack_b, lenght); // need 1 front
+	get_combs_back(stack_a, stack_b, lenght); // need 1 front
 	lenght.min = select_small_comb(*stack_b, lenght.stack_b);
 	*stack_b = head_b;
 	*stack_a = head_a;
