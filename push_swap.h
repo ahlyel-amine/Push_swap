@@ -90,6 +90,9 @@ int			select_small_comb(t_lst *stack, int len);
 /*<<<<<<<<<<<<<<<<<< FILE : sort_controller.c >>>>>>>>>>>>>>>>>>*/
 void		ft_sort_controller(t_lst *stack_a, int ac);
 
+/*<<<<<<<<<<<<<<<<<< FILE : sort_controller.c >>>>>>>>>>>>>>>>>>*/
+void	sort(t_lst **head_b, t_lst **head_a, t_len lenght);
+
 /*<<<<<<<<<<<<<<<<<< FILE : stack_controller.c >>>>>>>>>>>>>>>>>>*/
 void		print_stack(t_lst *sa, t_lst *sb, t_len lenght);
 
