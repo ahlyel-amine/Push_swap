@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 12:06:24 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/05 16:52:24 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/06 20:43:04 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,16 @@ void	ft_sort_controller(t_lst *stack_a, int ac)
 	if(check_lis(stack_a, ac) == -1)
 		return (ft_sort_rev(stack_a, ac));
 	lenght = ft_lis_controll(&stack_a, &stack_b, ac);
-
-	printf("<----->\n");
-	while (i++ < lenght.stack_b)
+	// printf("<----->\n");
+	min = lenght.stack_b;
+	while (i++ < min)
 	{
 		ft_comb_controll(&stack_a, &stack_b, lenght);
+		// printf("/%d/%d/\n", lenght.stack_a, lenght.stack_b);
+		(lenght.stack_a)++;
+		(lenght.stack_b)--;
 	}
-
+	lenght.stack_b = 5;
 
 	// while (stack_b)
 	// {
@@ -54,7 +57,6 @@ void	ft_sort_controller(t_lst *stack_a, int ac)
 	// 	// tmp = stack_b;
 	// }
 
-
 	// i = 0;
 	// while (i++ < ac)
 	// {
@@ -64,8 +66,7 @@ void	ft_sort_controller(t_lst *stack_a, int ac)
 	// 		write(1, "rra\n", 4);
 	// 	}
 	// }
-	lenght.stack_a = ac;
-	print_stack(stack_a , stack_b, lenght);
+	print_stack(stack_a, stack_b, lenght);
 }
 
 void	sort(t_lst **head_b, t_lst **head_a, t_len lenght)
@@ -75,24 +76,40 @@ void	sort(t_lst **head_b, t_lst **head_a, t_len lenght)
 
 	i = 0;
 	tmp = min(lenght.min, lenght.max);
-	while (i++ < tmp)
+	while (tmp && i++ < tmp)
 	{
 		rr(head_a, head_b);
 		write(1, "rr\n", 3);
 	}
 	tmp = max(lenght.min, lenght.max);
-	if (tmp == lenght.min)
+	lenght.min = min(lenght.min, lenght.max);
+	if (lenght.min < tmp)
 	{
-		rotate(head_a);
-		write(1, "ra\n", 3);
+		while (i++ < tmp)
+		{
+			rotate(head_a);
+			write(1, "ra\n", 3);
+		}
 	}
 	else
 	{
-		rotate(head_b);
-		write(1, "rb\n", 3);
+		while (i++ < lenght.min)
+		{
+			rotate(head_b);
+			write(1, "rb\n", 3);
+		}
 	}
 	push_a(head_a, head_b);
 	write(1, "pa\n", 3);
+	i = 0;
+	while (i++ < lenght.stack_a)
+	{
+		if ((*head_a)->content > (*head_a)->prev->content)
+		{
+			reverse(head_a);
+			write(1, "rra\n", 4);
+		}
+	}
 }
 
 void	sort_element(t_lst **stack_a, t_lst **stack_b, t_len lenght)

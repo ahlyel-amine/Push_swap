@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 11:56:52 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/02 19:37:26 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/05 21:59:25 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	define_sequence(t_lst *list, int ac, int max_lis)
 	count = 0;
 	j = max_lis;
 	head = list;
-	printf("%d\n",j);
+	// printf("%d\n",j);
 	while (i < max_lis)
 	{
 		while (j > 0)

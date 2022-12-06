@@ -30,15 +30,12 @@ void	del_node(t_lst **head)
 	t_lst	*tmp;
 
 	if ((*head)->next == *head)
-	{
-		//free (*head);
-		return ;
-	}
+		return (free (*head));
 	tmp = *head;
 	((*head)->next)->prev = (*head)->prev;
 	((*head)->prev)->next = (*head)->next;
 	(*head) = (*head)->next;
-	//free(tmp);
+	free(tmp);
 }
 
 void	ft_lstdup(t_lst **new_stack, t_lst *stack, int ac)
