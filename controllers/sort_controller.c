@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 12:06:24 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/08 21:38:17 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/09 18:09:47 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	ft_sort_controller(t_lst *stack_a, int ac)
 	t_len	lenght;
 	int		min;
 	int		i = 0;
+	int		j = 0;
 
 	stack_b = NULL;
 	get_lis(stack_a, ac);
@@ -37,24 +38,22 @@ void	ft_sort_controller(t_lst *stack_a, int ac)
 		return (ft_sort_rev(stack_a, ac));
 	lenght = ft_lis_controll(&stack_a, &stack_b, ac);
 	min = lenght.stack_b;
-	while (i++ < min)
+	while (++i < min)
 	{
+		j = 0;
 		lenght = ft_comb_controll(&stack_a, &stack_b, lenght);
 		sort(&stack_b, &stack_a, lenght);
 		(lenght.stack_a)++;
 		(lenght.stack_b)--;
+		while (j++ < lenght.stack_a)
+		{
+			if (stack_a->content > stack_a->prev->content)
+			{
+				reverse(&stack_a);
+				write(1, "rra\n", 4);
+			}
+		}
 	}
-
-	// while (stack_b)
-	// {
-	// 	// while (i++ < lenght.stack_b)
-	// 	// 	stack_b->parse_it = 0;
-	// 	// stack_b = tmp;
-		// lenght.min = ft_comb_controll(&stack_a, &stack_b, lenght);
-	// 	sort_element(&stack_a, &stack_b, lenght);
-	// 	// tmp = stack_b;
-	// }
-
 	// i = 0;
 	// while (i++ < ac)
 	// {
@@ -64,7 +63,7 @@ void	ft_sort_controller(t_lst *stack_a, int ac)
 	// 		write(1, "rra\n", 4);
 	// 	}
 	// }
-	print_stack(stack_a, stack_b, lenght);
+	// print_stack(stack_a, stack_b, lenght);
 }
 
 void	sort(t_lst **head_b, t_lst **head_a, t_len lenght)
@@ -99,15 +98,6 @@ void	sort(t_lst **head_b, t_lst **head_a, t_len lenght)
 	}
 	push_a(head_a, head_b);
 	write(1, "pa\n", 3);
-	// i = 0;
-	// while (i++ < lenght.stack_a)
-	// {
-	// 	if ((*head_a)->content > (*head_a)->prev->content)
-	// 	{
-	// 		reverse(head_a);
-	// 		write(1, "rra\n", 4);
-	// 	}
-	// }
 }
 
 void	sort_element(t_lst **stack_a, t_lst **stack_b, t_len lenght)
