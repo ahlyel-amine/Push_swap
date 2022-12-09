@@ -69,7 +69,7 @@ char		**ft_split_count(char const *s, char c, int *count);
 /*^^^^^^^^^^^^^^^^^^ DIR : controllers ^^^^^^^^^^^^^^^^^^*/
 
 /*<<<<<<<<<<<<<<<<<< FILE : input_controller.c >>>>>>>>>>>>>>>>>>*/
-int			ft_comb_controll(t_lst **stack_a, t_lst **stack_b, t_len lenght);
+t_len		ft_comb_controll(t_lst **stack_a, t_lst **stack_b, t_len lenght);
 /*<<<<<<<<<<<<<<<<<< FILE : input_controller.c >>>>>>>>>>>>>>>>>>*/
 void		get_combs_back(t_lst **stack_a, t_lst **stack_b, t_len length);
 /*<<<<<<<<<<<<<<<<<< FILE : input_controller.c >>>>>>>>>>>>>>>>>>*/

@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 12:06:24 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/06 20:43:04 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/08 21:38:17 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	ft_sort_rev(t_lst *stack_a, int ac);
 void	sort_element(t_lst **stack_a, t_lst **stack_b, t_len lenght);
-int	sort_conditions(t_lst *stack_a, t_lst *stack_b, t_len length);
+int		sort_conditions(t_lst *stack_a, t_lst *stack_b, t_len length);
 
-int	be_secondlast(t_lst *stack_a, t_lst *stack_b);
-int	be_last(t_lst *stack_a, t_lst *stack_b, t_len length);
-int	be_first(t_lst *stack_a, t_lst *stack_b);
+int		be_secondlast(t_lst *stack_a, t_lst *stack_b);
+int		be_last(t_lst *stack_a, t_lst *stack_b, t_len length);
+int		be_first(t_lst *stack_a, t_lst *stack_b);
 void	ft_sort_rev(t_lst *stack_a, int ac);
 
 void	ft_sort_controller(t_lst *stack_a, int ac)
@@ -36,16 +36,14 @@ void	ft_sort_controller(t_lst *stack_a, int ac)
 	if(check_lis(stack_a, ac) == -1)
 		return (ft_sort_rev(stack_a, ac));
 	lenght = ft_lis_controll(&stack_a, &stack_b, ac);
-	// printf("<----->\n");
 	min = lenght.stack_b;
 	while (i++ < min)
 	{
-		ft_comb_controll(&stack_a, &stack_b, lenght);
-		// printf("/%d/%d/\n", lenght.stack_a, lenght.stack_b);
+		lenght = ft_comb_controll(&stack_a, &stack_b, lenght);
+		sort(&stack_b, &stack_a, lenght);
 		(lenght.stack_a)++;
 		(lenght.stack_b)--;
 	}
-	lenght.stack_b = 5;
 
 	// while (stack_b)
 	// {
@@ -101,15 +99,15 @@ void	sort(t_lst **head_b, t_lst **head_a, t_len lenght)
 	}
 	push_a(head_a, head_b);
 	write(1, "pa\n", 3);
-	i = 0;
-	while (i++ < lenght.stack_a)
-	{
-		if ((*head_a)->content > (*head_a)->prev->content)
-		{
-			reverse(head_a);
-			write(1, "rra\n", 4);
-		}
-	}
+	// i = 0;
+	// while (i++ < lenght.stack_a)
+	// {
+	// 	if ((*head_a)->content > (*head_a)->prev->content)
+	// 	{
+	// 		reverse(head_a);
+	// 		write(1, "rra\n", 4);
+	// 	}
+	// }
 }
 
 void	sort_element(t_lst **stack_a, t_lst **stack_b, t_len lenght)

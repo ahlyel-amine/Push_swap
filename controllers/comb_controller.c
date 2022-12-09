@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 17:44:21 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/06 20:38:43 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/09 17:15:28 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 void	get_combs(t_lst **stack_a, t_lst **stack_b, t_len lenght);
 
-
-int	ft_comb_controll(t_lst **stack_a, t_lst **stack_b, t_len lenght)
+t_len	ft_comb_controll(t_lst **stack_a, t_lst **stack_b, t_len lenght)
 {
 	t_lst	*head_a;
 	t_lst	*head_b;
@@ -41,8 +40,7 @@ int	ft_comb_controll(t_lst **stack_a, t_lst **stack_b, t_len lenght)
 		(*stack_b) = (*stack_b)->next;
 		(lenght.max)++;
 	}
-	sort(stack_b, stack_a, lenght);
-	return (lenght.min);
+	return (lenght);
 }
 
 void	get_combs(t_lst **stack_a, t_lst **stack_b, t_len lenght)
@@ -58,19 +56,22 @@ void	get_combs(t_lst **stack_a, t_lst **stack_b, t_len lenght)
 	{
 		j = 0;
 		(*stack_a) = head_a;
-		// if ((*stack_b)->content < (*stack_a)->content
-		// && (*stack_b)->content < (*stack_a)->prev->content)
-		// {
-		// 	(*stack_b)->LIS = 0;
-		// 	(*stack_b) = (*stack_b)->next;
-		// 	i++;
-		// }
+		if ((*stack_b)->content < (*stack_a)->content
+		&& (*stack_b)->content < (*stack_a)->prev->content)
+		{
+			(*stack_b)->LIS = 0;
+			j = lenght.stack_a;
+		}
+		if ((*stack_b)->content > (*stack_a)->prev->content)
+		{
+			(*stack_b)->LIS = lenght.stack_a;
+			j = lenght.stack_a;
+		}
 		while (j++ < lenght.stack_a)
 		{
 			if ((*stack_b)->content > (*stack_a)->content
 			&& (*stack_b)->content < (*stack_a)->next->content)
 			{
-				printf("/--{%lld} > {%lld} > {%lld}--/\n",  (*stack_a)->next->content, (*stack_b)->content ,(*stack_a)->content);
 				(*stack_b)->LIS = j;
 				break ;
 			}
