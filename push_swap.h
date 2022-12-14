@@ -3,14 +3,6 @@
 
 # include "libft.h"
 
-typedef struct s_lst
-{
-	long long		content;
-	long long		LIS;
-	long long		parse_it;
-	struct s_lst	*next;
-	struct s_lst	*prev;
-}	t_lst;
 
 typedef	struct s_len
 {
@@ -19,6 +11,16 @@ typedef	struct s_len
 	int	min;
 	int	max;
 }	t_len;
+
+typedef struct s_lst
+{
+	long long		content;
+	long long		LIS;
+	long long		parse_it;
+	t_len			lenght;
+	struct s_lst	*next;
+	struct s_lst	*prev;
+}	t_lst;
 
 void	ft_calcul(t_lst *stack_a, t_lst *stack_b, t_len length);
 
