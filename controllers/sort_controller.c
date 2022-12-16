@@ -6,20 +6,148 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 12:06:24 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/09 18:09:47 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/16 21:51:54 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_sort_rev(t_lst *stack_a, int ac);
+
 void	sort_element(t_lst **stack_a, t_lst **stack_b, t_len lenght);
 int		sort_conditions(t_lst *stack_a, t_lst *stack_b, t_len length);
 
 int		be_secondlast(t_lst *stack_a, t_lst *stack_b);
 int		be_last(t_lst *stack_a, t_lst *stack_b, t_len length);
 int		be_first(t_lst *stack_a, t_lst *stack_b);
-void	ft_sort_rev(t_lst *stack_a, int ac);
+void	ft_sort_rev(t_lst *stack_a);
+
+int		small_element(t_lst *stack)
+{
+	int		sml;
+	int		i;
+
+	sml = INT_MAX;
+	i = 0;
+	while (i++ < stack->lenght.stack_len)
+	{
+		sml = min(sml, stack->content);
+		stack = stack->next;
+	}
+	return (sml);
+}
+
+int		define_small(t_lst **stack, int min)
+{
+	t_lst	*tmp;
+	int		i;
+
+	i = 0;
+	tmp = *stack;
+	while (i < (*stack)->lenght.stack_len)
+	{
+		if (tmp->content == min)
+		{
+			tmp->parse_it = 1;
+			break ;
+		}
+		tmp = tmp->next;
+		i++;
+	}
+	if (((*stack)->lenght.stack_len / 2) >= i + 1)
+		return (1); // front front
+	else
+		return (0); // from back
+}
+
+int	check_place_in_a(t_lst *stack, int min)
+{
+	int	i;
+	int	small;
+
+	i = 0;
+	small = small_element(stack);
+	if (min < small)
+	{
+		while (i < stack->lenght.stack_len)
+		{
+			if (stack->content == small)
+				break ;
+			stack = stack->next;
+			i++;
+		}
+	}
+	else
+	{
+		while (i < stack->lenght.stack_len)
+		{
+			if (stack->content > min && min > stack->prev->content)
+				break ;
+			stack = stack->next;
+			i++;
+		}
+	}
+	return (i);
+}
+
+void	both_front(t_lst **stack_a, t_lst **stack_b, int a, int b)
+{
+	int	i;
+
+	i = 0;
+	while (i < a && i < b)
+	{
+		rr(stack_a, stack_b);
+		i++;
+	}
+	while (i++ < a)
+		rotate_a(stack_a);
+	while (i++ <= b)
+		rotate_a(stack_b);
+	push_a(stack_a, stack_b);
+}
+
+void	both_back(t_lst **stack_a, t_lst **stack_b, int a, int b)
+{
+	int	i;
+
+	i = 0;
+	while (i < a && i <= b)
+	{
+		rrr(stack_a, stack_b);
+		i++;
+	}
+	while (i++ < a)
+		reverse_a(stack_a);
+	while (i++ < b)
+		reverse_b(stack_b);
+	push_a(stack_a, stack_b);
+}
+
+void	b_front_a_back(t_lst **stack_a, t_lst **stack_b, int a, int b)
+{
+	int	i;
+
+	i = 0;
+	while (i++ < b)
+		rotate_b(stack_b);
+	i = 0;
+	while (i++ < a)
+		reverse_a(stack_a);
+	push_a(stack_a, stack_b);
+}
+
+void	a_front_b_back(t_lst **stack_a, t_lst **stack_b, int a, int b)
+{
+	int	i;
+
+	i = 0;
+	while (i++ < a)
+		rotate_a(stack_a);
+	i = 0;
+	while (i++ <= b)
+		reverse_b(stack_b);
+	push_a(stack_a, stack_b);
+}
 
 void	ft_sort_controller(t_lst *stack_a, int ac)
 {
@@ -31,29 +159,50 @@ void	ft_sort_controller(t_lst *stack_a, int ac)
 	int		j = 0;
 
 	stack_b = NULL;
-	get_lis(stack_a, ac);
-	if(!check_lis(stack_a, ac))
+	get_lis(stack_a);
+	j = check_lis(stack_a);
+	if(!j)
 		return ;
-	if(check_lis(stack_a, ac) == -1)
-		return (ft_sort_rev(stack_a, ac));
+	else if(j == -1)
+		return (ft_sort_rev(stack_a));
 	lenght = ft_lis_controll(&stack_a, &stack_b, ac);
-	min = lenght.stack_b;
-	while (++i < min)
+	while (stack_b)
 	{
-		j = 0;
-		lenght = ft_comb_controll(&stack_a, &stack_b, lenght);
-		sort(&stack_b, &stack_a, lenght);
-		(lenght.stack_a)++;
-		(lenght.stack_b)--;
-		while (j++ < lenght.stack_a)
-		{
-			if (stack_a->content > stack_a->prev->content)
-			{
-				reverse(&stack_a);
-				write(1, "rra\n", 4);
-			}
-		}
+
+		min = small_element(stack_b);
+		printf("min%d\n",min);
+		j = define_small(&stack_b, min); // return value 1 if is close to front and 0 if is close to back.
+		i = check_place_in_a(stack_a, min);
+		if (j && stack_a->lenght.stack_len / 2 >= i)
+			both_front(&stack_a, &stack_b, i, min);
+		else if (!j &&  stack_a->lenght.stack_len / 2 < i)
+			both_back(&stack_a, &stack_b, i, min);
+		else if (j && stack_a->lenght.stack_len / 2 < i)
+			b_front_a_back(&stack_a, &stack_b, i, min);
+		else if (!j && stack_a->lenght.stack_len / 2 >= i)
+			a_front_b_back(&stack_a, &stack_b, i, min);
+		print_stack(stack_a, stack_b);
 	}
+	// print_stack(stack_a, stack_b);
+	// printf("[%d]\n", i);
+	// min = stack_b->lenght.stack_len;
+	// while (++i < min)
+	// {
+	// 	j = 0;
+	// 	lenght = ft_comb_controll(&stack_a, &stack_b, lenght);
+	// 	sort(&stack_b, &stack_a, lenght);
+	// 	(lenght.stack_a)++;
+	// 	(lenght.stack_b)--;
+	// 	while (j++ < lenght.stack_a)
+	// 	{
+	// 		if (stack_a->content > stack_a->prev->content)
+	// 		{
+	// 			reverse(&stack_a);
+	// 			write(1, "rra\n", 4);
+	// 		}
+	// 	}
+	// }
+
 	// i = 0;
 	// while (i++ < ac)
 	// {
@@ -81,23 +230,12 @@ void	sort(t_lst **head_b, t_lst **head_a, t_len lenght)
 	tmp = max(lenght.min, lenght.max);
 	lenght.min = min(lenght.min, lenght.max);
 	if (lenght.min < tmp)
-	{
 		while (i++ < tmp)
-		{
-			rotate(head_a);
-			write(1, "ra\n", 3);
-		}
-	}
+			rotate_a(head_a);
 	else
-	{
 		while (i++ < lenght.min)
-		{
-			rotate(head_b);
-			write(1, "rb\n", 3);
-		}
-	}
+			rotate_b(head_b);
 	push_a(head_a, head_b);
-	write(1, "pa\n", 3);
 }
 
 void	sort_element(t_lst **stack_a, t_lst **stack_b, t_len lenght)
@@ -109,26 +247,19 @@ void	sort_element(t_lst **stack_a, t_lst **stack_b, t_len lenght)
 
 	i = 0;
 	while (i++ < lenght.min)
-	{
-		rotate(stack_b);
-		write (1, "rb\n", 3);
-	}
+		rotate_a(stack_b);
 	i = 0;
 	zero = 0;
 	while (i++ < lenght.stack_a)
 	{
 		while (zero++ < i)
-		{
-			reverse(stack_a);
-			write (1, "rra\n", 4);
-		}
+			reverse_a(stack_a);
 		while (i < lenght.stack_a)
 		{
 			tmp = sort_conditions(*stack_a, *stack_b, lenght);
 			if (tmp)
 				break ;
-			rotate(stack_a);
-			write (1, "ra\n", 3);
+			rotate_a(stack_a);
 		}
 	}
 }
@@ -153,7 +284,6 @@ int	be_second(t_lst *stack_a, t_lst *stack_b)
 	&& stack_b->content < (stack_a->next)->content)
 	{
 		push_a(&stack_a, &stack_b);
-		write (1, "pa\n", 3);
 		swap(&stack_a);
 		write (1, "sa\n", 3);
 		return (2);
@@ -166,14 +296,10 @@ int	be_secondlast(t_lst *stack_a, t_lst *stack_b)
 	if (stack_b->content > stack_a->prev->prev->content
 	&& stack_b->content < stack_a->prev->content)
 	{
-		reverse(&stack_a);
-		write (1, "rra\n", 3);
+		reverse_a(&stack_a);
 		push_a(&stack_a, &stack_b);
-		write (1, "pa\n", 3);
-		rotate(&stack_a);
-		write (1, "ra\n", 3);
-		rotate(&stack_a);
-		write (1, "ra\n", 3);
+		rotate_a(&stack_a);
+		rotate_a(&stack_a);
 		return (2);
 	}
 	return (0);
@@ -193,9 +319,7 @@ int	be_last(t_lst *stack_a, t_lst *stack_b, t_len length)
 		i++;
 	}
 	push_a(&stack_a, &stack_b);
-	write (1, "pa\n", 3);
-	rotate(&stack_a);
-	write (1, "ra\n", 3);
+	rotate_a(&stack_a);
 	return (2);
 }
 
@@ -204,32 +328,29 @@ int	be_first(t_lst *stack_a, t_lst *stack_b)
 	if (stack_b->content < stack_a->content)
 	{
 		push_a(&stack_a, &stack_b);
-		write (1, "pa\n", 3);
 		return (1);
 	}
 	return (0);
 }
 
 
-void	ft_sort_rev(t_lst *stack_a, int ac)
+void	ft_sort_rev(t_lst *stack_a)
 {
 	t_lst	*stack_b;
 	int		i;
-	t_len lenght;
+	int	 lenght;
 
 	i = 0;
 	stack_b = NULL;
-	while (i++ < ac)
+	lenght = stack_a->lenght.stack_len;
+	while (i++ < lenght)
 	{
 		push_b(&stack_b, &stack_a);
-		write(1, "pb\n", 3);
 	}
 	i = 0;
-	while (i++ < ac)
+	while (i++ < lenght)
 	{
-		reverse(&stack_b);
-		write(1, "rrb\n", 4);
-		push_b(&stack_a, &stack_b);
-		write(1, "pa\n", 3);
+		reverse_b(&stack_b);
+		push_a(&stack_a, &stack_b);
 	}
 }

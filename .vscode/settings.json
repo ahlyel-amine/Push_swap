@@ -10,7 +10,8 @@
 		"stdlib.h": "c",
 		"stdio.h": "c",
 		"limits.h": "c",
-		"ostream": "cpp"
+		"ostream": "cpp",
+		"__functional_base": "c"
 	},
 	"C_Cpp.errorSquiggles": "Disabled"
 }

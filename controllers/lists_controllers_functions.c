@@ -1,6 +1,6 @@
 #include "../push_swap.h"
 
-void	set_lenght(t_lst **stack_a, t_lst **stack_b, int ref);
+void	set_lenght(t_lst **stack, int ref);
 
 void	new_node(t_lst **head, long long nbr)
 {
@@ -15,60 +15,62 @@ void	new_node(t_lst **head, long long nbr)
 	if (!(*head))
 	{
 		*head = new;
-		new->lenght.stack_a = 1;
 		new->next = new;
 		new->prev = new;
+		new->lenght.stack_len = 1;
 	}
 	else
 	{
 		new->next = *head;
-		set_lenght(head, NULL, 1);
-		new->lenght.stack_a = (*head)->lenght.stack_a;
+		new->lenght.stack_len = (*head)->lenght.stack_len;
 		new->prev = (*head)->prev;
 		((*head)->prev)->next = new;
 		(*head)->prev = new;
+		set_lenght(head, 1);
 	}
 }
 
-void	set_lenght(t_lst **stack_a, t_lst **stack_b, int ref)
+void	set_lenght(t_lst **stack, int ref)
 {
-	int	tmp;
-	int	i;
+	int		tmp;
+	t_lst	*tmp_stack;
+	int		i;
 
-	if (*stack_a)
+	tmp_stack = *stack;
+	tmp = tmp_stack->lenght.stack_len;
+	i = 0;
+	while (i++ < tmp + ref)
 	{
-		tmp = (*stack_a)->lenght.stack_a + ref;
-		i = 0;
-		while (i++ < tmp - 1)
-		{
-			(*stack_a)->lenght.stack_a = tmp;
-			(*stack_a) = (*stack_a)->next;
-		}
+		(*stack)->lenght.stack_len = tmp + ref;
+		(*stack) = (*stack)->next;
 	}
-	else if (*stack_b)
-	{
-		tmp = (*stack_b)->lenght.stack_b + ref;
-		i = 0;
-		while (i++ < tmp - 1)
-		{
-			(*stack_b)->lenght.stack_b = tmp;
-			(*stack_b) = (*stack_b)->next;
-		}
-	}
+	*stack = tmp_stack;
 }
 
 void	del_node(t_lst **head)
 {
 	t_lst	*tmp;
-
+	int	i;
+	int	j;
+	i = 0;
+	j = (*head)->lenght.stack_len;
 	if ((*head)->next == *head)
 		return ((*head) = NULL,free (*head));
+
 	tmp = *head;
-	set_lenght(head, NULL, -1);
+	// while (i++ < j)
+	// {
+	// 	printf("{%d}\n",j);
+	// 	(*head)->lenght.stack_len--;
+	// 	printf("[%d]contetnt[%lld]\n", (*head)->lenght.stack_len, (*head)->content);
+	// 	(*head) = (*head)->next;
+	// }
+	// *head = tmp;
 	((*head)->next)->prev = (*head)->prev;
 	((*head)->prev)->next = (*head)->next;
 	(*head) = (*head)->next;
 	free(tmp);
+	set_lenght(head, -1);
 }
 
 void	ft_lstdup(t_lst **new_stack, t_lst *stack, int ac)
@@ -87,10 +89,12 @@ void	add_node(t_lst **head, long long nbr)
 
 	new = NULL;
 	new_node(&new, nbr);
+
 	new->next = (*head);
 	new->prev = (*head)->prev;
+	new->lenght.stack_len = (*head)->lenght.stack_len;
+	set_lenght(head, 1);
 	((*head)->prev)->next = new;
 	(*head)->prev = new;
 	(*head) = new;
 }
-

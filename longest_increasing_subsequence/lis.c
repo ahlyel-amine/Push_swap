@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 11:56:52 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/05 21:59:25 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/16 21:32:07 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ t_len	ft_lis_controll(t_lst **stack_a, t_lst **stack_b, int ac)
 {
 	t_len	lenght;
 
-	lenght.max = get_max_lis(*stack_a, ac);
-	lenght.stack_a = define_sequence(*stack_a, ac, lenght.max);
+	lenght.max = get_max_lis(*stack_a);
+	lenght.stack_a = define_sequence(*stack_a, lenght.max);
 	lenght.stack_b = ac - lenght.stack_a;
 	lis_divide(stack_a, stack_b, ac);
 	// if ((*stack_a)->content > (*stack_a)->prev->content) // well see
@@ -30,7 +30,7 @@ t_len	ft_lis_controll(t_lst **stack_a, t_lst **stack_b, int ac)
 	return (lenght);
 }
 
-int	define_sequence(t_lst *list, int ac, int max_lis)
+int	define_sequence(t_lst *list, int max_lis)
 {
 	t_lst *head;
 	int	i;
@@ -41,7 +41,6 @@ int	define_sequence(t_lst *list, int ac, int max_lis)
 	count = 0;
 	j = max_lis;
 	head = list;
-	// printf("%d\n",j);
 	while (i < max_lis)
 	{
 		while (j > 0)
@@ -92,19 +91,15 @@ void	lis_divide(t_lst **stack_a, t_lst **stack_b, int ac)
 		{
 			j++;
 			push_b(stack_b, stack_a);
-			write(1, "pb\n", 3);
 		}
 		else if (j == count)
 			break ;
 		else
-		{
-			rotate(stack_a);
-			write(1, "ra\n", 3);
-		}
+			rotate_a(stack_a);
 	}
 }
 
-void	get_lis(t_lst *list, int ac)
+void	get_lis(t_lst *list)
 {
 	t_lst *head;
 	t_lst *tmp;
@@ -114,7 +109,7 @@ void	get_lis(t_lst *list, int ac)
 
 	i = 1;
 	head = list;
-	while (i < ac)
+	while (i < list->lenght.stack_len)
 	{
 		zero = 0;
 		j = 0;
@@ -133,14 +128,14 @@ void	get_lis(t_lst *list, int ac)
 	}
 }
 
-int	get_max_lis(t_lst *list, int ac)
+int	get_max_lis(t_lst *list)
 {
 	int max_lis;
 	int	i;
 
 	max_lis = 1;
 	i = 0;
-	while (i++ < ac)
+	while (i++ < list->lenght.stack_len)
 	{
 		max_lis = max(max_lis, list->LIS);
 		list = list->next;
@@ -148,12 +143,12 @@ int	get_max_lis(t_lst *list, int ac)
 	return (max_lis);
 }
 
-int	check_lis_rev_sorted(t_lst *list, int ac)
+int	check_lis_rev_sorted(t_lst *list) //two
 {
 	int	i;
 
 	i = 0;
-	while (i++ < ac)
+	while (i++ < list->lenght.stack_len)
 	{
 		if (list->LIS != 1)
 			return (0);
@@ -162,12 +157,12 @@ int	check_lis_rev_sorted(t_lst *list, int ac)
 	return (1);
 }
 
-int	check_lis_sorted(t_lst *list, int ac)
+int	check_lis_sorted(t_lst *list) //one
 {
 	int	i;
 
 	i = 0;
-	while (i++ < ac)
+	while (i++ < list->lenght.stack_len)
 	{
 		if (list->LIS != i)
 		{
@@ -178,11 +173,11 @@ int	check_lis_sorted(t_lst *list, int ac)
 	return (1);
 }
 
-int	check_lis(t_lst *list, int ac)
+int	check_lis(t_lst *list) //three
 {
-	if (check_lis_sorted(list, ac))
+	if (check_lis_sorted(list))
 		return (0);
-	else if (check_lis_rev_sorted(list, ac))
+	else if (check_lis_rev_sorted(list))
 		return (-1);
 	return (1);
 }

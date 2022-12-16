@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 18:48:14 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/05 15:37:52 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/16 21:34:04 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	ft_comb_front(t_lst **stack_a, t_lst **stack_b, t_len length)
 				((*stack_b)->parse_it) += 2;
 				break ;
 			}
-			rotate(stack_a);
+			rotate_a(stack_a);
 		}
 		(*stack_b) = (*stack_b)->next;
 		i++;
@@ -141,7 +141,7 @@ void	ft_comb_back(t_lst **stack_a, t_lst **stack_b, t_len length)
 				((*stack_b)->parse_it) += 2;
 				break ;
 			}
-			rotate(stack_a);
+			rotate_a(stack_a);
 		}
 		(*stack_b) = (*stack_b)->next;
 		i++;

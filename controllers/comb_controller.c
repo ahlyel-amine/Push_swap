@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 17:44:21 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/09 17:15:28 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/16 21:34:33 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ void	get_combs_front(t_lst **stack_a, t_lst **stack_b, t_len length)
 				(*stack_b)->parse_it += tmp;
 				break ;
 			}
-			rotate(stack_a);
+			rotate_a(stack_a);
 			(*stack_b)->parse_it += 2;
 		}
 		*stack_b = (*stack_b)->next;
@@ -156,7 +156,7 @@ void	get_combs_back(t_lst **stack_a, t_lst **stack_b, t_len length)
 		(*stack_b) = head_b;
 		k = 0;
 		while (k++ < i + 1)
-			reverse(stack_b);
+			reverse_b(stack_b);
 		(*stack_b)->parse_it += i + 1;
 		j = 0;
 		(*stack_a) = head_a;
@@ -168,7 +168,7 @@ void	get_combs_back(t_lst **stack_a, t_lst **stack_b, t_len length)
 				(*stack_b)->parse_it += tmp;
 				break ;
 			}
-			rotate(stack_a);
+			rotate_a(stack_a);
 			(*stack_b)->parse_it += 2;
 		}
 		i++;

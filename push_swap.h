@@ -7,6 +7,7 @@
 typedef	struct s_len
 {
 	int	stack_a;
+	int	stack_len;
 	int	stack_b;
 	int	min;
 	int	max;
@@ -29,12 +30,12 @@ void		ft_calcul_comb(t_lst **stack_a, t_lst **stack_b, t_len length);
 
 /*<<<<<<<<<<<<<<<<<< FILE : lis.c >>>>>>>>>>>>>>>>>>*/
 t_len		ft_lis_controll(t_lst **stack_a, t_lst **stack_b, int ac);
-void		get_lis(t_lst *list, int ac);
-int			get_max_lis(t_lst *list, int ac);
-int			check_lis(t_lst *list, int ac);
+void		get_lis(t_lst *list);
+int			get_max_lis(t_lst *list);
+int			check_lis(t_lst *list);
 int			sequence_len(t_lst *stack, int len);
 void		lis_divide(t_lst **stack_a, t_lst **stack_b, int ac);
-int			define_sequence(t_lst *list, int ac, int max_lis);
+int			define_sequence(t_lst *list, int max_lis);
 
 /*^^^^^^^^^^^^^^^^^^ DIR : sort_functions ^^^^^^^^^^^^^^^^^^*/
 
@@ -43,11 +44,13 @@ void		push_a(t_lst **stack_a, t_lst **stack_b);
 void		push_b(t_lst **stack_b, t_lst **stack_a);
 
 /*<<<<<<<<<<<<<<<<<< FILE : reverse_functions.c >>>>>>>>>>>>>>>>>>*/
-void		reverse(t_lst **stack);
+void		reverse_b(t_lst **stack);
+void		reverse_a(t_lst **stack);
 void		rrr(t_lst **stack_a, t_lst **stack_b);
 
 /*<<<<<<<<<<<<<<<<<< FILE : rotate_functions.c >>>>>>>>>>>>>>>>>>*/
-void		rotate(t_lst **stack);
+void		rotate_a(t_lst **stack);
+void		rotate_b(t_lst **stack);
 void		rr(t_lst **stack_a, t_lst **stack_b);
 
 /*<<<<<<<<<<<<<<<<<< FILE : swap_functions.c >>>>>>>>>>>>>>>>>>*/
@@ -93,11 +96,10 @@ int			select_small_comb(t_lst *stack, int len);
 void		ft_sort_controller(t_lst *stack_a, int ac);
 
 /*<<<<<<<<<<<<<<<<<< FILE : sort_controller.c >>>>>>>>>>>>>>>>>>*/
-void	sort(t_lst **head_b, t_lst **head_a, t_len lenght);
+void		sort(t_lst **head_b, t_lst **head_a, t_len lenght);
 
 /*<<<<<<<<<<<<<<<<<< FILE : stack_controller.c >>>>>>>>>>>>>>>>>>*/
-void		print_stack(t_lst *sa, t_lst *sb, t_len lenght);
-
+void		print_stack(t_lst *tmp, t_lst *tmp1);
 /*<<<<<<<<<<<<<<<<<< FILE : input_controller.c >>>>>>>>>>>>>>>>>>*/
 int			ft_table(t_lst **stack, char **av, int ac);
 /*<<<<<<<<<<<<<<<<<< FILE : input_controller.c >>>>>>>>>>>>>>>>>>*/
@@ -114,7 +116,5 @@ void		del_node(t_lst **head);
 /*<<<<<<<<<<<<<<<<<< FILE : lists_controllers_functions.c >>>>>>>>>>>>>>>>>>*/
 void		ft_lstdup(t_lst **new_stack, t_lst *stack, int ac);
 
-/*<<<<<<<<<<<<<<<<<< FILE : lists_controllers_functions.c >>>>>>>>>>>>>>>>>>*/
-void		print_stack(t_lst *sa, t_lst *sb, t_len lenght);
 
 #endif
