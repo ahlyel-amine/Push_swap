@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 12:06:24 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/16 21:51:54 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/16 23:07:11 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		define_small(t_lst **stack, int min)
 
 	i = 0;
 	tmp = *stack;
-	while (i < (*stack)->lenght.stack_len)
+	while (i++ < (*stack)->lenght.stack_len)
 	{
 		if (tmp->content == min)
 		{
@@ -51,7 +51,6 @@ int		define_small(t_lst **stack, int min)
 			break ;
 		}
 		tmp = tmp->next;
-		i++;
 	}
 	if (((*stack)->lenght.stack_len / 2) >= i + 1)
 		return (1); // front front
@@ -66,18 +65,18 @@ int	check_place_in_a(t_lst *stack, int min)
 
 	i = 0;
 	small = small_element(stack);
-	if (min < small)
-	{
-		while (i < stack->lenght.stack_len)
-		{
-			if (stack->content == small)
-				break ;
-			stack = stack->next;
-			i++;
-		}
-	}
-	else
-	{
+	// if (min < small)
+	// {
+	// 	while (i < stack->lenght.stack_len)
+	// 	{
+	// 		if (stack->content == small)
+	// 			break ;
+	// 		stack = stack->next;
+	// 		i++;
+	// 	}
+	// }
+	// else
+	// {
 		while (i < stack->lenght.stack_len)
 		{
 			if (stack->content > min && min > stack->prev->content)
@@ -85,50 +84,50 @@ int	check_place_in_a(t_lst *stack, int min)
 			stack = stack->next;
 			i++;
 		}
-	}
+	// }
 	return (i);
 }
 
-void	both_front(t_lst **stack_a, t_lst **stack_b, int a, int b)
+void	both_front(t_lst **stack_a, t_lst **stack_b, int a)
 {
 	int	i;
 
 	i = 0;
-	while (i < a && i < b)
+	while (i < a && !((*stack_b)->parse_it))
 	{
 		rr(stack_a, stack_b);
 		i++;
 	}
 	while (i++ < a)
 		rotate_a(stack_a);
-	while (i++ <= b)
+	while (!((*stack_b)->parse_it))
 		rotate_a(stack_b);
 	push_a(stack_a, stack_b);
 }
 
-void	both_back(t_lst **stack_a, t_lst **stack_b, int a, int b)
+void	both_back(t_lst **stack_a, t_lst **stack_b, int a)
 {
 	int	i;
 
 	i = 0;
-	while (i < a && i <= b)
+	while (i < a && !((*stack_b)->parse_it))
 	{
 		rrr(stack_a, stack_b);
 		i++;
 	}
 	while (i++ < a)
 		reverse_a(stack_a);
-	while (i++ < b)
+	while (!((*stack_b)->parse_it))
 		reverse_b(stack_b);
 	push_a(stack_a, stack_b);
 }
 
-void	b_front_a_back(t_lst **stack_a, t_lst **stack_b, int a, int b)
+void	b_front_a_back(t_lst **stack_a, t_lst **stack_b, int a)
 {
 	int	i;
 
 	i = 0;
-	while (i++ < b)
+	while (!((*stack_b)->parse_it))
 		rotate_b(stack_b);
 	i = 0;
 	while (i++ < a)
@@ -136,7 +135,7 @@ void	b_front_a_back(t_lst **stack_a, t_lst **stack_b, int a, int b)
 	push_a(stack_a, stack_b);
 }
 
-void	a_front_b_back(t_lst **stack_a, t_lst **stack_b, int a, int b)
+void	a_front_b_back(t_lst **stack_a, t_lst **stack_b, int a)
 {
 	int	i;
 
@@ -144,7 +143,7 @@ void	a_front_b_back(t_lst **stack_a, t_lst **stack_b, int a, int b)
 	while (i++ < a)
 		rotate_a(stack_a);
 	i = 0;
-	while (i++ <= b)
+	while (!((*stack_b)->parse_it))
 		reverse_b(stack_b);
 	push_a(stack_a, stack_b);
 }
@@ -170,19 +169,29 @@ void	ft_sort_controller(t_lst *stack_a, int ac)
 	{
 
 		min = small_element(stack_b);
-		printf("min%d\n",min);
+		// printf("min%d\n",min);
 		j = define_small(&stack_b, min); // return value 1 if is close to front and 0 if is close to back.
 		i = check_place_in_a(stack_a, min);
+		// printf("[%d]before:\n",i);print_stack(stack_a, stack_b);
 		if (j && stack_a->lenght.stack_len / 2 >= i)
-			both_front(&stack_a, &stack_b, i, min);
+			both_front(&stack_a, &stack_b, i);
 		else if (!j &&  stack_a->lenght.stack_len / 2 < i)
-			both_back(&stack_a, &stack_b, i, min);
+			both_back(&stack_a, &stack_b, i);
 		else if (j && stack_a->lenght.stack_len / 2 < i)
-			b_front_a_back(&stack_a, &stack_b, i, min);
+			b_front_a_back(&stack_a, &stack_b, i);
 		else if (!j && stack_a->lenght.stack_len / 2 >= i)
-			a_front_b_back(&stack_a, &stack_b, i, min);
-		print_stack(stack_a, stack_b);
+			a_front_b_back(&stack_a, &stack_b, i);
+		// printf("[%d]after:\n",i);print_stack(stack_a, stack_b);
 	}
+	min = small_element(stack_a);
+	i = check_place_in_a(stack_a, min);
+	if (i < (stack_a->lenght.stack_len) / 2)
+		while (stack_a->content != min)
+			rotate_a(&stack_a);
+	else
+		while (stack_a->content != min)
+			reverse_a(&stack_a);
+	// print_stack(stack_a, stack_b);
 	// print_stack(stack_a, stack_b);
 	// printf("[%d]\n", i);
 	// min = stack_b->lenght.stack_len;
