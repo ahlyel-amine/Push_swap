@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 12:06:24 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/17 01:32:51 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/17 02:33:44 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,15 +77,18 @@ int	check_place_in_a(t_lst *stack, int min)
 	// }
 	// else
 	// {
+
 		while (i < stack->lenght.stack_len)
 		{
+		if (min == 72)
+		// printf("\n\n\n %d | %lld\n\n\n",i,stack->content);
 			if (stack->content > min && min > stack->prev->content)
 				break ;
 			stack = stack->next;
 			i++;
 		}
 	// }
-	return (i);
+	return (i - 1);
 }
 
 void	both_front(t_lst **stack_a, t_lst **stack_b, int a)
@@ -112,13 +115,23 @@ void	both_back(t_lst **stack_a, t_lst **stack_b, int a)
 	i = 0;
 	while (i < a && !((*stack_b)->parse_it))
 	{
+		printf("ab\n");
 		rrr(stack_a, stack_b);
 		i++;
 	}
 	while (i++ < a)
+	{
+		printf("a\n");
 		reverse_a(stack_a);
+	}
 	while (!((*stack_b)->parse_it))
+	{
+		printf("b\n");
 		reverse_b(stack_b);
+	}
+	// if (((*stack_b)->parse_it))
+	// 	reverse_b(stack_b);
+	printf("\n\n\n\n\n%lld | %lld\n\n\n\n", (*stack_b)->content, (*stack_a)->content);
 	push_a(stack_a, stack_b);
 }
 
@@ -176,9 +189,9 @@ void	ft_sort_controller(t_lst *stack_a, int ac)
 		if (j && stack_a->lenght.stack_len / 2 >= i)
 			both_front(&stack_a, &stack_b, i);
 		else if (!j &&  stack_a->lenght.stack_len / 2 < i)
-			both_back(&stack_a, &stack_b, i);
+			both_back(&stack_a, &stack_b, stack_a->lenght.stack_len - i - 1);
 		else if (j && stack_a->lenght.stack_len / 2 < i)
-			b_front_a_back(&stack_a, &stack_b, i);
+			b_front_a_back(&stack_a, &stack_b, stack_a->lenght.stack_len - i - 1);
 		else if (!j && stack_a->lenght.stack_len / 2 >= i)
 			a_front_b_back(&stack_a, &stack_b, i);
 		printf("[%d]after:\n",i);print_stack(stack_a, stack_b);
