@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 12:06:24 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/16 23:07:11 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/17 01:32:51 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,7 @@ void	ft_sort_controller(t_lst *stack_a, int ac)
 		// printf("min%d\n",min);
 		j = define_small(&stack_b, min); // return value 1 if is close to front and 0 if is close to back.
 		i = check_place_in_a(stack_a, min);
-		// printf("[%d]before:\n",i);print_stack(stack_a, stack_b);
+		printf("[%d]before:\n",i);print_stack(stack_a, stack_b);
 		if (j && stack_a->lenght.stack_len / 2 >= i)
 			both_front(&stack_a, &stack_b, i);
 		else if (!j &&  stack_a->lenght.stack_len / 2 < i)
@@ -181,7 +181,7 @@ void	ft_sort_controller(t_lst *stack_a, int ac)
 			b_front_a_back(&stack_a, &stack_b, i);
 		else if (!j && stack_a->lenght.stack_len / 2 >= i)
 			a_front_b_back(&stack_a, &stack_b, i);
-		// printf("[%d]after:\n",i);print_stack(stack_a, stack_b);
+		printf("[%d]after:\n",i);print_stack(stack_a, stack_b);
 	}
 	min = small_element(stack_a);
 	i = check_place_in_a(stack_a, min);
@@ -221,7 +221,7 @@ void	ft_sort_controller(t_lst *stack_a, int ac)
 	// 		write(1, "rra\n", 4);
 	// 	}
 	// }
-	// print_stack(stack_a, stack_b, lenght);
+	// print_stack(stack_a, stack_b);
 }
 
 void	sort(t_lst **head_b, t_lst **head_a, t_len lenght)
