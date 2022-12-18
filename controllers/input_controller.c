@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 23:36:10 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/09 17:16:35 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/18 14:12:23 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_table(t_lst **stack, char **av, int ac)
 	{
 		while (still_digits(av[i]))
 		{
-			new_node(stack, ft_atolld(&av[i]));
+			new_node(stack, ft_atolld(&av[i]), 0);
 			j++;
 		}
 		i++;

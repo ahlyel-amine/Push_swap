@@ -1,8 +1,6 @@
 #include "../push_swap.h"
 
-void	set_lenght(t_lst **stack, int ref);
-
-void	new_node(t_lst **head, long long nbr)
+void	new_node(t_lst **head, long long nbr, int ind)
 {
 	t_lst	*new;
 
@@ -27,6 +25,8 @@ void	new_node(t_lst **head, long long nbr)
 		((*head)->prev)->next = new;
 		(*head)->prev = new;
 		set_lenght(head, 1);
+		if (ind)
+			*head = new;
 	}
 }
 
@@ -58,14 +58,6 @@ void	del_node(t_lst **head)
 		return ((*head) = NULL,free (*head));
 
 	tmp = *head;
-	// while (i++ < j)
-	// {
-	// 	printf("{%d}\n",j);
-	// 	(*head)->lenght.stack_len--;
-	// 	printf("[%d]contetnt[%lld]\n", (*head)->lenght.stack_len, (*head)->content);
-	// 	(*head) = (*head)->next;
-	// }
-	// *head = tmp;
 	((*head)->next)->prev = (*head)->prev;
 	((*head)->prev)->next = (*head)->next;
 	(*head) = (*head)->next;
@@ -73,28 +65,28 @@ void	del_node(t_lst **head)
 	set_lenght(head, -1);
 }
 
-void	ft_lstdup(t_lst **new_stack, t_lst *stack, int ac)
-{
-	int i = 0;
-	while (i++ < ac)
-	{
-		new_node(new_stack, stack->content);
-		stack = stack->next;
-	}
-}
+// void	ft_lstdup(t_lst **new_stack, t_lst *stack, int ac)
+// {
+// 	int i = 0;
+// 	while (i++ < ac)
+// 	{
+// 		new_node(new_stack, stack->content);
+// 		stack = stack->next;
+// 	}
+// }
 
-void	add_node(t_lst **head, long long nbr)
-{
-	t_lst	*new;
+// void	add_node(t_lst **head, long long nbr)
+// {
+// 	t_lst	*new;
 
-	new = NULL;
-	new_node(&new, nbr);
+// 	new = NULL;
+// 	new_node(&new, nbr);
 
-	new->next = (*head);
-	new->prev = (*head)->prev;
-	new->lenght.stack_len = (*head)->lenght.stack_len;
-	set_lenght(head, 1);
-	((*head)->prev)->next = new;
-	(*head)->prev = new;
-	(*head) = new;
-}
+// 	new->next = (*head);
+// 	new->prev = (*head)->prev;
+// 	new->lenght.stack_len = (*head)->lenght.stack_len;
+// 	set_lenght(head, 1);
+// 	((*head)->prev)->next = new;
+// 	(*head)->prev = new;
+// 	(*head) = new;
+// }

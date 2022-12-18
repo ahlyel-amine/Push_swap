@@ -28,7 +28,7 @@ int main(){
 		random = 500 + (rand() % 107);
 		else
 		random = 400 + (rand() % 109);
-	printf("%d\n",random);
+		printf("%d\n",random);
 		// cout<<random<<endl;
 		i++;
 	}

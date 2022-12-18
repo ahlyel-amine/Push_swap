@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 23:31:53 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/02 17:24:07 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/18 11:58:21 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,16 @@ int	max(int nbr1, int nbr2)
 	return (nbr2);
 }
 
-int	va_max(int count, ...)
-{
-	va_list	ap;
-	int		i;
-	int		mx;
+// int	va_max(int count, ...)
+// {
+// 	va_list	ap;
+// 	int		i;
+// 	int		mx;
 
-	i = 0;
-	mx = INT_MIN;
-	va_start(ap, count);
-	while (i++ < count)
-		mx = max(mx, va_arg(ap, int));
-	return (mx);
-}
+// 	i = 0;
+// 	mx = INT_MIN;
+// 	va_start(ap, count);
+// 	while (i++ < count)
+// 		mx = max(mx, va_arg(ap, int));
+// 	return (mx);
+// }

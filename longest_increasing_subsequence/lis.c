@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 11:56:52 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/16 21:32:07 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/18 12:07:20 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	lis_divide(t_lst **stack_a, t_lst **stack_b, int ac)
 		else if (j == count)
 			break ;
 		else
-			rotate_a(stack_a);
+			rotate_a(stack_a, 1);
 	}
 }
 
