@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 12:06:24 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/18 17:24:37 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/18 20:07:17 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int	check_place_in_a(t_lst *stack, int min)
 	return (0);
 }
 
-void	both_front(t_lst **stack_a, t_lst **stack_b)
+void	both_front(t_lst **stack_a, t_lst **stack_b, int ind)
 {
 	int	i;
 
@@ -110,15 +110,15 @@ void	both_front(t_lst **stack_a, t_lst **stack_b)
 		i++;
 	}
 	while (!((*stack_a)->prev->parse_it))
-		rotate_a(stack_a, 1);
+		rotate_a(stack_a, ind);
 	while (!((*stack_b)->parse_it))
-		rotate_a(stack_b, 1);
+		rotate_a(stack_b, ind);
 	(*stack_a)->prev->parse_it = 0;
 	push_a(stack_a, stack_b);
 	(*stack_a)->parse_it = 0;
 }
 
-void	both_back(t_lst **stack_a, t_lst **stack_b)
+void	both_back(t_lst **stack_a, t_lst **stack_b, int ind)
 {
 	int	i;
 
@@ -129,40 +129,40 @@ void	both_back(t_lst **stack_a, t_lst **stack_b)
 		i++;
 	}
 	while (!((*stack_a)->prev->parse_it))
-		reverse_a(stack_a, 1);
+		reverse_a(stack_a, ind);
 	while (!((*stack_b)->parse_it))
-		reverse_b(stack_b, 1);
+		reverse_b(stack_b, ind);
 	(*stack_a)->prev->parse_it = 0;
 	push_a(stack_a, stack_b);
 	(*stack_a)->parse_it = 0;
 }
 
-void	b_front_a_back(t_lst **stack_a, t_lst **stack_b)
+void	b_front_a_back(t_lst **stack_a, t_lst **stack_b, int ind)
 {
 	int	i;
 
 	i = 0;
 
 	while (!((*stack_b)->parse_it))
-		rotate_b(stack_b, 1);
+		rotate_b(stack_b, ind);
 	i = 0;
 	while (!((*stack_a)->prev->parse_it))
-		reverse_a(stack_a, 1);
+		reverse_a(stack_a, ind);
 	(*stack_a)->prev->parse_it = 0;
 	push_a(stack_a, stack_b);
 	(*stack_a)->parse_it = 0;
 }
 
-void	a_front_b_back(t_lst **stack_a, t_lst **stack_b)
+void	a_front_b_back(t_lst **stack_a, t_lst **stack_b, int ind)
 {
 	int	i;
 
 	i = 0;
 	while (!((*stack_a)->prev->parse_it))
-		rotate_a(stack_a, 1);
+		rotate_a(stack_a, ind);
 	i = 0;
 	while (!((*stack_b)->parse_it))
-		reverse_b(stack_b, 1);
+		reverse_b(stack_b, ind);
 	(*stack_a)->prev->parse_it = 0;
 	push_a(stack_a, stack_b);
 	(*stack_a)->parse_it = 0;
@@ -217,6 +217,8 @@ void	ft_sort_controller(t_lst *stack_a, int ac)
 		return (ft_sort_rev(stack_a));
 	lenght = ft_lis_controll(&stack_a, &stack_b, ac);
 	init_parse_it(&stack_a);
+	// write(1, "second part\n", ft_strlen("second part\n"));
+	// print_stack(stack_a, stack_b);
 	while (stack_b)
 	{
 		min = small_element(stack_b);
@@ -224,13 +226,13 @@ void	ft_sort_controller(t_lst *stack_a, int ac)
 		i = check_place_in_a(stack_a, min);
 		define_place(&stack_a, i);
 		if (j && stack_a->lenght.stack_len / 2 >= i)
-			both_front(&stack_a, &stack_b);
+			both_front(&stack_a, &stack_b, 1);
 		else if (!j &&  stack_a->lenght.stack_len / 2 < i)
-			both_back(&stack_a, &stack_b);
+			both_back(&stack_a, &stack_b, 1);
 		else if (j && stack_a->lenght.stack_len / 2 < i)
-			b_front_a_back(&stack_a, &stack_b);
+			b_front_a_back(&stack_a, &stack_b, 1);
 		else if (!j && stack_a->lenght.stack_len / 2 >= i)
-			a_front_b_back(&stack_a, &stack_b);
+			a_front_b_back(&stack_a, &stack_b, 1);
 	}
 	min = small_element(stack_a);
 	i = check_place_in_a(stack_a, min);
@@ -246,6 +248,8 @@ void	ft_sort_controller(t_lst *stack_a, int ac)
 	else
 		while (stack_a->content != min)
 			reverse_a(&stack_a, 1);
+	// print_stack(stack_a, stack_b);
+
 }
 
 void	ft_sort_rev(t_lst *stack_a)

@@ -48,8 +48,6 @@ fclean : clean
 re : fclean all
 
 .PHONY : fclean clean re
-
-
 # LIBFT = \
 # 		libft/ft_isdigit.o\
 # 		libft/ft_strlen.o\
