@@ -100,11 +100,11 @@ void		ft_sort_rev(t_lst *stack_a); // V
 int			small_element(t_lst *stack); // V
 int			define_small(t_lst *stack, int min); // V
 int			high_element(t_lst *stack); // V
-void		both_front(t_lst **stack_a, t_lst **stack_b, int a); // V
-void		both_back(t_lst **stack_a, t_lst **stack_b, int a); // V
-void		b_front_a_back(t_lst **stack_a, t_lst **stack_b, int a); // V
+void		both_front(t_lst **stack_a, t_lst **stack_b); // V
+void		both_back(t_lst **stack_a, t_lst **stack_b); // V
+void		b_front_a_back(t_lst **stack_a, t_lst **stack_b); // V
 int			check_place_in_a(t_lst *stack, int min); // V
-void		a_front_b_back(t_lst **stack_a, t_lst **stack_b, int a); // V
+void		a_front_b_back(t_lst **stack_a, t_lst **stack_b); // V
 /*<<<<<<<<<<<<<<<<<< FILE : sort_controller.c >>>>>>>>>>>>>>>>>>*/
 void		sort(t_lst **head_b, t_lst **head_a, t_len lenght);
 

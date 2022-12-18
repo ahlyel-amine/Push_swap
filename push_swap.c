@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 23:41:55 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/18 13:09:07 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/18 17:23:18 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 int main(int ac, char **av)
 {
 	t_lst		*head;
-	t_len		lenght;
-	char		**tmp;
 
 	head = NULL;
 	if (ac <= 1)

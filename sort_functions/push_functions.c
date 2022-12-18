@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:47:26 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/18 14:38:23 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/18 16:48:56 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ void	push_a(t_lst **stack_a, t_lst **stack_b)
 	}
 	else
 		del_node(stack_b);
-	printf("pa\n");
-	// write(1, "pa\n", 3);
+	write(1, "pa\n", 3);
 }
 
 void	push_b(t_lst **stack_b, t_lst **stack_a)
@@ -42,6 +41,5 @@ void	push_b(t_lst **stack_b, t_lst **stack_a)
 	}
 	else
 		del_node(stack_a);
-	printf("pb\n");
-	// write(1, "pb\n", 3);
+	write(1, "pb\n", 3);
 }
