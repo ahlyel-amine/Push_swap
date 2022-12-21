@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 23:36:10 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/18 19:03:48 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/21 13:04:54 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_table(t_lst **stack, char **av, int ac)
 	i = 0;
 	j = 0;
 	if (!ft_check_input_digits(av, ac))
-		return (write(1, "Error",
+		return (write(2, "Error",
 		ft_strlen("Error")), -1);
 	while (i < ac)
 	{
@@ -33,7 +33,7 @@ int	ft_table(t_lst **stack, char **av, int ac)
 		i++;
 	}
 	if (!ft_check_input_dup(*stack, j))
-		return (write(1, "Error",
+		return (write(2, "Error",
 		ft_strlen("Error")), -1);
 	return (j);
 }

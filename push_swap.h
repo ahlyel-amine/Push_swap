@@ -56,7 +56,9 @@ void		rotate_b(t_lst **stack, int ind);
 void		rr(t_lst **stack_a, t_lst **stack_b);
 
 /*<<<<<<<<<<<<<<<<<< FILE : swap_functions.c >>>>>>>>>>>>>>>>>>*/
-void		swap(t_lst **head);
+void		swap_a(t_lst **head, int ind);
+void		swap_b(t_lst **head, int ind);
+void		ss(t_lst **stack_a, t_lst **stack_b);
 void		ss(t_lst **head_a, t_lst **head_b);
 
 /*^^^^^^^^^^^^^^^^^^ DIR : utils ^^^^^^^^^^^^^^^^^^*/
