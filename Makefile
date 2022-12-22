@@ -15,6 +15,7 @@ PUSH_SWAP = push_swap.o\
 			controllers/stack_controller.o\
 			controllers/sort_controller.o\
 			controllers/comb_controller.o\
+			controllers/place_controller.o\
 			\
 			utils/utils.o\
 			utils/ft_split_count.o\

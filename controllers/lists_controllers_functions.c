@@ -8,6 +8,8 @@ void	new_node(t_lst **head, long long nbr, int ind)
 	if (!new)
 		return ;
 	new->content = nbr;
+	new->front = INT_MAX;
+	new->back = INT_MAX;
 	new->LIS = 1;
 	new->parse_it = 0;
 	if (!(*head))

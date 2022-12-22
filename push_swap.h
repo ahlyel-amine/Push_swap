@@ -18,6 +18,8 @@ typedef struct s_lst
 	long long		content;
 	long long		LIS;
 	long long		parse_it;
+	int				front;
+	int				back;
 	t_len			lenght;
 	struct s_lst	*next;
 	struct s_lst	*prev;
@@ -95,9 +97,11 @@ long long	ft_atolld(char **str); // V
 // int			be_secondlast_comb(t_lst *stack_a, t_lst *stack_b);
 /*<<<<<<<<<<<<<<<<<< FILE : input_controller.c >>>>>>>>>>>>>>>>>>*/
 // int			select_small_comb(t_lst *stack, int len);
-
+/*<<<<<<<<<<<<<<<<<< FILE :place_controller.c >>>>>>>>>>>>>>>>>>*/
+void	check_places(t_lst *stack_a, t_lst *stack_b);
 /*<<<<<<<<<<<<<<<<<< FILE : sort_controller.c >>>>>>>>>>>>>>>>>>*/
 void		ft_sort_controller(t_lst *stack_a, int ac); // V
+void		define_place(t_lst **stack_a, int i, int ind);
 void		ft_sort_rev(t_lst *stack_a); // V
 int			small_element(t_lst *stack); // V
 int			define_small(t_lst *stack, int min); // V

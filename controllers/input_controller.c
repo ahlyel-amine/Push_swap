@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 23:36:10 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/21 13:04:54 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/22 15:06:15 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ int	ft_check_input_dup(t_lst *stack, int ac)
 	while (i++ < ac)
 	{
 		tmp = stack->next;
+		// if (stack->content > INT_MAX || stack->content < INT_MIN)
+		// 	return (0);
 		while (++j < ac)
 		{
 			if (tmp->content == stack->content)
