@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 01:11:27 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/23 02:45:38 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/23 03:34:49 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	check_max_min_back(t_lst *stack_a, t_lst *stack_b, int place_b)
 	{
 		while (i++ < stack_a->lenght.stack_len)
 		{
-			printf("%d > %lld\n",place_b, stack_a->content);
 			if (stack_a->content == max)
 				break ;
 			reverse_a(&stack_a, 0);

@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 12:06:24 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/23 03:14:53 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/23 03:34:35 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -309,24 +309,41 @@ void	ft_sort_controller(t_lst *stack_a, int ac)
 		{
 			min_back = define_min_back(stack_b, min_back);
 			i = check_place_in_a(stack_a, min_back);
+			define_place(&stack_a, i, 1);
 			j = stack_b_frontback(stack_b, min_back);
-			if (!j &&  stack_a->lenght.stack_len / 2 < i)
-				both_back(&stack_a, &stack_b, 1);
-			else if (j && stack_a->lenght.stack_len / 2 < i)
+			if (j)
 				b_front_a_back(&stack_a, &stack_b, 1);
+			else
+				both_back(&stack_a, &stack_b, 1);
 		}
 		else
 		{
 			min_front = define_min_front(stack_b, min_front);
 			i = check_place_in_a(stack_a, min_front);
+			define_place(&stack_a, i, 1);
 			j = stack_b_frontback(stack_b, min_front);
-			if (j && stack_a->lenght.stack_len / 2 >= i)
+			if (j)
 				both_front(&stack_a, &stack_b, 1);
-			else if (!j && stack_a->lenght.stack_len / 2 >= i)
+			else
 				a_front_b_back(&stack_a, &stack_b, 1);
 		}
-		print_stack(stack_a, stack_b);
 	}
+	min = small_element(stack_a);
+	i = check_place_in_a(stack_a, min);
+
+	if ((stack_a->lenght.stack_len % 2)
+	&& i <= (stack_a->lenght.stack_len) / 2 + 1)
+		while (stack_a->content != min)
+			rotate_a(&stack_a, 1);
+	else if (!(stack_a->lenght.stack_len % 2)
+	&& i <= (stack_a->lenght.stack_len) / 2)
+		while (stack_a->content != min)
+			rotate_a(&stack_a, 1);
+	else
+		while (stack_a->content != min)
+			reverse_a(&stack_a, 1);
+			// print_stack(stack_a, stack_b);
+
 	return ;
 	while (stack_b)
 	{
@@ -357,20 +374,7 @@ void	ft_sort_controller(t_lst *stack_a, int ac)
 	// 	else if (!j && stack_a->lenght.stack_len / 2 >= i)
 	// 		a_front_b_back(&stack_a, &stack_b, 1);
 	// }
-	min = small_element(stack_a);
-	i = check_place_in_a(stack_a, min);
 
-	if ((stack_a->lenght.stack_len % 2)
-	&& i <= (stack_a->lenght.stack_len) / 2 + 1)
-		while (stack_a->content != min)
-			rotate_a(&stack_a, 1);
-	else if (!(stack_a->lenght.stack_len % 2)
-	&& i <= (stack_a->lenght.stack_len) / 2)
-		while (stack_a->content != min)
-			rotate_a(&stack_a, 1);
-	else
-		while (stack_a->content != min)
-			reverse_a(&stack_a, 1);
 	// print_stack(stack_a, stack_b);
 	// print_stack(stack_a, stack_b);
 }
