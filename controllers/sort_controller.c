@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 12:06:24 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/22 16:46:40 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/23 03:14:53 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,11 +200,94 @@ void	init_parse_it(t_lst **stack)
 	}
 }
 
+int		small_parse(t_lst *stack, int ind)
+{
+	int		sml;
+	int		i;
+
+	sml = INT_MAX;
+	i = 0;
+	while (i++ < stack->lenght.stack_len)
+	{
+		if (ind)
+			sml = min(sml, stack->parse_it);
+		else
+			sml = min(sml, stack->parse_it_back);
+		stack = stack->next;
+	}
+	return (sml);
+}
+
+int	define_min_back(t_lst *stack, int min_back)
+{
+	int	i;
+
+	i = 0;
+	while (i++ < stack->lenght.stack_len)
+	{
+		stack->parse_it = 0;
+		rotate_a(&stack, 0);
+	}
+	i = 0;
+	while (i++ < stack->lenght.stack_len)
+	{
+		if (stack->parse_it_back == min_back)
+			break ;
+		rotate_a(&stack, 0);
+	}
+	stack->parse_it = 1;
+	return (stack->content);
+}
+
+int	define_min_front(t_lst *stack, int min_back)
+{
+	int	i;
+
+	i = 0;
+	while (i++ < stack->lenght.stack_len)
+	{
+		stack->parse_it = 0;
+		rotate_a(&stack, 0);
+	}
+	i = 0;
+	while (i++ < stack->lenght.stack_len)
+	{
+		if (stack->parse_it == min_back)
+			break ;
+		rotate_a(&stack, 0);
+	}
+	stack->parse_it = 1;
+	return (stack->content);
+}
+
+int	stack_b_frontback(t_lst *stack, int content)
+{
+	int	i;
+
+	i = 0;
+	while (i++ < stack->lenght.stack_len)
+	{
+		if (stack->content == content)
+			break ;
+		rotate_b(&stack, 0);
+	}
+	if (!(stack->lenght.stack_len % 2)
+	&& (stack->lenght.stack_len / 2) >= i)
+		return (1); // front front
+	else if ((stack->lenght.stack_len % 2)
+	&& (stack->lenght.stack_len / 2) + 1 >= i)
+		return (1); // front front
+	else
+		return (0); // from back
+}
+
 void	ft_sort_controller(t_lst *stack_a, int ac)
 {
 	t_lst	*stack_b;
 	t_len	lenght;
 	int		min;
+	int		min_front;
+	int		min_back;
 	int		i = 0;
 	int		j = 0;
 
@@ -217,7 +300,33 @@ void	ft_sort_controller(t_lst *stack_a, int ac)
 		return (ft_sort_rev(stack_a));
 	lenght = ft_lis_controll(&stack_a, &stack_b, ac);
 	init_parse_it(&stack_a);
-	check_places(stack_a, stack_b);
+	while (stack_b)
+	{
+		check_places(stack_a, stack_b);
+		min_front = small_parse(stack_b, 1);
+		min_back = small_parse(stack_b, 0);
+		if (min_front > min_back)
+		{
+			min_back = define_min_back(stack_b, min_back);
+			i = check_place_in_a(stack_a, min_back);
+			j = stack_b_frontback(stack_b, min_back);
+			if (!j &&  stack_a->lenght.stack_len / 2 < i)
+				both_back(&stack_a, &stack_b, 1);
+			else if (j && stack_a->lenght.stack_len / 2 < i)
+				b_front_a_back(&stack_a, &stack_b, 1);
+		}
+		else
+		{
+			min_front = define_min_front(stack_b, min_front);
+			i = check_place_in_a(stack_a, min_front);
+			j = stack_b_frontback(stack_b, min_front);
+			if (j && stack_a->lenght.stack_len / 2 >= i)
+				both_front(&stack_a, &stack_b, 1);
+			else if (!j && stack_a->lenght.stack_len / 2 >= i)
+				a_front_b_back(&stack_a, &stack_b, 1);
+		}
+		print_stack(stack_a, stack_b);
+	}
 	return ;
 	while (stack_b)
 	{

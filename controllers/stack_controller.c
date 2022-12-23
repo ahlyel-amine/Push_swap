@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 11:50:24 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/22 17:04:23 by aahlyel          ###   ########.fr       */
+/*   Updated: 2022/12/23 01:34:14 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ void    print_stack(t_lst *tmp, t_lst *tmp1)
 	{
 		if (tmp && i < len_a)
 		{
-			printf("a|%lld|\t|%lld|\t|%lld|%d|<", tmp->LIS, tmp->content, tmp->parse_it, tmp->lenght.stack_len);
+			printf("a|%lld|\t|%lld|\t|%lld||%lld|%d|<", tmp->LIS, tmp->content, tmp->parse_it, tmp->parse_it_back, tmp->lenght.stack_len);
 			tmp = tmp->next;
 		}
 		else
 			printf("\t\t");
 		if (tmp1 && j < len_b)
 		{
-			printf("\t\t>|%lld|\t|%lld|\t|%lld|%d|b", tmp1->LIS, tmp1->content, tmp1->parse_it, tmp1->lenght.stack_len);
+			printf("\t\t>|%lld|\t|%lld|\t|%lld||%lld|%d|b", tmp1->LIS, tmp1->content, tmp1->parse_it, tmp1->parse_it_back, tmp1->lenght.stack_len);
 			tmp1 = tmp1->next;
 		}
 		i++;
