@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 23:41:55 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/17 16:53:15 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/17 18:48:11 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(int ac, char **av)
 
 	head = NULL;
 	garbg = NULL;
-	ft_parse(&head, ++av, ac - 1);
+	ft_parse(&garbg, &head, ++av, ac - 1);
 	ac = ft_table(&head, ++av, ac - 1);
 	if (ac == -1)
 		return (ac);

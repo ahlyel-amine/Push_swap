@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 23:31:53 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/17 16:50:43 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/17 20:42:02 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,32 +40,28 @@ void	*ft_malloc(void *pointer, t_list **garbg)
 	return (pointer);
 }
 
-long long	ft_atolld(char **str)
+long long	ft_atolld(t_list **garbg, char **str)
 {
 	long long	sign;
 	long long	res;
 
 	sign = 1;
 	res = 0;
-	while (**str == 0x20 || (**str >= 0x09 && **str <= 0x0d))
+	while (**str == ' ' || (**str >= 9 && **str <= 13))
 		(*str)++;
-	if (**str == 0x2D || **str == 0x2B)
-		if (*((*str)++) == 0x2D)
+	if (**str == '-' || **str == '+')
+		if (*((*str)++) == '-')
 			sign = -1;
 	while (**str && ft_isdigit(**str))
-		res = (res * 10) + *((*str)++) - 0x30;
+		res = (res * 10) + *((*str)++) - '0';
+	check_min_max(garbg, res * sign);
 	return (res * sign);
 }
 
-int	still_digits(char *str)
+void	check_min_max(t_list **garbg, long long nbr)
 {
-	while (*str)
-	{
-		if (ft_isdigit(*str))
-			return (1);
-		str++;
-	}
-	return (0);
+	if (nbr > INT_MAX || nbr < INT_MIN)
+		ft_exit("Syntax error", garbg);
 }
 
 int	min(int nbr1, int nbr2)
@@ -80,4 +76,9 @@ int	max(int nbr1, int nbr2)
 	if (nbr1 > nbr2)
 		return (nbr1);
 	return (nbr2);
+}
+
+int	ft_issign(char c)
+{
+	return (c == '-' || c == '+');
 }

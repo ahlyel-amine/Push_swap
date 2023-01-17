@@ -3,25 +3,26 @@
 
 # include "../../libft/libft.h"
 # include "sys/errno.h"
+# include "limits.h"
 
 
 typedef	struct s_len
 {
-	int	stack_a;
+	// int	stack_a;
 	int	stack_len;
-	int	stack_b;
-	int	min;
-	int	max;
+	// int	stack_b;
+	// int	min;
+	// int	max;
 }	t_len;
 
 typedef struct s_lst
 {
 	long long		content;
-	long long		LIS;
-	long long		parse_it;
-	long long		parse_it_back;
-	int				front;
-	int				back;
+	// long long		LIS;
+	// long long		parse_it;
+	// long long		parse_it_back;
+	// int				front;
+	// int				back;
 	t_len			lenght;
 	struct s_lst	*next;
 	struct s_lst	*prev;
@@ -41,11 +42,13 @@ void	ft_exit(char *error_msg, t_list **garbg);
 /// @return
 void	*ft_malloc(void *pointer, t_list **garbg);
 
-
-
-
-
-
+/// @brief
+/// @param garbg
+/// @param stack
+/// @param av
+/// @param ac
+/// @return
+int	ft_parse(t_list **garbg, t_lst **stack, char **av, int ac);
 
 
 
