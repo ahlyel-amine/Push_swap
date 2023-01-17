@@ -6,11 +6,11 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 01:11:27 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/23 03:34:49 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/17 16:48:59 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../headers/push_swap.h"
 
 int	check_max_min_back(t_lst *stack_a, t_lst *stack_b, int place_b)
 {

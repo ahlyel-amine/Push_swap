@@ -6,11 +6,39 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 23:31:53 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/18 11:58:21 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/17 16:50:43 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../headers/push_swap.h"
+
+void	ft_exit(char *error_msg, t_list **garbg)
+{
+	if (garbg)
+		ft_lstclear(garbg, free);
+	if (errno)
+		perror(error_msg);
+	else
+		ft_putendl_fd(error_msg, STDERR_FILENO);
+	exit(EXIT_FAILURE);
+}
+
+void	*ft_malloc(void *pointer, t_list **garbg)
+{
+	t_list	*new;
+
+	new = NULL;
+	if (!pointer)
+		ft_exit("Allocation failure", garbg);
+	new = ft_lstnew(pointer);
+	if (!new)
+	{
+		free(pointer);
+		ft_exit("Allocation failure", garbg);
+	}
+	ft_lstadd_back(garbg, new);
+	return (pointer);
+}
 
 long long	ft_atolld(char **str)
 {
@@ -53,17 +81,3 @@ int	max(int nbr1, int nbr2)
 		return (nbr1);
 	return (nbr2);
 }
-
-// int	va_max(int count, ...)
-// {
-// 	va_list	ap;
-// 	int		i;
-// 	int		mx;
-
-// 	i = 0;
-// 	mx = INT_MIN;
-// 	va_start(ap, count);
-// 	while (i++ < count)
-// 		mx = max(mx, va_arg(ap, int));
-// 	return (mx);
-// }

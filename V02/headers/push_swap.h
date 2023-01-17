@@ -1,7 +1,8 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "libft.h"
+# include "../../libft/libft.h"
+# include "sys/errno.h"
 
 
 typedef	struct s_len
@@ -26,12 +27,31 @@ typedef struct s_lst
 	struct s_lst	*prev;
 }	t_lst;
 
-// void	ft_calcul(t_lst *stack_a, t_lst *stack_b, t_len length);
 
-// void		ft_calcul_comb(t_lst **stack_a, t_lst **stack_b, t_len length);
-/*^^^^^^^^^^^^^^^^^^ DIR : longest_increasing_subsequence ^^^^^^^^^^^^^^^^^^*/
 
-/*<<<<<<<<<<<<<<<<<< FILE : lis.c >>>>>>>>>>>>>>>>>>*/
+
+/// @brief
+/// @param error_msg
+/// @param garbg
+void	ft_exit(char *error_msg, t_list **garbg);
+
+/// @brief
+/// @param pointer
+/// @param garbg
+/// @return
+void	*ft_malloc(void *pointer, t_list **garbg);
+
+
+
+
+
+
+
+
+
+
+
+
 t_len		ft_lis_controll(t_lst **stack_a, t_lst **stack_b, int ac); // V
 void		get_lis(t_lst *list); // V
 int			get_max_lis(t_lst *list); // V

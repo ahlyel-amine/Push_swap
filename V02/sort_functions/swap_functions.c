@@ -6,11 +6,11 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:55:33 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/16 22:23:07 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/17 16:48:36 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../headers/push_swap.h"
 
 // void	swap(t_lst **head)
 // {

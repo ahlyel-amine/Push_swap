@@ -1,4 +1,16 @@
-#include "../push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lists_controllers_functions.c                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/17 16:48:51 by aahlyel           #+#    #+#             */
+/*   Updated: 2023/01/17 16:51:51 by aahlyel          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../headers/push_swap.h"
 
 void	new_node(t_lst **head, long long nbr, int ind)
 {

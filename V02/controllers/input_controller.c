@@ -6,11 +6,11 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 23:36:10 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/17 15:45:27 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/17 16:48:46 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../headers/push_swap.h"
 
 int	ft_table(t_lst **stack, char **av, int ac)
 {
@@ -20,9 +20,11 @@ int	ft_table(t_lst **stack, char **av, int ac)
 	*stack = NULL;
 	i = 0;
 	j = 0;
+	// if (!ft_check_input_digits(av, ac))
+	// 	return (write(STDERR_FILENO, "Error",
+	// 	ft_strlen("Error")), -1);
 	if (!ft_check_input_digits(av, ac))
-		return (write(STDERR_FILENO, "Error",
-		ft_strlen("Error")), -1);
+		ft_exit("Syntax error");
 	while (i < ac)
 	{
 		while (still_digits(av[i]))
@@ -40,8 +42,8 @@ int	ft_table(t_lst **stack, char **av, int ac)
 
 int	ft_check_input_digits(char **av, int ac)
 {
-	long long	i;
-	long long	j;
+	size_t	i;
+	size_t	j;
 
 	i = -1;
 	while (++i < ac)
@@ -49,9 +51,9 @@ int	ft_check_input_digits(char **av, int ac)
 		j = -1;
 		while (av[i][++j])
 		{
-			if (av[i][j] == '-' && !ft_isdigit(av[i][j + 1]))
+			if ((av[i][j] == '-' || av[i][j] == '+') && !ft_isdigit(av[i][j + 1]))
 				return (0);
-			if (av[i][j] == '-')
+			if (av[i][j] == '-' || av[i][j] == '+')
 				j++;
 			if (!ft_isdigit(av[i][j]) && av[i][j] != ' ' && av[i][j])
 				return (0);
