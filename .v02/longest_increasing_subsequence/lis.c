@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 11:56:52 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/18 16:54:42 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/16 22:23:16 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,9 @@ t_len	ft_lis_controll(t_lst **stack_a, t_lst **stack_b, int ac)
 	t_len	lenght;
 
 	lenght.max = get_max_lis(*stack_a);
-	define_sequencev2(*stack_a, lenght.max);
-	lis_divide(stack_a, stack_b, ac);
-	return (lenght);
 	lenght.stack_a = define_sequence(*stack_a, lenght.max);
 	lenght.stack_b = ac - lenght.stack_a;
+	lis_divide(stack_a, stack_b, ac);
 	// if ((*stack_a)->content > (*stack_a)->prev->content) // well see
 	// {
 	// 	rotate(stack_a);
@@ -60,46 +58,6 @@ int	define_sequence(t_lst *list, int max_lis)
 		i++;
 	}
 	return (count);
-}
-
-void	define_sequencev2(t_lst *list, int max_lis)
-{
-	t_lst	*head;
-	t_lst	*holder;
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	head = list;
-	while (j++ < list->lenght.stack_len)
-	{
-		if (list->LIS == max_lis)
-		{
-			list->parse_it = 1;
-			break ;
-		}
-		list = list->next;
-	}
-	while (i++ < list->lenght.stack_len && max_lis)
-	{
-		j = 0;
-		max_lis--;
-		holder = NULL;
-		list = head;
-		while (j++ < list->lenght.stack_len && max_lis)
-		{
-			if (list->LIS == max_lis)
-			{
-				list->parse_it = 1;
-				break ;
-			}
-			list = list->next;
-		}
-		if (holder)
-			holder->parse_it = 1;
-		head = head->next;
-	}
 }
 
 int	sequence_len(t_lst *stack, int len)
@@ -183,43 +141,12 @@ void	get_lis(t_lst *list)
 	}
 }
 
-void	get_lisv2(t_lst *list)
-{
-	t_lst *current;
-	t_lst *tmp;
-	int	zero;
-	int	i;
-	int	j;
-
-	i = 0;
-	current = list;
-	tmp = list;
-	while (i < list->lenght.stack_len)
-	{
-		j = 0;
-		tmp = current;
-		list = current;
-		while (j < list->lenght.stack_len)
-		{
-			if (tmp->content <= list->content)
-			{
-				current->LIS++;
-				tmp = list;
-			}
-			j++;
-			list = list->next;
-		}
-		i++;
-		current = current->next;
-	}
-}
-
 int	get_max_lis(t_lst *list)
 {
 	int max_lis;
 	int	i;
 
-	max_lis = 0;
+	max_lis = 1;
 	i = 0;
 	while (i++ < list->lenght.stack_len)
 	{

@@ -1,0 +1,10 @@
+{
+	"files.associations": {
+		"*.excalidraw": "json",
+		"*.excalidrawlib": "json",
+		"limits.h": "c",
+		"stddef.h": "c",
+		"stdio.h": "c"
+	},
+	"C_Cpp.errorSquiggles": "disabled"
+}

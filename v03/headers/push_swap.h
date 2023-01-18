@@ -1,7 +1,9 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "libft.h"
+# include "../../libft/libft.h"
+# include "sys/errno.h"
+# include "limits.h"
 
 
 typedef	struct s_len
@@ -25,14 +27,89 @@ typedef struct s_lst
 	struct s_lst	*next;
 	struct s_lst	*prev;
 }	t_lst;
-void	get_lisv2(t_lst *list);
-void	define_sequencev2(t_lst *list, int max_lis);
-// void	ft_calcul(t_lst *stack_a, t_lst *stack_b, t_len length);
 
-// void		ft_calcul_comb(t_lst **stack_a, t_lst **stack_b, t_len length);
-/*^^^^^^^^^^^^^^^^^^ DIR : longest_increasing_subsequence ^^^^^^^^^^^^^^^^^^*/
+/// @brief
+/// @param error_msg
+/// @param garbg
+void	ft_exit(char *error_msg, t_list **garbg);
 
-/*<<<<<<<<<<<<<<<<<< FILE : lis.c >>>>>>>>>>>>>>>>>>*/
+/// @brief
+/// @param pointer
+/// @param garbg
+/// @return
+void	*ft_malloc(void *pointer, t_list **garbg);
+
+/// @brief
+/// @param garbg
+/// @param stack
+/// @param av
+/// @param ac
+/// @return
+int	ft_parse(t_list **garbg, t_lst **stack, char **av, int ac);
+
+/// @brief
+/// @param av
+/// @param ac
+void	ft_check_syntax(char **av, int ac);
+
+/// @brief translate from ascii to long long and check for syntax input error
+/// @param garbg garbage collector
+/// @param str	string to translate it to long long
+/// @return long long
+long long	ft_atolld(t_list **garbg, char *str);
+
+/// @brief
+/// @param garbg
+/// @param nbr
+void	check_min_max(t_list **garbg, long long nbr);
+
+/// @brief
+/// @param c
+/// @return
+int	ft_issign(char c);
+
+/// @brief
+/// @param s
+/// @param c
+/// @param garbg
+/// @return
+char	**ft_split_garbg(char const *s, char c, t_list **garbg);
+
+/// @brief
+/// @param garbg
+/// @param head
+/// @param nbr
+/// @param ind
+void	new_node(t_list **garbg, t_lst **head, long long nbr, int ind);
+
+/// @brief
+/// @param head
+void	del_node(t_lst **head);
+
+/// @brief
+/// @param stack
+/// @param ref
+void	set_list_lenght(t_lst **stack, int ref);
+
+/// @brief
+/// @param garbg
+/// @param stack
+/// @param ac
+void	ft_check_dup(t_list **garbg, t_lst *stack);
+
+/// @brief
+/// @param garbg
+/// @param stack_a
+/// @param stack_b
+void		push_a(t_list **garbg, t_lst **stack_a, t_lst **stack_b);
+
+/// @brief
+/// @param garbg
+/// @param stack_b
+/// @param stack_a
+void		push_b(t_list **garbg, t_lst **stack_b, t_lst **stack_a);
+
+
 t_len		ft_lis_controll(t_lst **stack_a, t_lst **stack_b, int ac); // V
 void		get_lis(t_lst *list); // V
 int			get_max_lis(t_lst *list); // V
@@ -46,8 +123,7 @@ int			define_sequence(t_lst *list, int max_lis); // V
 /*^^^^^^^^^^^^^^^^^^ DIR : sort_functions ^^^^^^^^^^^^^^^^^^*/
 
 /*<<<<<<<<<<<<<<<<<< FILE : push_functions.c >>>>>>>>>>>>>>>>>>*/
-void		push_a(t_lst **stack_a, t_lst **stack_b);
-void		push_b(t_lst **stack_b, t_lst **stack_a);
+
 
 /*<<<<<<<<<<<<<<<<<< FILE : reverse_functions.c >>>>>>>>>>>>>>>>>>*/
 void		reverse_b(t_lst **stack, int ind);
@@ -74,7 +150,7 @@ int			min(int nbr1, int nbr2);
 /*<<<<<<<<<<<<<<<<<< FILE : utils.c >>>>>>>>>>>>>>>>>>*/
 int			max(int nbr1, int nbr2); // V
 /*<<<<<<<<<<<<<<<<<< FILE : utils.c >>>>>>>>>>>>>>>>>>*/
-long long	ft_atolld(char **str); // V
+// long long	ft_atolld(char **str); // V
 
 /*<<<<<<<<<<<<<<<<<< FILE : ft_split_count.c >>>>>>>>>>>>>>>>>>*/
 // char		**ft_split_count(char const *s, char c, int *count);
@@ -126,17 +202,13 @@ void		print_stack(t_lst *tmp, t_lst *tmp1);
 /*<<<<<<<<<<<<<<<<<< FILE : input_controller.c >>>>>>>>>>>>>>>>>>*/
 int			ft_table(t_lst **stack, char **av, int ac); // V
 /*<<<<<<<<<<<<<<<<<< FILE : input_controller.c >>>>>>>>>>>>>>>>>>*/
-int			ft_check_input_dup(t_lst *stack, int ac); // V
-/*<<<<<<<<<<<<<<<<<< FILE : input_controller.c >>>>>>>>>>>>>>>>>>*/
 int			ft_check_input_digits(char **av, int ac); // V
 
 /*<<<<<<<<<<<<<<<<<< FILE : lists_controllers_functions.c >>>>>>>>>>>>>>>>>>*/
-void		new_node(t_lst **head, long long nbr, int ind); // V
 void		set_lenght(t_lst **stack, int ref); // V
 /*<<<<<<<<<<<<<<<<<< FILE : lists_controllers_functions.c >>>>>>>>>>>>>>>>>>*/
 // void		add_node(t_lst **head, long long nbr);
 /*<<<<<<<<<<<<<<<<<< FILE : lists_controllers_functions.c >>>>>>>>>>>>>>>>>>*/
-void		del_node(t_lst **head); // V
 /*<<<<<<<<<<<<<<<<<< FILE : lists_controllers_functions.c >>>>>>>>>>>>>>>>>>*/
 // void		ft_lstdup(t_lst **new_stack, t_lst *stack, int ac);
 

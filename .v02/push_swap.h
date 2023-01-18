@@ -25,8 +25,7 @@ typedef struct s_lst
 	struct s_lst	*next;
 	struct s_lst	*prev;
 }	t_lst;
-void	get_lisv2(t_lst *list);
-void	define_sequencev2(t_lst *list, int max_lis);
+
 // void	ft_calcul(t_lst *stack_a, t_lst *stack_b, t_len length);
 
 // void		ft_calcul_comb(t_lst **stack_a, t_lst **stack_b, t_len length);
