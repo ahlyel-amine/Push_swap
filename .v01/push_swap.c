@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 23:41:55 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/18 21:16:29 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/18 21:17:17 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int main(int ac, char **av)
 		ft_sort_3(&head);
 	else
 		ft_sort_controller(head, ac);
-	return (0);
 	// else if (head->lenght.stack_len == 5)
 	// 	ft_sort_5(head);
+	return (0);
 }
