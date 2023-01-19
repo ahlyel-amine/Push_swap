@@ -30,6 +30,10 @@ PUSH_SWAP = push_swap.o\
 			utils/utils.o\
 			parsing.o\
 			ft_split_garbg.o\
+			sort_controll/big_sort.o\
+			sort_controll/ft_sort.o\
+			sort_controll/big_sort.o\
+			sort_controll/sort_tools.o\
 			controllers/stack_controller.o\
 			sort_functions/reverse_functions.o\
 			sort_functions/swap_functions.o\
