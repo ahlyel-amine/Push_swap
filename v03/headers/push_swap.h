@@ -15,6 +15,7 @@ typedef	struct s_len
 	int	max;
 }	t_len;
 
+
 typedef struct s_lst
 {
 	long long		content;
@@ -27,6 +28,14 @@ typedef struct s_lst
 	struct s_lst	*next;
 	struct s_lst	*prev;
 }	t_lst;
+
+typedef	struct s_fakelst
+{
+	t_lst	*fake_bg;
+	t_lst	*fake_sm;
+	int		bg;
+	int		sm;
+}	t_fakelst;
 
 /// @brief
 /// @param error_msg
@@ -120,7 +129,7 @@ void	ft_lstdup(t_list **garbg, t_lst **fake,t_lst **head);
 /// @param stack_a
 void	ft_sort(t_list **garbg, t_lst **stack_a);
 
-/// @brief 
+/// @brief
 /// @param fake
 void	qwick_sort(t_lst **fake);
 
