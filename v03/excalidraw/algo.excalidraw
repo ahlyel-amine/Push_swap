@@ -12547,6 +12547,40 @@
           -0.3174330258146938
         ]
       ]
+    },
+    {
+      "id": "SAUlX-jC2xAef4SdNqKnm",
+      "type": "text",
+      "x": -945.3724028329998,
+      "y": -121.5342286791622,
+      "width": 198,
+      "height": 25,
+      "angle": 0,
+      "strokeColor": "#000000",
+      "backgroundColor": "transparent",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "strokeSharpness": "sharp",
+      "seed": 627473210,
+      "version": 22,
+      "versionNonce": 1548420582,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1674143962676,
+      "link": null,
+      "locked": false,
+      "text": "\"15 49\" 56 \"   78 1\"",
+      "fontSize": 20,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "baseline": 18,
+      "containerId": null,
+      "originalText": "\"15 49\" 56 \"   78 1\""
     }
   ],
   "appState": {

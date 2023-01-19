@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 23:31:53 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/18 20:43:55 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/19 16:59:54 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ long long	ft_atolld(t_list **garbg, char *str)
 	check_min_max(garbg, res * sign);
 	return (res * sign);
 }
+
 int			still_digits(char *str)
 {
 	return 0;
