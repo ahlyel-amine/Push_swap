@@ -6,13 +6,13 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 21:20:06 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/19 21:45:39 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/20 17:55:26 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/push_swap.h"
 
-void	qwick_sort(t_lst **fake)
+void	qwick_sort(t_stack *fake)
 {
 	t_lst		*n_fake;
 	long long	tmp;
@@ -20,21 +20,21 @@ void	qwick_sort(t_lst **fake)
 	int			j;
 
 	i = 0;
-	while (i < (*fake)->lenght.stack_len)
+	while (i < fake->lenght)
 	{
 		j = i + 1;
-		n_fake = (*fake)->next;
-		while (j++ < (*fake)->lenght.stack_len)
+		n_fake = fake->stack->next;
+		while (j++ < fake->lenght)
 		{
-			if (n_fake->content < (*fake)->content)
+			if (n_fake->content < fake->stack->content)
 			{
 				tmp = n_fake->content;
-				n_fake->content = (*fake)->content;
-				(*fake)->content = tmp;
+				n_fake->content = fake->stack->content;
+				fake->stack->content = tmp;
 			}
 			n_fake = n_fake->next;
 		}
-		(*fake) = (*fake)->next;
+		fake->stack = fake->stack->next;
 		i++;
 	}
 }

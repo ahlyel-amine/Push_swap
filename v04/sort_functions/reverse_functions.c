@@ -6,29 +6,29 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:53:03 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/17 16:48:29 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/20 18:00:34 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/push_swap.h"
 
-void	reverse_a(t_lst **stack, int ind)
+void	reverse_a(t_stack *a, int ind)
 {
-	*stack = (*stack)->prev;
+	a->stack = a->stack->prev;
 	if (ind)
 		write(1, "rra\n", 4);
 }
 
-void	reverse_b(t_lst **stack, int ind)
+void	reverse_b(t_stack *b, int ind)
 {
-	*stack = (*stack)->prev;
+	b->stack = b->stack->prev;
 	if (ind)
 		write(1, "rrb\n", 4);
 }
 
-void	rrr(t_lst **stack_a, t_lst **stack_b)
+void	rrr(t_stack *a, t_stack *b)
 {
-	reverse_a(stack_a, 0);
-	reverse_b(stack_b, 0);
+	reverse_a(a, 0);
+	reverse_b(b, 0);
 	write(1, "rrr\n", 4);
 }

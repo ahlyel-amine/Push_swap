@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 23:41:55 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/19 21:39:42 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/20 18:06:46 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 int main(int ac, char **av)
 {
 	t_list		*garbg;
-	t_lst		*head;
+	t_stack		*stack;
 
-	head = NULL;
+	stack = NULL;
 	garbg = NULL;
-	ft_parse(&garbg, &head, ++av, ac - 1);
-	ft_sort(&garbg, &head);
+	ft_parse(&garbg, stack, ++av, ac - 1);
+	ft_sort(&garbg, stack);
 	return (0);
 }

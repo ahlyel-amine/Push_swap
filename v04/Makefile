@@ -39,8 +39,6 @@ PUSH_SWAP = push_swap.o\
 			sort_functions/swap_functions.o\
 			sort_functions/push_functions.o\
 			sort_functions/rotate_functions.o\
-			\
-			longest_increasing_subsequence/lis.o\
 
 CC = cc
 
