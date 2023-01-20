@@ -34,10 +34,10 @@ typedef	struct s_stack
 
 typedef	struct s_fakelst
 {
-	t_stack	*fake_bg;
-	t_stack	*fake_sm;
-	int		bg;
-	int		sm;
+	t_stack			*stack;
+	t_stack			**holder;
+	long long		bg;
+	long long		sm;
 }	t_fakelst;
 
 /// @brief
@@ -111,7 +111,7 @@ void	set_list_lenght(t_lst **stack, int ref);
 void	ft_check_dup(t_list **garbg, t_stack *stack);
 
 
-/// @brief 
+/// @brief
 /// @param garbg
 /// @param a
 /// @param b
@@ -139,9 +139,12 @@ void	ft_lstdup(t_list **garbg, t_stack *fake, t_stack *head);
 void	sort_help(t_fakelst *fake, t_stack *a,  t_stack *b, t_list **garbg);
 
 
+
 /// @brief
 /// @param stack
-void	check_maxb(t_stack *stack);
+/// @param max
+/// @return
+int	check_maxb(t_stack *stack, long long *max);
 
 /// @brief
 /// @param garbg
@@ -250,7 +253,7 @@ void		a_front_b_back(t_lst **stack_a, t_lst **stack_b, int ind); // V
 /*<<<<<<<<<<<<<<<<<< FILE : sort_controller.c >>>>>>>>>>>>>>>>>>*/
 
 /*<<<<<<<<<<<<<<<<<< FILE : stack_controller.c >>>>>>>>>>>>>>>>>>*/
-void		print_stack(t_lst *tmp, t_lst *tmp1);
+void		print_stack(t_stack *tmp, t_stack *tmp1);
 /*<<<<<<<<<<<<<<<<<< FILE : input_controller.c >>>>>>>>>>>>>>>>>>*/
 int			ft_table(t_lst **stack, char **av, int ac); // V
 /*<<<<<<<<<<<<<<<<<< FILE : input_controller.c >>>>>>>>>>>>>>>>>>*/

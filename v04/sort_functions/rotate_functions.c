@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:47:23 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/20 18:04:31 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/20 21:03:55 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	rotate_a(t_stack *a, int ind)
 {
-	a->stack =a->stack->next;
+	a->stack = a->stack->next;
 	if (ind)
 		write(1, "ra\n", 3);
 }
