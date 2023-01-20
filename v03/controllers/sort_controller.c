@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 12:06:24 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/17 16:49:04 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/20 16:18:57 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,8 +197,8 @@ void	a_front_b_back(t_lst **stack_a, t_lst **stack_b, int ind)
 	swap_a(stack_a, 1);
 }
 
- void define_place(t_lst **stack_a, int	i, int ind)
- {
+void define_place(t_lst **stack_a, int	i, int ind)
+{
 	t_lst *tmp;
 	int	j;
 
@@ -213,7 +213,7 @@ void	a_front_b_back(t_lst **stack_a, t_lst **stack_b, int ind)
 		}
 		tmp = tmp->next;
 	}
- }
+}
 
 void	init_parse_it(t_lst **stack)
 {
