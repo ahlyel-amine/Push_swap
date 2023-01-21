@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:48:51 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/20 21:20:18 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/21 01:53:28 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,23 +50,6 @@ void	ft_lstdup(t_list **garbg, t_stack *fake, t_stack *head)
 		(head)->stack = (head)->stack->next;
 	}
 }
-
-// void	set_list_lenght(t_lst **stack, int ref)
-// {
-// 	t_lst	*tmp_stack;
-// 	int		tmp;
-// 	int		i;
-
-// 	tmp_stack = *stack;
-// 	tmp = tmp_stack->lenght.stack_len;
-// 	i = 0;
-// 	while (i++ < tmp + ref)
-// 	{
-// 		(*stack)->lenght.stack_len = tmp + ref;
-// 		(*stack) = (*stack)->next;
-// 	}
-// 	*stack = tmp_stack;
-// }
 
 void	del_node(t_stack *head)
 {
