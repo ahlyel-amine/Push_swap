@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 20:57:59 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/21 18:52:13 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/21 19:29:58 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,14 @@
 
 void	ft_sort(t_list **garbg, t_stack *a)
 {
-	int	ext;
-
-	ext = 1;
-	sort_check(garbg, a, &ext);
+	sort_check(garbg, a);
 	if (a->lenght > 5)
 		big_sort(garbg, a);
 	else
-		low_sort(&garbg, stack);
+		low_sort(garbg, a);
 }
 
-void	sort_check(t_list **garbg, t_stack *a, int *ext)
+void	sort_check(t_list **garbg, t_stack *a)
 {
 	t_lst	*tmp;
 	int		i;
@@ -34,12 +31,8 @@ void	sort_check(t_list **garbg, t_stack *a, int *ext)
 	{
 		tmp = a->stack->next;
 		if (a->stack->content > tmp->content)
-		{
-			*ext = 1;
 			return ;
-		}
 		a->stack = a->stack->next;
 	}
-	if (ext)
-		ft_exit(NULL, garbg, 1);
+	ft_exit(NULL, garbg, 1);
 }

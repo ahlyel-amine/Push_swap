@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 23:41:55 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/21 18:31:00 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/21 19:33:12 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ int main(int ac, char **av)
 	stack->stack = NULL;
 	ft_parse(&garbg, stack, ++av, ac - 1);
 	ft_sort(&garbg, stack);
-	return (0);
+	return (EXIT_SUCCESS);
 }

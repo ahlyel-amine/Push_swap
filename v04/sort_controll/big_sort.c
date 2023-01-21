@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 20:58:01 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/21 18:19:11 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/21 19:20:43 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,28 +26,7 @@ void	sort_help(t_fakelst *fake, t_stack *a,  t_stack *b, t_list **garbg)
 		rotate_a(a, 1);
 }
 
-int	check_maxb(t_stack *stack, long long *max)
-{
-	t_lst		*tmp;
-	int			pos;
-	int			i;
 
-	i = 0;
-	pos = 0;
-	tmp = stack->stack;
-	*max = tmp->content;
-	while (i < stack->lenght)
-	{
-		if (tmp->content > *max)
-		{
-			*max = tmp->content;
-			pos = i;
-		}
-		i++;
-		tmp = tmp->next;
-	}
-	return (pos);
-}
 
 // int	wich_half(t_stack *stack)
 // {
@@ -77,7 +56,7 @@ void	fill_stack_a(t_list **garbg, t_stack *a, t_stack *b)
 	i = 0;
 	while (b && b->lenght > 1)
 	{
-		max_pos = check_maxb(b , &max);
+		max_pos = check_listmax(b , &max);
 		if (max_pos <= b->lenght / 2)
 			while (max != b->stack->content)
 				rotate_b(b, 1);

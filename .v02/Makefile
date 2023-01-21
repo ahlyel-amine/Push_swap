@@ -1,6 +1,6 @@
 LIBFT = \
-		libft/ft_isdigit.o\
-		libft/ft_strlen.o\
+		../libft/ft_isdigit.o\
+		../libft/ft_strlen.o\
 
 PUSH_SWAP = push_swap.o\
 			calcul_comb.o\
@@ -25,7 +25,7 @@ PUSH_SWAP = push_swap.o\
 
 CC = cc
 
-CFLAGS = 
+CFLAGS =
 RM = rm -f
 
 AR = ar -rcs

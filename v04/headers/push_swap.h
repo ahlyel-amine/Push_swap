@@ -51,10 +51,15 @@ void	big_sort(t_list **garbg, t_stack *a);
 /// @param a
 void	low_sort(t_list **garbg, t_stack *a);
 
+/// @brief 
+/// @param garbg
+/// @param a
+void	sort_3digits(t_list **garbg, t_stack *a);
+
 /// @brief
 /// @param garbg
 /// @param a
-void	sort_check(t_list **garbg, t_stack *a, int *ext);
+void	sort_check(t_list **garbg, t_stack *a);
 
 /// @brief
 /// @param error_msg
@@ -160,7 +165,13 @@ void	sort_help(t_fakelst *fake, t_stack *a,  t_stack *b, t_list **garbg);
 /// @param stack
 /// @param max
 /// @return
-int	check_maxb(t_stack *stack, long long *max);
+int	check_listmax(t_stack *stack, long long *max);
+
+/// @brief
+/// @param stack
+/// @param min
+/// @return
+int	check_listmin(t_stack *stack, long long *min);
 
 /// @brief
 /// @param garbg

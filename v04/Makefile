@@ -32,7 +32,7 @@ PUSH_SWAP = push_swap.o\
 			ft_split_garbg.o\
 			sort_controll/big_sort.o\
 			sort_controll/ft_sort.o\
-			sort_controll/big_sort.o\
+			sort_controll/low_sort.o\
 			sort_controll/sort_tools.o\
 			controllers/stack_controller.o\
 			sort_functions/reverse_functions.o\

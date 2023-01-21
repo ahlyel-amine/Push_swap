@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 21:20:06 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/21 01:34:22 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/21 19:21:16 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,50 @@ void	qwick_sort(int **table, int lenght)
 		}
 		i++;
 	}
+}
+
+int	check_listmax(t_stack *stack, long long *max)
+{
+	t_lst		*tmp;
+	int			pos;
+	int			i;
+
+	i = 0;
+	pos = 0;
+	tmp = stack->stack;
+	*max = tmp->content;
+	while (i < stack->lenght)
+	{
+		if (tmp->content > *max)
+		{
+			*max = tmp->content;
+			pos = i;
+		}
+		i++;
+		tmp = tmp->next;
+	}
+	return (pos);
+}
+
+int	check_listmin(t_stack *stack, long long *min)
+{
+	t_lst		*tmp;
+	int			pos;
+	int			i;
+
+	i = 0;
+	pos = 0;
+	tmp = stack->stack;
+	*min = tmp->content;
+	while (i < stack->lenght)
+	{
+		if (tmp->content < *min)
+		{
+			*min = tmp->content;
+			pos = i;
+		}
+		i++;
+		tmp = tmp->next;
+	}
+	return (pos);
 }
