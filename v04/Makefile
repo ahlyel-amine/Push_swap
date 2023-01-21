@@ -42,7 +42,8 @@ PUSH_SWAP = push_swap.o\
 
 CC = cc
 
-CFLAGS =
+CFLAGS = -Wall -Wextra -Werror
+
 RM = rm -f
 
 AR = ar -rcs

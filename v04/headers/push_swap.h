@@ -49,12 +49,12 @@ void	big_sort(t_list **garbg, t_stack *a);
 /// @brief
 /// @param garbg
 /// @param a
-void	low_sort(t_list **garbg, t_stack *a);
+void	low_sort(t_list **garbg, t_stack *a, t_stack *b);
 
-/// @brief 
+/// @brief
 /// @param garbg
 /// @param a
-void	sort_3digits(t_list **garbg, t_stack *a);
+void	sort_3digits(t_stack *a);
 
 /// @brief
 /// @param garbg

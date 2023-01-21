@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 23:31:53 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/21 18:41:33 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/21 20:41:21 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,6 @@ long long	ft_atolld(t_list **garbg, char *str)
 		ft_exit("Syntax error", garbg, 0);
 	check_min_max(garbg, res * sign);
 	return (res * sign);
-}
-
-int			still_digits(char *str)
-{
-	return 0;
 }
 
 void	check_min_max(t_list **garbg, long long nbr)

@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 20:58:01 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/21 19:20:43 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/21 20:43:39 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,6 @@ void	sort_help(t_fakelst *fake, t_stack *a,  t_stack *b, t_list **garbg)
 	else
 		rotate_a(a, 1);
 }
-
-
-
-// int	wich_half(t_stack *stack)
-// {
-// 	t_lst	*tmp;
-// 	int		i;
-
-// 	i = 0;
-// 	tmp = stack->stack;
-// 	while (i < stack->lenght)
-// 	{
-// 		if (tmp->LIS)
-// 			break ;
-// 		i++;
-// 	}
-// 	if (i <= stack->lenght / 2)
-// 		return (1);
-// 	else
-// 		return (0);
-// }
 
 void	fill_stack_a(t_list **garbg, t_stack *a, t_stack *b)
 {
