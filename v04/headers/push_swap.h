@@ -35,7 +35,7 @@ typedef	struct s_stack
 typedef	struct s_fakelst
 {
 	t_stack			*stack;
-	t_stack			**holder;
+	int				*table;
 	long long		bg;
 	long long		sm;
 }	t_fakelst;
@@ -164,9 +164,10 @@ int	wich_half(t_stack *stack);
 void	ft_sort(t_list **garbg, t_stack *a);
 
 
-/// @brief
-/// @param fake
-void	qwick_sort(t_stack *fake);
+/// @brief 
+/// @param table
+/// @param lenght
+void	qwick_sort(int **table, int lenght);
 
 void		get_lis(t_lst *list); // V
 int			get_max_lis(t_lst *list); // V

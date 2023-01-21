@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 20:57:59 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/21 00:46:58 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/21 01:50:58 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,40 +89,41 @@ void	fill_stack_a(t_list **garbg, t_stack *a, t_stack *b)
 	}
 }
 
+void	fill_table(int **table, t_stack *a)
+{
+	int	i;
+
+	i = 0;
+	while (i < a->lenght)
+	{
+		(*table)[i] = a->stack->content;
+		a->stack = a->stack->next;
+		i++;
+	}
+}
+
 void	ft_sort(t_list **garbg, t_stack *a)
 {
 	t_stack		*b;
 	t_fakelst	*fake;
-	t_lst		*tmp;
+	int			*table;
 	int			i;
 
 	i = 0;
 	b = ft_malloc(malloc(sizeof(t_stack)), garbg);
 	fake = ft_malloc(malloc(sizeof(t_fakelst)), garbg);
-	fake->stack = ft_malloc(malloc(sizeof(t_stack)), garbg);
 	b->stack = NULL;
 	while (a->lenght > 1)
 	{
-		fake->stack->stack = NULL;
-		ft_lstdup(garbg, fake->stack, a);
-		qwick_sort(fake->stack);
-		fake->bg = a->lenght / 8;
-		fake->sm = (a->lenght / 9) / 2;
-		tmp = fake->stack->stack;
-		i = 0;
-		while (i++ < fake->sm)
-			fake->stack->stack = fake->stack->stack->next;
-		fake->sm = fake->stack->stack->content;
-		i = 0;
-		fake->stack->stack = tmp;
-		while (i++ < fake->bg)
-			fake->stack->stack = fake->stack->stack->next;
-		fake->bg = fake->stack->stack->content;
+		table = NULL;
+		table = ft_malloc(malloc(a->lenght * sizeof(int)), garbg);
+		fill_table(&table, a);
+		qwick_sort(&table, a->lenght);
+		fake->bg = table[a->lenght / 8];
+		fake->sm =  table[(a->lenght / 9) / 2];
 		sort_help(fake, a, b, garbg);
 	}
-
 	fill_stack_a(garbg, a, b);
 	if (b->lenght)
 		push_a(garbg, a, b);
-		// print_stack(a, b);
 }
