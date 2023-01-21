@@ -29,6 +29,7 @@ typedef struct s_lst
 typedef	struct s_stack
 {
 	t_lst	*stack;
+	t_lst	*hold;
 	int		lenght;
 }	t_stack;
 
@@ -41,9 +42,24 @@ typedef	struct s_fakelst
 }	t_fakelst;
 
 /// @brief
+/// @param garbg
+/// @param a
+void	big_sort(t_list **garbg, t_stack *a);
+
+/// @brief
+/// @param garbg
+/// @param a
+void	low_sort(t_list **garbg, t_stack *a);
+
+/// @brief
+/// @param garbg
+/// @param a
+void	sort_check(t_list **garbg, t_stack *a, int *ext);
+
+/// @brief
 /// @param error_msg
 /// @param garbg
-void	ft_exit(char *error_msg, t_list **garbg);
+void	ft_exit(char *error_msg, t_list **garbg, int status);
 
 /// @brief
 /// @param pointer
@@ -164,7 +180,7 @@ int	wich_half(t_stack *stack);
 void	ft_sort(t_list **garbg, t_stack *a);
 
 
-/// @brief 
+/// @brief
 /// @param table
 /// @param lenght
 void	qwick_sort(int **table, int lenght);

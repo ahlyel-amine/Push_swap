@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:53:47 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/20 21:20:29 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/21 18:41:02 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	ft_check_dup(t_list **garbg, t_stack *stack)
 		while (j++ < stack->lenght)
 		{
 			if (tmp->content == stack->stack->content)
-				ft_exit("Error number duplicates", garbg);
+				ft_exit("Error number duplicates", garbg, 0);
 			tmp = tmp->next;
 		}
 		stack->stack = stack->stack->next;
