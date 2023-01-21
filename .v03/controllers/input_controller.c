@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 23:36:10 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/18 20:47:00 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/21 18:40:34 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_table(t_lst **stack, char **av, int ac)
 	// 	return (write(STDERR_FILENO, "Error",
 	// 	ft_strlen("Error")), -1);
 	if (!ft_check_input_digits(av, ac))
-		ft_exit("Syntax error", NULL);
+		ft_exit("Syntax error", NULL, 0);
 	while (i < ac)
 	{
 		while (still_digits(av[i]))
