@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 20:58:01 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/21 20:43:39 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/22 16:15:20 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 void	sort_help(t_fakelst *fake, t_stack *a,  t_stack *b, t_list **garbg)
 {
 	if (a->stack->content <= fake->sm)
-		push_b(garbg, b, a);
+		push_b(garbg, b, a, 1);
 	else if (a->stack->content <= fake->bg)
 	{
-		push_b(garbg, b, a);
+		push_b(garbg, b, a, 1);
 		if (b->lenght >= 2)
 			rotate_b(b, 1);
 	}
@@ -43,7 +43,7 @@ void	fill_stack_a(t_list **garbg, t_stack *a, t_stack *b)
 			while (max != b->stack->content)
 				reverse_b(b, 1);
 		if (b->stack->content == max)
-			push_a(garbg, a, b);
+			push_a(garbg, a, b, 1);
 	}
 }
 
@@ -83,5 +83,5 @@ void	big_sort(t_list **garbg, t_stack *a)
 	}
 	fill_stack_a(garbg, a, b);
 	if (b->lenght)
-		push_a(garbg, a, b);
+		push_a(garbg, a, b, 1);
 }

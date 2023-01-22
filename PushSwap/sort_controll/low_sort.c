@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 18:42:58 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/21 20:41:39 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/22 16:49:53 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	low_sort(t_list **garbg, t_stack *a, t_stack *b)
 				reverse_a(a, 1);
 			min_pos = check_listmin(a, &min);
 		}
-		push_b(garbg, b, a);
+		push_b(garbg, b, a, 1);
 		low_sort(garbg, a, b);
-		push_a(garbg, a, b);
+		push_a(garbg, a, b, 1);
 	}
 }
 

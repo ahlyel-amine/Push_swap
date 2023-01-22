@@ -29,7 +29,6 @@ typedef struct s_lst
 typedef	struct s_stack
 {
 	t_lst	*stack;
-	t_lst	*hold;
 	int		lenght;
 }	t_stack;
 
@@ -126,6 +125,11 @@ void	del_node(t_stack *head);
 void	set_list_lenght(t_lst **stack, int ref);
 
 /// @brief
+/// @param table
+/// @param a
+void	fill_table(int **table, t_stack *a);
+
+/// @brief
 /// @param garbg
 /// @param stack
 /// @param ac
@@ -136,14 +140,14 @@ void	ft_check_dup(t_list **garbg, t_stack *stack);
 /// @param garbg
 /// @param a
 /// @param b
-void	push_a(t_list **garbg, t_stack *a, t_stack *b);
+void	push_a(t_list **garbg, t_stack *a, t_stack *b, int ind);
 
 
 /// @brief
 /// @param garbg
 /// @param b
 /// @param a
-void	push_b(t_list **garbg, t_stack *b, t_stack *a);
+void	push_b(t_list **garbg, t_stack *b, t_stack *a, int ind);
 
 /// @brief
 /// @param garbg
