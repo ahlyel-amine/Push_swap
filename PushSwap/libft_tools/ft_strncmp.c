@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/01 23:41:55 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/22 21:07:37 by aahlyel          ###   ########.fr       */
+/*   Created: 2022/10/08 16:16:15 by aahlyel           #+#    #+#             */
+/*   Updated: 2023/01/23 01:16:49 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers/push_swap.h"
+#include "libft.h"
 
-int main(int ac, char **av)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	t_list		*garbg;
-	t_stack		*stack;
-
-	garbg = NULL;
-	stack = ft_malloc(malloc(sizeof(t_stack)), &garbg);
-	stack->stack = NULL;
-	ft_parse(&garbg, stack, ++av, ac - 1);
-	ft_sort(&garbg, stack);
-	ft_exit(NULL, &garbg, 1);
+	if (!n)
+		return (0);
+	while (n--)
+	{
+		if (*s1 != *s2)
+			return ((unsigned char)*s1 - (unsigned char)*s2);
+		if (!*s1 && !*s2)
+			return (0);
+		s1++;
+		s2++;
+	}
+	return (0);
 }

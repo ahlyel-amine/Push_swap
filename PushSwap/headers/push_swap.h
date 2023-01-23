@@ -1,9 +1,10 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../../libft/libft.h"
-# include "sys/errno.h"
-# include "limits.h"
+# include "../libft_tools/libft.h"
+# include <sys/errno.h>
+# include <limits.h>
+# include <stdio.h>
 
 
 // typedef	struct s_len
@@ -198,7 +199,7 @@ void	ft_sort(t_list **garbg, t_stack *a);
 /// @brief
 /// @param table
 /// @param lenght
-void	qwick_sort(int **table, int lenght);
+void	qwik_sort(int **table, int lenght);
 
 void		get_lis(t_lst *list); // V
 int			get_max_lis(t_lst *list); // V

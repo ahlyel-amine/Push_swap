@@ -1,28 +1,28 @@
 LIBFT = \
-		../libft/ft_isdigit.o\
-		../libft/ft_strlen.o\
-		../libft/ft_lstadd_front.o\
-		../libft/ft_lstsize.o\
-		../libft/ft_lstlast.o\
-		../libft/ft_lstadd_back.o\
-		../libft/ft_lstdelone.o\
-		../libft/ft_lstclear.o\
-		../libft/ft_lstiter.o\
-		../libft/ft_lstmap.o\
-		../libft/ft_lstnew.o\
-		../libft/ft_putendl_fd.o\
-		../libft/ft_substr.o\
-		../libft/ft_calloc.o\
-		../libft/ft_memcpy.o\
-		../libft/ft_strdup.o\
-		../libft/ft_bzero.o\
-		../libft/ft_memset.o\
+		libft_tools/ft_isdigit.o\
+		libft_tools/ft_strlen.o\
+		libft_tools/ft_lstlast.o\
+		libft_tools/ft_lstadd_back.o\
+		libft_tools/ft_lstdelone.o\
+		libft_tools/ft_lstclear.o\
+		libft_tools/ft_lstnew.o\
+		libft_tools/ft_putendl_fd.o\
+		libft_tools/ft_putstr_fd.o\
+		libft_tools/ft_substr.o\
+		libft_tools/ft_calloc.o\
+		libft_tools/ft_memcpy.o\
+		libft_tools/ft_strdup.o\
+		libft_tools/ft_bzero.o\
+		libft_tools/ft_memset.o\
 
-# \
-# controllers/input_controller.o\
-# controllers/sort_controller.o\
-# controllers/place_controller.o\
-# controllers/place_controller2.o\
+LIBFT_OBJ = ${LIBFT:=.o}
+LIBFT_SRC = ${LIBFT:=.c}
+
+GET_NEXT_LINE =	bonus/get_next_line/get_next_line_utils\
+				bonus/get_next_line/get_next_line\
+
+GET_NEXT_LINE_OBJ = ${GET_NEXT_LINE:=.o}
+GET_NEXT_LINE_SRC = ${GET_NEXT_LINE:=.c}
 
 PUSH_SWAP = push_swap.o\
 			\
@@ -40,115 +40,62 @@ PUSH_SWAP = push_swap.o\
 			sort_functions/push_functions.o\
 			sort_functions/rotate_functions.o\
 
+# Black           =   $(shell echo "\033[0;30m")
+# FBlack          =   $(shell echo "\033[1;30m")
+# Red             =   $(shell echo "\033[0;31m")
+FRed            =   $(shell echo "\033[1;31m")
+# Green           =   $(shell echo "\033[0;32m")
+FGreen          =   $(shell echo "\033[1;32m")
+# Brown/Orange    =   $(shell echo "\033[0;33m")
+FBrown/Orange   =   $(shell echo "\033[1;33m")
+# FYellow         =   $(shell echo "\033[1;33m")
+# Yellow          =   $(shell echo "\033[0;33m")
+# Blue            =   $(shell echo "\033[0;34m")
+# FBlue           =   $(shell echo "\033[1;34m")
+# Purple          =   $(shell echo "\033[0;35m")
+# FPurple         =   $(shell echo "\033[1;35m")
+# Cyan            =   $(shell echo "\033[0;36m")
+# FCyan           =   $(shell echo "\033[1;36m")
+# FWhite          =   $(shell echo "\033[1;37m")
+# White           =   $(shell echo "\033[0;37m")
+RESET           =   $(shell echo "\033[0m")
+TICK            =   $(shell echo "\xE2\x9C\x94")
+
 CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
 
-AR = ar -rcs
-
-NAME = push_swap.a
+NAME = push_swap
 
 all : ${NAME}
 
 ${NAME} : ${LIBFT} ${PUSH_SWAP}
-	${CC} ${CFLAGS} -o push_swap $^
+	@printf "\b${FBrown/Orange}Compiling $(NAME) \xF0\x9F\x95\x9D \n$(RESET)"
+	@${CC} ${CFLAGS} -o push_swap ${LIBFT} ${PUSH_SWAP}
+	@printf "\b${FGreen}Executable $(NAME) ready $(TICK)\n$(RESET)"
 
 %.o : %.c libft.h
-	${CC} ${CFLAGS} -c -o $@ $<
+	@${CC} ${CFLAGS} -c -o $@ $<
+
+bonus : ${LIBFT} ${GET_NEXT_LINE_OBJ}
+	@printf "${GET_NEXT_LINE_SRC}"
+	@${CC} ${CFLAGS} -c -o ${GET_NEXT_LINE_OBJ} ${GET_NEXT_LINE_SRC}
+	@{CC} ${CFLAGS} -o checker ${GET_NEXT_LINE} ${LIBFT}
+
 
 clean :
-	${RM} ${LIBFT} ${PUSH_SWAP} ${NAME}
+	@printf "${GET_NEXT_LINE_SRC}\n"
+	@printf "\b${FGreen}Removing object files \xF0\x9F\x95\x9D \n$(RESET)"
+	@${RM} ${LIBFT} ${PUSH_SWAP}
+	@printf "\b${FRed}Object files removed successfully 🗑️ \n$(RESET)"
 
 fclean : clean
-	${RM} push_swap
+	@printf "\b${FGreen}\nRemoving executable $(NAME) \xF0\x9F\x95\x9D \n$(RESET)"
+	@${RM} push_swap
+	@printf "\b${FRed}Executable $(NAME) removed 🗑️\n$(RESET)"
 
-re : fclean all
+re : clean fclean all
 
-.PHONY : fclean clean re
-# LIBFT = \
-# 		../libft/ft_isdigit.o\
-# 		../libft/ft_strlen.o\
-# 		# ../libft/ft_atoi.o\
-# 		# ../libft/ft_bzero.o\
-# 		# ../libft/ft_calloc.o\
-# 		# ../libft/ft_isalnum.o\
-# 		# ../libft/ft_isalpha.o\
-# 		# ../libft/ft_isascii.o\
-# 		# ../libft/ft_isprint.o\
-# 		# ../libft/ft_memchr.o\
-# 		# ../libft/ft_memcmp.o\
-# 		# ../libft/ft_memcpy.o\
-# 		# ../libft/ft_memmove.o\
-# 		# ../libft/ft_memset.o\
-# 		# ../libft/ft_strchr.o\
-# 		# ../libft/ft_strdup.o\
-# 		# ../libft/ft_strlcat.o\
-# 		# ../libft/ft_strlcpy.o\
-# 		# ../libft/ft_strncmp.o\
-# 		# ../libft/ft_strnstr.o\
-# 		# ../libft/ft_strrchr.o\
-# 		# ../libft/ft_tolower.o\
-# 		# ../libft/ft_toupper.o\
-# 		# ../libft/ft_substr.o\
-# 		# ../libft/ft_strjoin.o\
-# 		# ../libft/ft_strtrim.o\
-# 		# ../libft/ft_split.o\
-# 		# ../libft/ft_itoa.o\
-# 		# ../libft/ft_strmapi.o\
-# 		# ../libft/ft_striteri.o\
-# 		 ../libft/ft_putchar_fd.o\
-# 		# ../libft/ft_putstr_fd.o\
-# 		# ../libft/ft_putendl_fd.o\
-# 		# ../libft/ft_putnbr_fd.o
-
-# PUSH_SWAP = push_swap.o\
-# 			calcul_comb.o\
-# 			\
-# 			sort_functions/reverse_functions.o\
-# 			sort_functions/swap_functions.o\
-# 			sort_functions/push_functions.o\
-# 			sort_functions/rotate_functions.o\
-# 			\
-# 			controllers/input_controller.o\
-# 			controllers/lists_controllers_functions.o\
-# 			controllers/stack_controller.o\
-# 			controllers/sort_controller.o\
-# 			controllers/comb_controller.o\
-# 			\
-# 			utils/utils.o\
-# 			utils/ft_split_count.o\
-# 			\
-# 			longest_increasing_subsequence/lis.o\
-
-# CC = cc
-
-# CFLAGS =
-
-# RM = rm -f
-
-# AR = ar -rcs
-
-# NAME = push_swap.a
-
-# all : ${NAME}
-
-# ${NAME} : ${LIBFT} ${PUSH_SWAP}
-# 	${AR} ${NAME} $^
-
-# compile : ${NAME}
-# 	${CC} ${CFLAGS} -o push_swap ${NAME}
-
-# %.o : %.c libft.h
-# 	${CC} ${CFLAGS} -c -o $@ $<
-
-# clean :
-# 	${RM} ${LIBFT} ${PUSH_SWAP} ${NAME}
-
-# fclean : clean
-# 	${RM} push_swap
-
-# re : fclean all
-
-# .PHONY : fclean clean re
+.PHONY : fclean clean re bonus

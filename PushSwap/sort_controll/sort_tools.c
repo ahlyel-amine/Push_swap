@@ -6,13 +6,13 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 21:20:06 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/21 20:34:25 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/22 22:14:38 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/push_swap.h"
 
-// void	qwick_sort(t_stack *fake)
+// void	qwik_sort(t_stack *fake)
 // {
 // 	t_lst		*n_fake;
 // 	long long	tmp;
@@ -39,7 +39,7 @@
 // 	}
 // }
 
-void	qwick_sort(int **table, int lenght)
+void	qwik_sort(int **table, int lenght)
 {
 	int		tmp;
 	int		i;

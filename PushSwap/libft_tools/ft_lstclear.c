@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/01 23:41:55 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/22 21:07:37 by aahlyel          ###   ########.fr       */
+/*   Created: 2022/10/22 10:04:52 by aahlyel           #+#    #+#             */
+/*   Updated: 2023/01/22 20:46:56 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers/push_swap.h"
+#include "libft.h"
 
-int main(int ac, char **av)
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	t_list		*garbg;
-	t_stack		*stack;
+	t_list	*tmp;
 
-	garbg = NULL;
-	stack = ft_malloc(malloc(sizeof(t_stack)), &garbg);
-	stack->stack = NULL;
-	ft_parse(&garbg, stack, ++av, ac - 1);
-	ft_sort(&garbg, stack);
-	ft_exit(NULL, &garbg, 1);
+	if (!lst || !del)
+		return ;
+	while (*lst)
+	{
+		tmp = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = tmp;
+	}
 }

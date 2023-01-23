@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 20:58:01 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/22 16:15:20 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/22 22:14:38 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	big_sort(t_list **garbg, t_stack *a)
 		table = NULL;
 		table = ft_malloc(malloc(a->lenght * sizeof(int)), garbg);
 		fill_table(&table, a);
-		qwick_sort(&table, a->lenght);
+		qwik_sort(&table, a->lenght);
 		fake->bg = table[a->lenght / 8];
 		fake->sm =  table[(a->lenght / 9) / 2];
 		sort_help(fake, a, b, garbg);

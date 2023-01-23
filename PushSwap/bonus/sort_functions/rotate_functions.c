@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   rotate_functions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/01 23:41:55 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/22 21:07:37 by aahlyel          ###   ########.fr       */
+/*   Created: 2022/11/28 16:47:23 by aahlyel           #+#    #+#             */
+/*   Updated: 2023/01/22 19:48:10 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers/push_swap.h"
+#include "../../headers/push_swap.h"
 
-int main(int ac, char **av)
+void	rotate_a(t_stack *a, int ind)
 {
-	t_list		*garbg;
-	t_stack		*stack;
+	a->stack = a->stack->next;
+	if (ind)
+		write(1, "ra\n", 3);
+}
 
-	garbg = NULL;
-	stack = ft_malloc(malloc(sizeof(t_stack)), &garbg);
-	stack->stack = NULL;
-	ft_parse(&garbg, stack, ++av, ac - 1);
-	ft_sort(&garbg, stack);
-	ft_exit(NULL, &garbg, 1);
+void	rotate_b(t_stack *b, int ind)
+{
+	b->stack = b->stack->next;
+	if (ind)
+		write(1, "rb\n", 3);
+}
+
+void	rr(t_stack *a, t_stack *b)
+{
+	rotate_a(a, 0);
+	rotate_b(b, 0);
+	write(1, "rr\n", 3);
 }

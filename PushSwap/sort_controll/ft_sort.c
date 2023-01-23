@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 20:57:59 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/21 20:36:06 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/22 20:19:36 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	ft_sort(t_list **garbg, t_stack *a)
 	t_stack	*b;
 
 	b = NULL;
+
 	sort_check(garbg, a);
 	if (a->lenght > 5)
 		big_sort(garbg, a);
@@ -31,15 +32,17 @@ void	ft_sort(t_list **garbg, t_stack *a)
 void	sort_check(t_list **garbg, t_stack *a)
 {
 	t_lst	*tmp;
+	t_lst	*tmp1;
 	int		i;
 
 	i = 0;
+	tmp1 = a->stack;
 	while (i++ < a->lenght - 1)
 	{
-		tmp = a->stack->next;
-		if (a->stack->content > tmp->content)
+		tmp = tmp1->next;
+		if (tmp1->content > tmp->content)
 			return ;
-		a->stack = a->stack->next;
+		tmp1 = tmp1->next;
 	}
 	ft_exit(NULL, garbg, 1);
 }

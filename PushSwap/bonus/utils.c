@@ -6,15 +6,15 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 23:31:53 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/22 21:06:14 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/22 20:48:12 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/push_swap.h"
+#include "../../headers/push_swap.h"
 
 void	ft_exit(char *error_msg, t_list **garbg, int status)
 {
-	if (*garbg)
+	if (garbg)
 		ft_lstclear(garbg, free);
 	if (status)
 		exit(EXIT_SUCCESS);

@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   reverse_functions.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/01 23:41:55 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/22 21:07:37 by aahlyel          ###   ########.fr       */
+/*   Created: 2022/11/28 16:53:03 by aahlyel           #+#    #+#             */
+/*   Updated: 2023/01/22 19:48:07 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers/push_swap.h"
+#include "../../headers/push_swap.h"
 
-int main(int ac, char **av)
+void	reverse_a(t_stack *a, int ind)
 {
-	t_list		*garbg;
-	t_stack		*stack;
+	a->stack = a->stack->prev;
+	if (ind)
+		write(1, "rra\n", 4);
+}
 
-	garbg = NULL;
-	stack = ft_malloc(malloc(sizeof(t_stack)), &garbg);
-	stack->stack = NULL;
-	ft_parse(&garbg, stack, ++av, ac - 1);
-	ft_sort(&garbg, stack);
-	ft_exit(NULL, &garbg, 1);
+void	reverse_b(t_stack *b, int ind)
+{
+	b->stack = b->stack->prev;
+	if (ind)
+		write(1, "rrb\n", 4);
+}
+
+void	rrr(t_stack *a, t_stack *b)
+{
+	reverse_a(a, 0);
+	reverse_b(b, 0);
+	write(1, "rrr\n", 4);
 }

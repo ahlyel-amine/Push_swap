@@ -6,39 +6,11 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 21:39:13 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/22 17:02:00 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/23 01:50:32 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/checker.h"
-
-
-void	new_node(t_list **garbg, t_stack *head, long long nbr, int ind)
-{
-	t_lst	*new;
-
-	new = ft_malloc(malloc(sizeof(t_lst)), garbg);
-	new->content = nbr;
-	new->LIS = 1;
-	new->parse_it = 0;
-	if (!(head)->stack)
-	{
-		(head)->stack = new;
-		new->next = new;
-		new->prev = new;
-		(head)->lenght = 1;
-	}
-	else
-	{
-		new->next = (head)->stack;
-		new->prev = (head)->stack->prev;
-		((head)->stack->prev)->next = new;
-		(head)->stack->prev = new;
-		(head)->lenght++;
-		if (ind)
-			(head)->stack = new;
-	}
-}
 
 void	fill_table(int **table, t_stack *a)
 {
@@ -53,22 +25,7 @@ void	fill_table(int **table, t_stack *a)
 	}
 }
 
-
-void	del_node(t_stack *head)
-{
-	if ((head)->stack->next == head->stack)
-	{
-		head->stack = NULL;
-		return ;
-	}
-	((head)->stack->next)->prev = (head)->stack->prev;
-	((head)->stack->prev)->next = (head)->stack->next;
-	(head)->stack = (head)->stack->next;
-	head->lenght--;
-}
-
-
-void	qwick_sort(int **table, int lenght)
+void	qwik_sort(int **table, int lenght)
 {
 	int		tmp;
 	int		i;
@@ -108,48 +65,11 @@ void	checker_check(t_list **garbg, t_stack *a, int *list)
 		a->stack = a->stack->next;
 	}
 }
-
-int main(int ac, char **av)
+void	push_swap(t_list	**garbg, t_list	*instractions, t_stack	*stack)
 {
-	t_list	*garbg;
-	t_list	*instractions;
-	t_stack	*stack;
 	t_stack	*b;
-	int		*table;
-	char	*reader;
 
-	instractions = NULL;
 	b = NULL;
-	garbg = NULL;
-	stack = ft_malloc(malloc(sizeof(t_stack)), &garbg);
-	stack->stack = NULL;
-	reader = get_next_line(STDIN_FILENO);
-	if (ac <= 1)
-		exit(EXIT_SUCCESS);
-	ft_parse(&garbg, stack, ++av, ac - 1);
-	while (reader)
-	{
-		ft_lstadd_back(&instractions, ft_malloc(ft_lstnew(reader), &garbg));
-		reader = get_next_line(STDIN_FILENO);
-	}
-	table = ft_malloc(malloc(stack->lenght * sizeof(int)), &garbg);
-	fill_table(&table, stack);
-	qwick_sort(&table, stack->lenght);
-	// while (instractions)
-	// {
-	// 	printf("%s", instractions->content);
-	// 	instractions = instractions->next;
-	// }
-	if (stack->stack->next == stack->stack && instractions)
-	{
-		write (1, "KO\n", 3);
-		exit(EXIT_SUCCESS);
-	}
-	if (stack->stack->next == stack->stack && !instractions)
-	{
-		write (1, "OK\n", 3);
-		exit(EXIT_SUCCESS);
-	}
 	while (instractions)
 	{
 		if (!ft_strncmp(instractions->content, "ra\n", 3))
@@ -178,6 +98,44 @@ int main(int ac, char **av)
 			break ;
 		instractions = instractions->next;
 	}
+}
+
+int main(int ac, char **av)
+{
+	t_list	*garbg;
+	t_list	*instractions;
+	t_stack	*stack;
+	int		*table;
+	char	*reader;
+
+	garbg = NULL;
+	instractions = NULL;
+	if (ac <= 1)
+		exit(EXIT_SUCCESS);
+	
+	stack = ft_malloc(malloc(sizeof(t_stack)), &garbg);
+	stack->stack = NULL;
+	reader = get_next_line(STDIN_FILENO);
+	ft_parse(&garbg, stack, ++av, ac - 1);
+	while (reader)
+	{
+		ft_lstadd_back(&instractions, ft_malloc(ft_lstnew(reader), &garbg));
+		reader = get_next_line(STDIN_FILENO);
+	}
+	table = ft_malloc(malloc(stack->lenght * sizeof(int)), &garbg);
+	fill_table(&table, stack);
+	qwik_sort(&table, stack->lenght);
+	if (stack->stack->next == stack->stack && instractions)
+	{
+		write (1, "KO\n", 3);
+		exit(EXIT_SUCCESS);
+	}
+	if (stack->stack->next == stack->stack && !instractions)
+	{
+		write (1, "OK\n", 3);
+		exit(EXIT_SUCCESS);
+	}
+	push_swap(&garbg, instractions, stack);
 	checker_check(&garbg, stack, table);
 	write (1, "OK\n", 3);
 	return 0;
