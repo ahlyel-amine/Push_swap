@@ -6,11 +6,11 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:47:23 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/23 16:32:47 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/23 17:38:26 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../checker.h"
+#include "../../headers/push_swap.h"
 
 void	rotate_a(t_stack *a, int ind)
 {

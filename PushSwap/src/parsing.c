@@ -6,11 +6,11 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:53:47 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/23 16:32:14 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/23 17:38:00 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "../headers/push_swap.h"
 
 int	ft_parse(t_list **garbg, t_stack *stack, char **av, int ac)
 {

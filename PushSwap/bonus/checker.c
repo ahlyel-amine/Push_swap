@@ -6,11 +6,11 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 21:39:13 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/23 01:50:32 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/23 16:38:17 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/checker.h"
+#include "checker.h"
 
 void	fill_table(int **table, t_stack *a)
 {
@@ -59,13 +59,15 @@ void	checker_check(t_list **garbg, t_stack *a, int *list)
 		if (a->stack->content != list[i])
 		{
 			write (1, "KO\n", 3);
+			ft_lstclear(garbg, free);
 			exit(EXIT_SUCCESS);
 		}
 		i++;
 		a->stack = a->stack->next;
 	}
 }
-void	push_swap(t_list	**garbg, t_list	*instractions, t_stack	*stack)
+
+void	push_swap(t_list **garbg, t_list *instractions, t_stack *stack)
 {
 	t_stack	*b;
 
@@ -79,9 +81,9 @@ void	push_swap(t_list	**garbg, t_list	*instractions, t_stack	*stack)
 		else if (!ft_strncmp(instractions->content, "rr\n", 3))
 			rr(stack, b);
 		else if (!ft_strncmp(instractions->content, "pa\n", 3))
-			push_a(&garbg, stack, b, 0);
+			push_a(garbg, stack, b, 0);
 		else if (!ft_strncmp(instractions->content, "pb\n", 3))
-			push_b(&garbg, b, stack, 0);
+			push_b(garbg, b, stack, 0);
 		else if (!ft_strncmp(instractions->content, "sa\n", 3))
 			swap_a(stack, 0);
 		else if (!ft_strncmp(instractions->content, "sb\n", 3))
@@ -112,7 +114,7 @@ int main(int ac, char **av)
 	instractions = NULL;
 	if (ac <= 1)
 		exit(EXIT_SUCCESS);
-	
+
 	stack = ft_malloc(malloc(sizeof(t_stack)), &garbg);
 	stack->stack = NULL;
 	reader = get_next_line(STDIN_FILENO);

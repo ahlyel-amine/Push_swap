@@ -6,11 +6,11 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:47:26 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/23 16:32:38 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/23 17:38:19 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../checker.h"
+#include "../../headers/push_swap.h"
 
 void	push_a(t_list **garbg, t_stack *a, t_stack *b, int ind)
 {

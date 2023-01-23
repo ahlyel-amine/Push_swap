@@ -1,7 +1,7 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../libft_tools/libft.h"
+# include "../../libft/libft.h"
 # include <sys/errno.h>
 # include <limits.h>
 # include <stdio.h>

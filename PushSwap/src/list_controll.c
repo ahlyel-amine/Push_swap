@@ -6,11 +6,11 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:48:51 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/23 16:32:11 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/23 17:37:55 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "../headers/push_swap.h"
 
 void	new_node(t_list **garbg, t_stack *head, long long nbr, int ind)
 {
@@ -36,6 +36,18 @@ void	new_node(t_list **garbg, t_stack *head, long long nbr, int ind)
 		(head)->lenght++;
 		if (ind)
 			(head)->stack = new;
+	}
+}
+
+void	ft_lstdup(t_list **garbg, t_stack *fake, t_stack *head)
+{
+	int	i;
+
+	i = 0;
+	while (i++ < head->lenght)
+	{
+		new_node(garbg, fake, (head)->stack->content, 0);
+		(head)->stack = (head)->stack->next;
 	}
 }
 

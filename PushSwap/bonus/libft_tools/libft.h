@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:24:21 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/22 23:52:53 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/23 16:35:56 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	ft_bzero(void *s, size_t n);
 int		ft_isdigit(int c);
 size_t	ft_strlen(const char *s);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strdup(const char *s1);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
 void	ft_putendl_fd(char *s, int fd);

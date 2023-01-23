@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 20:57:59 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/20 16:38:58 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/22 22:14:38 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	ft_sort(t_list **garbg, t_lst **stack_a)
 	{
 		fake = NULL;
 		ft_lstdup(garbg, &fake, stack_a);
-		qwick_sort(&fake);
+		qwik_sort(&fake);
 		fk->fake_bg = fake;
 		fk->fake_sm = fake;
 		fk->bg = (*stack_a)->lenght.stack_len / 8;

@@ -131,7 +131,7 @@ void	ft_sort(t_list **garbg, t_lst **stack_a);
 
 /// @brief
 /// @param fake
-void	qwick_sort(t_lst **fake);
+void	qwik_sort(t_lst **fake);
 
 t_len		ft_lis_controll(t_lst **stack_a, t_lst **stack_b, int ac); // V
 void		get_lis(t_lst *list); // V

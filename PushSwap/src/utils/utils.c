@@ -6,15 +6,15 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 23:31:53 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/23 16:32:17 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/23 17:38:10 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "../../headers/push_swap.h"
 
 void	ft_exit(char *error_msg, t_list **garbg, int status)
 {
-	if (garbg)
+	if (*garbg)
 		ft_lstclear(garbg, free);
 	if (status)
 		exit(EXIT_SUCCESS);
@@ -67,6 +67,20 @@ void	check_min_max(t_list **garbg, long long nbr)
 {
 	if (nbr > INT_MAX || nbr < INT_MIN)
 		ft_exit("Syntax error", garbg, 0);
+}
+
+int	min(int nbr1, int nbr2)
+{
+	if (nbr1 < nbr2)
+		return (nbr1);
+	return (nbr2);
+}
+
+int	max(int nbr1, int nbr2)
+{
+	if (nbr1 > nbr2)
+		return (nbr1);
+	return (nbr2);
 }
 
 int	ft_issign(char c)
