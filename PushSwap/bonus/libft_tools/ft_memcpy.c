@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aahlyel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/21 21:42:46 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/23 02:53:31 by aahlyel          ###   ########.fr       */
+/*   Created: 2022/10/08 09:26:56 by aahlyel           #+#    #+#             */
+/*   Updated: 2022/10/28 04:28:05 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#include "libft.h"
 
-# include "get_next_line/get_next_line.h"
-# include "libft_tools/libft.h"
-# endif
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	size_t	i;
+
+	i = -1;
+	if (dst == src || !n)
+		return (dst);
+	while (++i < n)
+		*((unsigned char *)(dst + i)) = *((unsigned char *)(src + i));
+	return (dst);
+}

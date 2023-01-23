@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aahlyel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/21 21:42:46 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/23 02:53:31 by aahlyel          ###   ########.fr       */
+/*   Created: 2022/10/07 18:56:23 by aahlyel           #+#    #+#             */
+/*   Updated: 2022/10/25 22:51:17 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#include "libft.h"
 
-# include "get_next_line/get_next_line.h"
-# include "libft_tools/libft.h"
-# endif
+void	*ft_memset(void *b, int c, size_t len)
+{
+	while (len)
+		*(unsigned char *)(b + --len) = (unsigned char)c;
+	return (b);
+}
