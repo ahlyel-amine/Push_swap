@@ -13,17 +13,57 @@ HWHT = '\e[1;97m'
 NC   = '\e[0m'
 
 #------------------------------------------
-#	Variables
+#		Bonus Variables
 #------------------------------------------
-CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+BONUS_SRC =	checker.c\
+			list_controll.c\
+			parsing.c\
 
-RM = rm -rf
+BONUS_UTILS =	utils.c\
+				ft_split_garbg.c
 
-SRC = push_swap.c\
-	list_controll.c\
-	parsing.c\
+
+BONUS_SORT_FUN =	reverse_functions.c\
+					swap_functions.c\
+					push_functions.c\
+					rotate_functions.c
+
+GNL = lib/get_next_line
+
+GNLA = lib/get_next_line/bin/get_next_line.a
+
+BONUS = bonus/bin/checker
+
+bonus_dir = bonus/bin bonus/obj
+
+BONUS_INCLUDE = bonus/include/checker.h
+
+#------------------------------------------
+#	Adding path to bonus src functions
+#------------------------------------------
+
+BONUS_SRC_PATH = $(addprefix bonus/src/, $(BONUS_SRC))
+BONUS_UTILS_PATH = $(addprefix bonus/src/utils/, $(BONUS_UTILS))
+BONUS_SORT_FUN_PATH = $(addprefix bonus/src/sort_functions/, $(BONUS_SORT_FUN))
+
+BONUS_SRCS = ${BONUS_SRC_PATH} ${BONUS_UTILS_PATH} ${BONUS_SORT_FUN_PATH}
+
+#------------------------------------------
+#	Substitution of bonus objs
+#------------------------------------------
+
+BONUS_OBJS_O = ${BONUS_SRC:.c=.o} ${BONUS_UTILS:.c=.o} ${BONUS_SORT_FUN:.c=.o}
+BONUS_OBJS = $(addprefix bonus/obj/, $(BONUS_OBJS_O))
+
+
+#------------------------------------------
+#	Mandatory Variables
+#------------------------------------------
+
+SRC =	push_swap.c\
+		list_controll.c\
+		parsing.c\
 
 UTILS = utils.c\
 		ft_split_garbg.c
@@ -40,12 +80,8 @@ SORT_FUN = reverse_functions.c\
 
 NAME = bin/push_swap
 
-BONUS = bin/checker
-
-LIBFT = ../libft/libft.a
-
 #------------------------------------------
-#	Adding path to src functions
+#	Adding path to mandatory src functions
 #------------------------------------------
 SRC_PATH = $(addprefix src/, $(SRC))
 UTILS_PATH = $(addprefix src/utils/, $(UTILS))
@@ -55,11 +91,27 @@ SORT_FUN_PATH = $(addprefix src/sort_functions/, $(SORT_FUN))
 SRCS = ${SRC_PATH} ${UTILS_PATH} ${CTRL_FUN_PATH} ${SORT_FUN_PATH}
 
 #------------------------------------------
-#	Substitution of the text
+#	Substitution of mandatory objs
 #------------------------------------------
 
-OBJS_a = ${SRC:.c=.o} ${UTILS:.c=.o} ${CTRL_FUN:.c=.o} ${SORT_FUN:.c=.o}
-OBJS = $(addprefix obj/, $(OBJS_a))
+OBJS_O = ${SRC:.c=.o} ${UTILS:.c=.o} ${CTRL_FUN:.c=.o} ${SORT_FUN:.c=.o}
+OBJS = $(addprefix obj/, $(OBJS_O))
+
+#------------------------------------------
+#	tools Variables
+#------------------------------------------
+
+CC = cc
+
+CFLAGS = -Wall -Wextra -Werror
+
+RM = rm -rf
+
+dir = bin obj
+
+LIBA = lib/libft/bin/libft.a
+LIBFT = lib/libft
+INCLUDE = include/push_swap.h
 
 #------------------------------------------
 #	Executable
@@ -67,51 +119,74 @@ OBJS = $(addprefix obj/, $(OBJS_a))
 
 all : $(NAME)
 
-${NAME} : dir $(OBJS)
-	make -C ../libft
-	${CC} ${CFLAGS} ${LIBFT} ${OBJS} -o ${NAME}
+${NAME} : ${dir} $(OBJS)
+	make -C ${LIBFT}
+	@ ${CC} ${CFLAGS} ${LIBA} ${OBJS} -o ${NAME}
 	@printf ${HGRN}"Executable $(NAME) ready ✔️"$(NC)
 
-obj/%.o : src/%.c headers/push_swap.h
+obj/%.o : src/%.c ${INCLUDE}
 	@printf ${HBLU}"[%-30s] 🕝 \r"$(NC) "Compiling $(notdir $@)"
 	@ ${CC} ${CFLAGS} -c $< -o $@
 
-obj/%.o : src/sort_functions/%.c headers/push_swap.h
+obj/%.o : src/sort_functions/%.c ${INCLUDE}
 	@printf ${HBLU}"[%-30s] 🕝 \r"$(NC) "Compiling $(notdir $@)"
 	@ ${CC} ${CFLAGS} -c $< -o $@
 
-obj/%.o : src/sort_controll/%.c headers/push_swap.h
+obj/%.o : src/utils/%.c ${INCLUDE}
 	@printf ${HBLU}"[%-30s] 🕝 \r"$(NC) "Compiling $(notdir $@)"
 	@ ${CC} ${CFLAGS} -c $< -o $@
 
-obj/%.o : src/utils/%.c headers/push_swap.h
+obj/%.o : src/sort_controll/%.c ${INCLUDE}
 	@printf ${HBLU}"[%-30s] 🕝 \r"$(NC) "Compiling $(notdir $@)"
 	@ ${CC} ${CFLAGS} -c $< -o $@
 
-# bonus : ${BONUS}
+${dir} :
+	@mkdir -p ${dir}
 
-# ${BONUS} : ${BONUS_HEADER}
-# 	${CC} ${CFLAGS} -o $(BONUS) ${BONUS_SRC}
-# # @printf "\n\b${FBrown/Orange}Compiling bonus part \xF0\x9F\x95\x9D \n$(RESET)"
-# # @printf "\b${FGreen}Executable $(BONUS) ready $(TICK)\n$(RESET)"
+#---------------------------------------------------#
+#						Bonus						#
+#---------------------------------------------------#
 
-dir :
-	@mkdir -p obj bin
+bonus :${BONUS}
+
+${BONUS} : ${bonus_dir} ${BONUS_OBJS}
+	@make -C ${LIBFT}
+	@make -C ${GNL}
+	${CC} ${CFLAGS} ${BONUS_OBJS} ${LIBA} ${GNLA} -o ${BONUS}
+	@printf ${HGRN}"Executable $(BONUS) ready ✔️"$(NC)
+
+bonus/obj/%.o : bonus/src/%.c ${BONUS_INCLUDE}
+	@printf ${HBLU}"[%-30s] 🕝 \r"$(NC) "Compiling $(notdir $@)"
+	@ ${CC} ${CFLAGS} -c $< -o $@
+
+bonus/obj/%.o : bonus/src/sort_functions/%.c ${BONUS_INCLUDE}
+	@printf ${HBLU}"[%-30s] 🕝 \r"$(NC) "Compiling $(notdir $@)"
+	@ ${CC} ${CFLAGS} -c $< -o $@
+
+bonus/obj/%.o : bonus/src/utils/%.c ${BONUS_INCLUDE}
+	@printf ${HBLU}"[%-30s] 🕝 \r"$(NC) "Compiling $(notdir $@)"
+	@ ${CC} ${CFLAGS} -c $< -o $@
+
+${bonus_dir} :
+	@mkdir -p ${bonus_dir}
 
 #-----------------------------------------------#
 #					Cleaning					#
 #-----------------------------------------------#
 
 clean :
-	${RM} obj
+	make clean -C ${LIBFT}
+	make clean -C ${GNL}
+	${RM} obj bonus/obj
 	@printf ${HRED}"Object files removed successfully 🗑️ \n"$(NC)
 
 fclean : clean
-	make fclean -C ../libft
-	${RM} bin
-	@printf ${HRED}"Executable $(NAME) removed 🗑️\n"$(NC)
+	make fclean -C ${LIBFT}
+	make fclean -C ${GNL}
+	${RM} bin bonus/bin
+	@printf ${HRED}"Executables and Archives removed successfully 🗑️\n"$(NC)
 
 re : fclean all
 
 .PHONY : fclean clean re bonus
-.SILENT : clean fclean re all $(NAME)
+.SILENT : clean fclean re all $(NAME) bonus ${BONUS}

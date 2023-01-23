@@ -6,11 +6,11 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 23:41:55 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/19 21:39:42 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/23 20:40:17 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers/push_swap.h"
+#include "include/push_swap.h"
 
 int main(int ac, char **av)
 {

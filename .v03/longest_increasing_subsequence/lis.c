@@ -6,11 +6,11 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 11:56:52 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/18 21:10:33 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/23 20:40:17 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/push_swap.h"
+#include "../include/push_swap.h"
 
 // LIS <=> Longest Increasing Subsequence
 

@@ -6,11 +6,11 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 10:04:52 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/22 20:46:56 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/23 20:31:22 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 void	ft_lstclear(t_list **lst, void (*del)(void*))
 {

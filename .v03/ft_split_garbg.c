@@ -6,11 +6,11 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 18:55:09 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/18 21:07:07 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/23 20:40:17 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers/push_swap.h"
+#include "include/push_swap.h"
 
 static int	word_count(char *s, char c);
 static void	alloc_fill_strs(char **splited, char *s, char c, int wc, t_list **garbg);

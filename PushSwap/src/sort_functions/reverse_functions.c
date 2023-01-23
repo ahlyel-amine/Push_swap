@@ -6,11 +6,11 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:53:03 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/23 17:38:23 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/23 20:40:17 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../headers/push_swap.h"
+#include "../../include/push_swap.h"
 
 void	reverse_a(t_stack *a, int ind)
 {

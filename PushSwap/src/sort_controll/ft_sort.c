@@ -6,11 +6,11 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 20:57:59 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/23 17:38:39 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/23 22:26:40 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../headers/push_swap.h"
+#include "../../include/push_swap.h"
 
 void	ft_sort(t_list **garbg, t_stack *a)
 {

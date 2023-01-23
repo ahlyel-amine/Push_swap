@@ -6,11 +6,11 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:53:47 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/23 17:38:00 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/23 21:21:13 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/push_swap.h"
+#include "../include/push_swap.h"
 
 int	ft_parse(t_list **garbg, t_stack *stack, char **av, int ac)
 {
@@ -47,7 +47,7 @@ void	ft_check_dup(t_list **garbg, t_stack *stack)
 		while (j++ < stack->lenght)
 		{
 			if (tmp->content == stack->stack->content)
-				ft_exit("Error number duplicates", garbg, 0);
+				ft_exit("Error", garbg, 0);
 			tmp = tmp->next;
 		}
 		stack->stack = stack->stack->next;
