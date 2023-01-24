@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 18:42:58 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/23 22:32:10 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/24 02:04:00 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ void	low_sort(t_list **garbg, t_stack *a, t_stack *b)
 	long long	min;
 
 	if (a->lenght == 2)
-		// if (a->stack->content > a->stack->next->content)
-			swap_a(a, 1);
+		swap_a(a, 1);
 	else if (a->lenght == 3)
 		sort_3digits(a);
 	else

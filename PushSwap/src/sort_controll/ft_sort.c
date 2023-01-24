@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 20:57:59 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/23 22:26:40 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/24 02:06:41 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	ft_sort(t_list **garbg, t_stack *a)
 	t_stack	*b;
 
 	b = NULL;
-
 	sort_check(garbg, a);
 	if (a->lenght > 5)
 		big_sort(garbg, a);

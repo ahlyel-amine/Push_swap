@@ -6,29 +6,24 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:53:03 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/23 20:19:07 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/24 00:36:27 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/checker.h"
 
-void	reverse_a(t_stack *a, int ind)
+void	reverse_a(t_stack *a)
 {
 	a->stack = a->stack->prev;
-	if (ind)
-		write(1, "rra\n", 4);
 }
 
-void	reverse_b(t_stack *b, int ind)
+void	reverse_b(t_stack *b)
 {
 	b->stack = b->stack->prev;
-	if (ind)
-		write(1, "rrb\n", 4);
 }
 
 void	rrr(t_stack *a, t_stack *b)
 {
-	reverse_a(a, 0);
-	reverse_b(b, 0);
-	write(1, "rrr\n", 4);
+	reverse_a(a);
+	reverse_b(b);
 }

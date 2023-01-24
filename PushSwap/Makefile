@@ -18,6 +18,7 @@ NC   = '\e[0m'
 
 BONUS_SRC =	checker.c\
 			list_controll.c\
+			sort_tools.c\
 			parsing.c\
 
 BONUS_UTILS =	utils.c\
@@ -80,6 +81,8 @@ SORT_FUN = reverse_functions.c\
 
 NAME = bin/push_swap
 
+dir = bin obj
+
 #------------------------------------------
 #	Adding path to mandatory src functions
 #------------------------------------------
@@ -107,8 +110,6 @@ CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -rf
 
-dir = bin obj
-
 LIBA = lib/libft/bin/libft.a
 LIBFT = lib/libft
 INCLUDE = include/push_swap.h
@@ -121,8 +122,8 @@ all : $(NAME)
 
 ${NAME} : ${dir} $(OBJS)
 	make -C ${LIBFT}
-	@ ${CC} ${CFLAGS} ${LIBA} ${OBJS} -o ${NAME}
-	@printf ${HGRN}"Executable $(NAME) ready ✔️"$(NC)
+	${CC} ${CFLAGS} ${LIBA} ${OBJS} -o ${NAME}
+	printf ${HGRN}"Executable $(NAME) ready ✔️"$(NC)
 
 obj/%.o : src/%.c ${INCLUDE}
 	@printf ${HBLU}"[%-30s] 🕝 \r"$(NC) "Compiling $(notdir $@)"
@@ -141,7 +142,7 @@ obj/%.o : src/sort_controll/%.c ${INCLUDE}
 	@ ${CC} ${CFLAGS} -c $< -o $@
 
 ${dir} :
-	@mkdir -p ${dir}
+	mkdir -p ${dir}
 
 #---------------------------------------------------#
 #						Bonus						#
@@ -150,10 +151,10 @@ ${dir} :
 bonus :${BONUS}
 
 ${BONUS} : ${bonus_dir} ${BONUS_OBJS}
-	@make -C ${LIBFT}
-	@make -C ${GNL}
-	${CC} ${CFLAGS} ${BONUS_OBJS} ${LIBA} ${GNLA} -o ${BONUS}
-	@printf ${HGRN}"Executable $(BONUS) ready ✔️"$(NC)
+	make -C ${LIBFT}
+	make -C ${GNL}
+	${CC} ${CFLAGS} -fsanitize=address ${BONUS_OBJS} ${LIBA} ${GNLA} -o ${BONUS}
+	printf ${HGRN}"Executable $(BONUS) ready ✔️"$(NC)
 
 bonus/obj/%.o : bonus/src/%.c ${BONUS_INCLUDE}
 	@printf ${HBLU}"[%-30s] 🕝 \r"$(NC) "Compiling $(notdir $@)"
@@ -168,7 +169,7 @@ bonus/obj/%.o : bonus/src/utils/%.c ${BONUS_INCLUDE}
 	@ ${CC} ${CFLAGS} -c $< -o $@
 
 ${bonus_dir} :
-	@mkdir -p ${bonus_dir}
+	mkdir -p ${bonus_dir}
 
 #-----------------------------------------------#
 #					Cleaning					#
@@ -178,15 +179,15 @@ clean :
 	make clean -C ${LIBFT}
 	make clean -C ${GNL}
 	${RM} obj bonus/obj
-	@printf ${HRED}"Object files removed successfully 🗑️ \n"$(NC)
+	printf ${HRED}"Object files removed successfully 🗑️ \n"$(NC)
 
 fclean : clean
 	make fclean -C ${LIBFT}
 	make fclean -C ${GNL}
 	${RM} bin bonus/bin
-	@printf ${HRED}"Executables and Archives removed successfully 🗑️\n"$(NC)
+	printf ${HRED}"Executables and Archives removed successfully 🗑️\n"$(NC)
 
 re : fclean all
 
 .PHONY : fclean clean re bonus
-.SILENT : clean fclean re all $(NAME) bonus ${BONUS}
+.SILENT : clean fclean re all $(NAME) bonus ${BONUS} ${bonus_dir} ${dir}
