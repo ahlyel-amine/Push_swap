@@ -6,13 +6,13 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 20:58:01 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/23 20:40:17 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/24 05:21:49 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-void	sort_help(t_fakelst *fake, t_stack *a,  t_stack *b, t_list **garbg)
+void	sort_help(t_fakelst *fake, t_stack *a, t_stack *b, t_list **garbg)
 {
 	if (a->stack->content <= fake->sm)
 		push_b(garbg, b, a, 1);
@@ -28,14 +28,14 @@ void	sort_help(t_fakelst *fake, t_stack *a,  t_stack *b, t_list **garbg)
 
 void	fill_stack_a(t_list **garbg, t_stack *a, t_stack *b)
 {
-	int	i;
-	int	max_pos;
+	int			i;
+	int			max_pos;
 	long long	max;
 
 	i = 0;
 	while (b && b->lenght > 1)
 	{
-		max_pos = check_listmax(b , &max);
+		max_pos = check_listmax(b, &max);
 		if (max_pos <= b->lenght / 2)
 			while (max != b->stack->content)
 				rotate_b(b, 1);
@@ -78,7 +78,7 @@ void	big_sort(t_list **garbg, t_stack *a)
 		fill_table(&table, a);
 		qwik_sort(&table, a->lenght);
 		fake->bg = table[a->lenght / 8];
-		fake->sm =  table[(a->lenght / 9) / 2];
+		fake->sm = table[(a->lenght / 9) / 2];
 		sort_help(fake, a, b, garbg);
 	}
 	fill_stack_a(garbg, a, b);

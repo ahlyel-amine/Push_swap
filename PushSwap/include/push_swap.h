@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 21:05:34 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/23 22:45:57 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/24 05:24:47 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ typedef struct s_fakelst
 	long long		bg;
 	long long		sm;
 }	t_fakelst;
-
-void														print_stack(t_stack *tmp, t_stack *tmp1); // for testiiiiiiing
 
 /// @brief
 /// @param garbg

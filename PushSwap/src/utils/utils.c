@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 23:31:53 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/23 21:21:30 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/24 05:20:26 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ long long	ft_atolld(t_list **garbg, char *str)
 
 	sign = 1;
 	res = 0;
-
 	if (ft_issign(*str))
 		if (*((str)++) == '-')
 			sign = -1;
@@ -67,20 +66,6 @@ void	check_min_max(t_list **garbg, long long nbr)
 {
 	if (nbr > INT_MAX || nbr < INT_MIN)
 		ft_exit("Error", garbg, 0);
-}
-
-int	min(int nbr1, int nbr2)
-{
-	if (nbr1 < nbr2)
-		return (nbr1);
-	return (nbr2);
-}
-
-int	max(int nbr1, int nbr2)
-{
-	if (nbr1 > nbr2)
-		return (nbr1);
-	return (nbr2);
 }
 
 int	ft_issign(char c)

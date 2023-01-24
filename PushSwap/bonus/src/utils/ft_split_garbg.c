@@ -6,25 +6,27 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 18:55:09 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/24 04:22:18 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/24 05:28:16 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/checker.h"
 
 static int	word_count(char *s, char c);
-// i change it ;p
+
 char	**ft_split_garbg(char const *s, char c, t_list **garbg)
 {
 	char	**splited;
 	int		wc;
-	int	tmp_count;
+	int		i;
+	int		tmp_count;
 
 	if (!s)
 		return (NULL);
+	i = 0;
 	wc = word_count((char *)s, c);
 	splited = ft_malloc(malloc((wc + 1) * sizeof(char *)), garbg);
-	while (wc--)
+	while (i < wc)
 	{
 		tmp_count = 0;
 		while (*s == c)
@@ -33,11 +35,11 @@ char	**ft_split_garbg(char const *s, char c, t_list **garbg)
 			tmp_count++;
 		if (!tmp_count)
 			break ;
-		*splited = ft_malloc(ft_substr(s, 0, tmp_count), garbg);
+		splited[i] = ft_malloc(ft_substr(s, 0, tmp_count), garbg);
 		s += tmp_count;
-		splited++;
+		i++;
 	}
-	*splited = NULL;
+	splited[i] = NULL;
 	return (splited);
 }
 

@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 23:31:53 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/24 00:36:03 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/24 05:48:13 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ long long	ft_atolld(t_list **garbg, char *str)
 
 	sign = 1;
 	res = 0;
-
 	if (ft_issign(*str))
 		if (*((str)++) == '-')
 			sign = -1;

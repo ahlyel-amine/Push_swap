@@ -1,20 +1,15 @@
-#------------------------------------------
-#	Colors
-#------------------------------------------
+#-------------------------------------------#
+#					Colors					#
+#-------------------------------------------#
 
-HBLK = '\e[1;90m'
 HRED = '\e[1;91m'
 HGRN = '\e[1;92m'
-HYEL = '\e[1;93m'
 HBLU = '\e[1;94m'
-HMAG = '\e[1;95m'
-HCYN = '\e[1;96m'
-HWHT = '\e[1;97m'
 NC   = '\e[0m'
 
-#------------------------------------------
-#		Bonus Variables
-#------------------------------------------
+#-----------------------------------------------#
+#				Bonus Variables					#
+#-----------------------------------------------#
 
 BONUS_SRC =	checker.c\
 			list_controll.c\
@@ -22,6 +17,7 @@ BONUS_SRC =	checker.c\
 			parsing.c\
 
 BONUS_UTILS =	utils.c\
+				push_swap.c\
 				ft_split_garbg.c
 
 
@@ -30,9 +26,12 @@ BONUS_SORT_FUN =	reverse_functions.c\
 					push_functions.c\
 					rotate_functions.c
 
-GNL = lib/get_next_line
+BONUS_LIBA = bonus/lib/libft/bin/libft.a
+BONUS_LIBFT = bonus/lib/libft
 
-GNLA = lib/get_next_line/bin/get_next_line.a
+GNL = bonus/lib/get_next_line
+
+GNLA = bonus/lib/get_next_line/bin/get_next_line.a
 
 BONUS = bonus/bin/checker
 
@@ -40,27 +39,16 @@ bonus_dir = bonus/bin bonus/obj
 
 BONUS_INCLUDE = bonus/include/checker.h
 
-#------------------------------------------
-#	Adding path to bonus src functions
-#------------------------------------------
+#-----------------------------------------------#
+#			Substitution of bonus objs			#
+#-----------------------------------------------#
 
-BONUS_SRC_PATH = $(addprefix bonus/src/, $(BONUS_SRC))
-BONUS_UTILS_PATH = $(addprefix bonus/src/utils/, $(BONUS_UTILS))
-BONUS_SORT_FUN_PATH = $(addprefix bonus/src/sort_functions/, $(BONUS_SORT_FUN))
+BONUS_OBJS_TO_O = ${BONUS_SRC:.c=.o} ${BONUS_UTILS:.c=.o} ${BONUS_SORT_FUN:.c=.o}
+BONUS_OBJS = $(addprefix bonus/obj/, $(BONUS_OBJS_TO_O))
 
-BONUS_SRCS = ${BONUS_SRC_PATH} ${BONUS_UTILS_PATH} ${BONUS_SORT_FUN_PATH}
-
-#------------------------------------------
-#	Substitution of bonus objs
-#------------------------------------------
-
-BONUS_OBJS_O = ${BONUS_SRC:.c=.o} ${BONUS_UTILS:.c=.o} ${BONUS_SORT_FUN:.c=.o}
-BONUS_OBJS = $(addprefix bonus/obj/, $(BONUS_OBJS_O))
-
-
-#------------------------------------------
-#	Mandatory Variables
-#------------------------------------------
+#-------------------------------------------#
+#			Mandatory Variables				#
+#-------------------------------------------#
 
 SRC =	push_swap.c\
 		list_controll.c\
@@ -79,30 +67,23 @@ SORT_FUN = reverse_functions.c\
 			push_functions.c\
 			rotate_functions.c
 
+LIBA = lib/libft/bin/libft.a
+LIBFT = lib/libft
+
 NAME = bin/push_swap
 
 dir = bin obj
 
-#------------------------------------------
-#	Adding path to mandatory src functions
-#------------------------------------------
-SRC_PATH = $(addprefix src/, $(SRC))
-UTILS_PATH = $(addprefix src/utils/, $(UTILS))
-CTRL_FUN_PATH = $(addprefix src/sort_controll/, $(CTRL_FUN))
-SORT_FUN_PATH = $(addprefix src/sort_functions/, $(SORT_FUN))
+#-------------------------------------------#
+#		Substitution of mandatory objs		#
+#-------------------------------------------#
 
-SRCS = ${SRC_PATH} ${UTILS_PATH} ${CTRL_FUN_PATH} ${SORT_FUN_PATH}
+OBJS_TO_O = ${SRC:.c=.o} ${UTILS:.c=.o} ${CTRL_FUN:.c=.o} ${SORT_FUN:.c=.o}
+OBJS = $(addprefix obj/, $(OBJS_TO_O))
 
-#------------------------------------------
-#	Substitution of mandatory objs
-#------------------------------------------
-
-OBJS_O = ${SRC:.c=.o} ${UTILS:.c=.o} ${CTRL_FUN:.c=.o} ${SORT_FUN:.c=.o}
-OBJS = $(addprefix obj/, $(OBJS_O))
-
-#------------------------------------------
-#	tools Variables
-#------------------------------------------
+#-----------------------------------------------#
+#				tools Variables					#
+#-----------------------------------------------#
 
 CC = cc
 
@@ -110,13 +91,11 @@ CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -rf
 
-LIBA = lib/libft/bin/libft.a
-LIBFT = lib/libft
 INCLUDE = include/push_swap.h
 
-#------------------------------------------
-#	Executable
-#------------------------------------------
+#---------------------------------------#
+#				Executable				#
+#---------------------------------------#
 
 all : $(NAME)
 
@@ -151,9 +130,9 @@ ${dir} :
 bonus :${BONUS}
 
 ${BONUS} : ${bonus_dir} ${BONUS_OBJS}
-	make -C ${LIBFT}
+	make -C ${BONUS_LIBFT}
 	make -C ${GNL}
-	${CC} ${CFLAGS} -fsanitize=address ${BONUS_OBJS} ${LIBA} ${GNLA} -o ${BONUS}
+	${CC} ${CFLAGS} -fsanitize=address ${BONUS_OBJS} ${BONUS_LIBA} ${GNLA} -o ${BONUS}
 	printf ${HGRN}"Executable $(BONUS) ready ✔️"$(NC)
 
 bonus/obj/%.o : bonus/src/%.c ${BONUS_INCLUDE}
@@ -177,12 +156,14 @@ ${bonus_dir} :
 
 clean :
 	make clean -C ${LIBFT}
+	make clean -C ${BONUS_LIBFT}
 	make clean -C ${GNL}
 	${RM} obj bonus/obj
 	printf ${HRED}"Object files removed successfully 🗑️ \n"$(NC)
 
 fclean : clean
 	make fclean -C ${LIBFT}
+	make fclean -C ${BONUS_LIBFT}
 	make fclean -C ${GNL}
 	${RM} bin bonus/bin
 	printf ${HRED}"Executables and Archives removed successfully 🗑️\n"$(NC)

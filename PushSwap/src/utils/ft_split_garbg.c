@@ -6,33 +6,27 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 18:55:09 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/23 20:40:17 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/24 05:20:42 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
 static int	word_count(char *s, char c);
-static void	alloc_fill_strs(char **splited, char *s, char c, int wc, t_list **garbg);
 
 char	**ft_split_garbg(char const *s, char c, t_list **garbg)
 {
 	char	**splited;
 	int		wc;
+	int		i;
+	int		tmp_count;
 
 	if (!s)
 		return (NULL);
+	i = 0;
 	wc = word_count((char *)s, c);
 	splited = ft_malloc(malloc((wc + 1) * sizeof(char *)), garbg);
-	alloc_fill_strs(splited, (char *)s, c, wc, garbg);
-	return (splited);
-}
-
-static void	alloc_fill_strs(char **splited, char *s, char c, int wc, t_list **garbg)
-{
-	int	tmp_count;
-
-	while (wc--)
+	while (i < wc)
 	{
 		tmp_count = 0;
 		while (*s == c)
@@ -41,11 +35,12 @@ static void	alloc_fill_strs(char **splited, char *s, char c, int wc, t_list **ga
 			tmp_count++;
 		if (!tmp_count)
 			break ;
-		*splited = ft_malloc(ft_substr(s, 0, tmp_count), garbg);
+		splited[i] = ft_malloc(ft_substr(s, 0, tmp_count), garbg);
 		s += tmp_count;
-		splited++;
+		i++;
 	}
-	*splited = NULL;
+	splited[i] = NULL;
+	return (splited);
 }
 
 static int	word_count(char *s, char c)
