@@ -6,38 +6,11 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 21:20:06 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/23 20:40:17 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/24 16:08:15 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
-
-// void	qwik_sort(t_stack *fake)
-// {
-// 	t_lst		*n_fake;
-// 	long long	tmp;
-// 	int			i;
-// 	int			j;
-
-// 	i = 0;
-// 	while (i < fake->lenght)
-// 	{
-// 		j = i + 1;
-// 		n_fake = fake->stack->next;
-// 		while (j++ < fake->lenght)
-// 		{
-// 			if (n_fake->content < fake->stack->content)
-// 			{
-// 				tmp = n_fake->content;
-// 				n_fake->content = fake->stack->content;
-// 				fake->stack->content = tmp;
-// 			}
-// 			n_fake = n_fake->next;
-// 		}
-// 		fake->stack = fake->stack->next;
-// 		i++;
-// 	}
-// }
 
 void	qwik_sort(int **table, int lenght)
 {

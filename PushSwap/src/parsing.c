@@ -6,13 +6,13 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:53:47 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/24 05:19:12 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/24 15:42:12 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	ft_parse(t_list **garbg, t_stack *stack, char **av, int ac)
+void	ft_parse(t_list **garbg, t_stack *stack, char **av, int ac)
 {
 	char	**tmp;
 	int		i;
@@ -28,7 +28,6 @@ int	ft_parse(t_list **garbg, t_stack *stack, char **av, int ac)
 			new_node(garbg, stack, ft_atolld(garbg, tmp[j]), 0);
 	}
 	ft_check_dup(garbg, stack);
-	return (0);
 }
 
 void	ft_check_dup(t_list **garbg, t_stack *stack)
