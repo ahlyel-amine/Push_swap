@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 21:42:46 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/24 05:50:46 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/24 16:43:45 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 typedef struct s_lst
 {
 	long long		content;
-	long long		parse_it;
 	struct s_lst	*next;
 	struct s_lst	*prev;
 }	t_lst;
@@ -33,7 +32,7 @@ typedef struct s_stack
 }	t_stack;
 
 void		push_swap(t_list **garbg, t_list *instractions, t_stack *stack);
-int			compare_stacks(t_list **garbg, t_stack *a, int *list, int ind);
+void		compare_stacks(t_list **garbg, t_stack *a, int *list);
 void		ft_sort_args(t_list **garbg, t_stack *stack, int **table);
 int			sort_functions(t_list **garbg, \
 void *content, t_stack *a, t_stack *b);

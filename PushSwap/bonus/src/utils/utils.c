@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 23:31:53 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/24 05:48:13 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/24 16:39:26 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,10 @@ void	ft_exit(char *error_msg, t_list **garbg, int status, int ok)
 		write (1, "OK\n", 3);
 	else if (ok == 2)
 		write (1, "KO\n", 3);
-	if (garbg)
-		ft_lstclear(garbg, free);
+	ft_lstclear(garbg, free);
 	if (status)
 		exit(EXIT_SUCCESS);
-	if (errno)
-		perror(error_msg);
-	else
-		ft_putendl_fd(error_msg, STDERR_FILENO);
+	ft_putendl_fd(error_msg, STDERR_FILENO);
 	exit(EXIT_FAILURE);
 }
 

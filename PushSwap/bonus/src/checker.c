@@ -6,7 +6,7 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 21:39:13 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/24 05:25:34 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/24 16:44:02 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ int	main(int ac, char **av)
 	if (stack->stack->next == stack->stack)
 		ft_exit(NULL, &garbg, 1, 1);
 	push_swap(&garbg, instractions, stack);
-	compare_stacks(&garbg, stack, table, 1);
+	compare_stacks(&garbg, stack, table);
 	return (0);
 }
