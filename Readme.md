@@ -45,6 +45,14 @@ $> bin/push_swap <random numbers>
 ~~~
 replace the place holder \<numbers> with random numbers so the program displays needed instructions to sort this numbers like a stack using the help of another stack otherwise "Error" if their are any duplictae or no numeric caracters
 
+You can check if instractions are right by using the 42 checker like :
+
+~~~
+$> ARG="<random numbers>"; bin/push_swap $ARG | <checker> $ARG
+~~~
+
+replace the place holder with "42checkers/checker_Mac" if you have a MACOS OS or by "42checkers/checker_linux" if you have a linux OS
+
 <h3>bonus part</h3>
 
 open a terminal window in the project directory
