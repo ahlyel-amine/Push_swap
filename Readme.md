@@ -77,3 +77,7 @@ to delete object files and executable files
 ~~~
 $> make fclean
 ~~~
+
+<h1>Final Mark</h1>
+
+![Alt text](final_mark.png?raw=true "Final Mark")
