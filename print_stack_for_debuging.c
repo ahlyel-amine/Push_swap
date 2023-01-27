@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_controller.c                                 :+:      :+:    :+:   */
+/*   print_stack_for_debuging.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/02 11:50:24 by aahlyel           #+#    #+#             */
-/*   Updated: 2022/12/23 01:34:14 by aahlyel          ###   ########.fr       */
+/*   Created: 2023/01/23 22:45:01 by aahlyel           #+#    #+#             */
+/*   Updated: 2023/01/27 16:22:00 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "include/push_swap.h"
 
-void    print_stack(t_lst *tmp, t_lst *tmp1)
+void    print_stack(t_stack *tmp, t_stack *tmp1)
 {
 	int		i;
 	int		j;
@@ -20,28 +20,32 @@ void    print_stack(t_lst *tmp, t_lst *tmp1)
 	int		len_b = 0;
 
 	i = 0;
-	if (tmp)
-		len_a = tmp->lenght.stack_len;
-	if (tmp1)
-		len_b = tmp1->lenght.stack_len;
+	if (!tmp && !tmp1)
+		printf("lol\n");
+	if (tmp && tmp->stack)
+		len_a = tmp->lenght;
+	if (tmp1 && tmp1->stack)
+		len_b = tmp1->lenght;
 	j = 0;
 	printf("~|stack A|~\t\t\t~|stack B|~\n");
 	printf("-~-~-~-~--~-~-~-~--~-~-~-~--~-~-~-~-~-~-~-~--~-~-~-~--~-~-~-~--~-~-~-~-\n");
 	if (!tmp && !tmp1)
+	 printf("	|the stacks holder have been //freed|\n");
+	if (!tmp->stack && !tmp1->stack)
 	 printf("	|the stacks have been //freed|\n");
 	while (i < len_a || j < len_b)
 	{
-		if (tmp && i < len_a)
+		if (tmp && tmp->stack && i < len_a)
 		{
-			printf("a|%lld|\t|%lld|\t|%lld||%lld|%d|<", tmp->LIS, tmp->content, tmp->parse_it, tmp->parse_it_back, tmp->lenght.stack_len);
-			tmp = tmp->next;
+			printf("a\t|%lld|\t<",tmp->stack->content);
+			tmp->stack = tmp->stack->next;
 		}
 		else
 			printf("\t\t");
-		if (tmp1 && j < len_b)
+		if (tmp1 && tmp1->stack && j < len_b)
 		{
-			printf("\t\t>|%lld|\t|%lld|\t|%lld||%lld|%d|b", tmp1->LIS, tmp1->content, tmp1->parse_it, tmp1->parse_it_back, tmp1->lenght.stack_len);
-			tmp1 = tmp1->next;
+			printf("\t>\t|%lld|\tb",tmp1->stack->content);
+			tmp1->stack = tmp1->stack->next;
 		}
 		i++;
 		j++;
