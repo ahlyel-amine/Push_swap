@@ -6,11 +6,11 @@
 /*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 22:45:01 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/27 16:22:00 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/01/27 16:23:43 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/push_swap.h"
+#include "../../include/push_swap.h"
 
 void    print_stack(t_stack *tmp, t_stack *tmp1)
 {
