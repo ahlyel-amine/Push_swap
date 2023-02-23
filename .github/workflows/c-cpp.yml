@@ -13,8 +13,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: configure
-      run: ./configure
+    - name: push_swap
+      run: ./bin/push_swap
     - name: make
       run: make
     - name: make check
