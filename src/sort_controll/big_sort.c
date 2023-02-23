@@ -28,11 +28,9 @@ void	sort_help(t_fakelst fake, t_stack *a, t_stack *b, t_list **garbg)
 
 void	fill_stack_a(t_list **garbg, t_stack *a, t_stack *b)
 {
-	int			i;
 	int			max_pos;
 	long long	max;
 
-	i = 0;
 	while (b && b->lenght > 1)
 	{
 		max_pos = check_listmax(b, &max);
@@ -65,9 +63,7 @@ void	big_sort(t_list **garbg, t_stack *a)
 	t_stack		*b;
 	t_fakelst	fake;
 	int			*table;
-	int			i;
 
-	i = 0;
 	b = ft_malloc(malloc(sizeof(t_stack)), garbg);
 	b->stack = NULL;
 	while (a->lenght > 1)
