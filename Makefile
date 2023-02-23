@@ -99,7 +99,7 @@ OBJS = $(addprefix obj/, $(OBJS_TO_O))
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+#CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -rf
 
@@ -113,24 +113,24 @@ all : $(NAME)
 
 ${NAME} : ${dir} $(OBJS)
 	make -C ${LIBFT}
-	${CC} ${CFLAGS} ${LIBA} ${OBJS} -o ${NAME}
+	${CC} ${LIBA} ${OBJS} -o ${NAME}
 	printf ${HGRN}"Executable $(NAME) ready ✔️"$(NC)
 
 obj/%.o : src/%.c ${INCLUDE}
 	@printf ${HBLU}"[%-30s] 🕝 \r"$(NC) "Compiling $(notdir $@)"
-	@ ${CC} ${CFLAGS} -c $< -o $@
+	@ ${CC} -c $< -o $@
 
 obj/%.o : src/sort_functions/%.c ${INCLUDE}
 	@printf ${HBLU}"[%-30s] 🕝 \r"$(NC) "Compiling $(notdir $@)"
-	@ ${CC} ${CFLAGS} -c $< -o $@
+	@ ${CC} -c $< -o $@
 
 obj/%.o : src/utils/%.c ${INCLUDE}
 	@printf ${HBLU}"[%-30s] 🕝 \r"$(NC) "Compiling $(notdir $@)"
-	@ ${CC} ${CFLAGS} -c $< -o $@
+	@ ${CC} -c $< -o $@
 
 obj/%.o : src/sort_controll/%.c ${INCLUDE}
 	@printf ${HBLU}"[%-30s] 🕝 \r"$(NC) "Compiling $(notdir $@)"
-	@ ${CC} ${CFLAGS} -c $< -o $@
+	@ ${CC} -c $< -o $@
 
 ${dir} :
 	mkdir -p ${dir}
@@ -144,20 +144,20 @@ bonus :${BONUS}
 ${BONUS} : ${bonus_dir} ${BONUS_OBJS}
 	make -C ${BONUS_LIBFT}
 	make -C ${GNL}
-	${CC} ${CFLAGS} -fsanitize=address ${BONUS_OBJS} ${BONUS_LIBA} ${GNLA} -o ${BONUS}
+	${CC} -fsanitize=address ${BONUS_OBJS} ${BONUS_LIBA} ${GNLA} -o ${BONUS}
 	printf ${HGRN}"Executable $(BONUS) ready ✔️"$(NC)
 
 bonus/obj/%.o : bonus/src/%.c ${BONUS_INCLUDE}
 	@printf ${HBLU}"[%-30s] 🕝 \r"$(NC) "Compiling $(notdir $@)"
-	@ ${CC} ${CFLAGS} -c $< -o $@
+	@ ${CC} -c $< -o $@
 
 bonus/obj/%.o : bonus/src/sort_functions/%.c ${BONUS_INCLUDE}
 	@printf ${HBLU}"[%-30s] 🕝 \r"$(NC) "Compiling $(notdir $@)"
-	@ ${CC} ${CFLAGS} -c $< -o $@
+	@ ${CC} -c $< -o $@
 
 bonus/obj/%.o : bonus/src/utils/%.c ${BONUS_INCLUDE}
 	@printf ${HBLU}"[%-30s] 🕝 \r"$(NC) "Compiling $(notdir $@)"
-	@ ${CC} ${CFLAGS} -c $< -o $@
+	@ ${CC} -c $< -o $@
 
 ${bonus_dir} :
 	mkdir -p ${bonus_dir}
