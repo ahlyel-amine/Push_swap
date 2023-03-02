@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_garbg.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aahlyel <aahlyel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aahlyel <aahlyel@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 18:55:09 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/01/24 05:20:42 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/03/02 15:12:24 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ char	**ft_split_garbg(char const *s, char c, t_list **garbg)
 		return (NULL);
 	i = 0;
 	wc = word_count((char *)s, c);
+	if (!wc && *s == c)
+		ft_exit("Error", garbg, 0);
 	splited = ft_malloc(malloc((wc + 1) * sizeof(char *)), garbg);
 	while (i < wc)
 	{
