@@ -6,13 +6,13 @@
 /*   By: aahlyel <aahlyel@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 18:55:09 by aahlyel           #+#    #+#             */
-/*   Updated: 2023/03/02 15:12:24 by aahlyel          ###   ########.fr       */
+/*   Updated: 2023/03/02 15:15:47 by aahlyel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-static int	word_count(char *s, char c);
+static int	word_count(char *s, char c, t_list **garb);
 
 char	**ft_split_garbg(char const *s, char c, t_list **garbg)
 {
@@ -24,9 +24,7 @@ char	**ft_split_garbg(char const *s, char c, t_list **garbg)
 	if (!s)
 		return (NULL);
 	i = 0;
-	wc = word_count((char *)s, c);
-	if (!wc && *s == c)
-		ft_exit("Error", garbg, 0);
+	wc = word_count((char *)s, c, garbg);
 	splited = ft_malloc(malloc((wc + 1) * sizeof(char *)), garbg);
 	while (i < wc)
 	{
@@ -45,13 +43,17 @@ char	**ft_split_garbg(char const *s, char c, t_list **garbg)
 	return (splited);
 }
 
-static int	word_count(char *s, char c)
+static int	word_count(char *s, char c, t_list **garbg)
 {
 	int	i;
+	int	j;
 
 	i = 0;
-	while (*(s++))
-		if (*(s - 1) != c && (*s == c || !*s))
+	j = 0;
+	while (s[j++])
+		if (s[j - 1] != c && (s[j] == c || !s[j]))
 			i++;
+	if (!i && *s == c)
+		ft_exit("Error", garbg, 0);
 	return (i);
 }
